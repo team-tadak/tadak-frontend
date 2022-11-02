@@ -13,4 +13,15 @@ export const ContentBox = styled.article`
   padding: 13px 20px 0;
 `;
 
+export const Paragraph = styled.p`
+  line-height: 200%;
+`;
+
+export const Letter = styled.span`
+  font-family: "Courier New";
+  font-weight: 700;
+  font-size: 21px;
+  color: black;
+`;
+
 export const StyledInput = styled.div``;
