@@ -4,19 +4,19 @@ import {
   TypeInputContainer,
   HiddenInput,
 } from "components/TypeInput/styles";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Paragraph } from "./styles";
 
 const MOCKUP_STRING =
   "Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d";
 
 function TypeInput() {
-  // const [currentInputString, setCurrentInputString] = useState("");
+  const [currentInputString, setCurrentInputString] = useState("");
   const hiddenInputRef = useRef();
 
   function handleContentBoxClick() {
     hiddenInputRef.current.focus();
-    console.log(hiddenInputRef.current.value);
+    setCurrentInputString(hiddenInputRef.current.value);
   }
 
   return (
@@ -25,7 +25,18 @@ function TypeInput() {
         <HiddenInput onChange={handleContentBoxClick} ref={hiddenInputRef} />
         <Paragraph>
           {MOCKUP_STRING.split("").map((letter, index) => (
-            <Letter key={index}>{letter}</Letter>
+            <Letter
+              status={
+                currentInputString.length - 1 < index
+                  ? "untyped"
+                  : currentInputString[index] === letter
+                  ? "correct"
+                  : "wrong"
+              }
+              key={index}
+            >
+              {letter}
+            </Letter>
           ))}
         </Paragraph>
       </ContentBox>

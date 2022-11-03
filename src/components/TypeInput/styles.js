@@ -26,7 +26,12 @@ export const Letter = styled.span`
   font-family: "Courier New";
   font-weight: 700;
   font-size: 21px;
-  color: black;
+  color: ${(props) =>
+    props.status === "untyped"
+      ? "lightgray"
+      : props.status === "correct"
+      ? "blue"
+      : "red"};
 `;
 
 export const StyledInput = styled.div``;
