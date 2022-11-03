@@ -13,6 +13,11 @@ export const ContentBox = styled.article`
   padding: 13px 20px 0;
 `;
 
+export const HiddenInput = styled.input`
+  z-index: -1;
+  position: absolute;
+`;
+
 export const Paragraph = styled.p`
   line-height: 200%;
 `;
