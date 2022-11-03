@@ -1,3 +1,4 @@
+import Timer from "components/common/Timer";
 import {
   ContentBox,
   Letter,
@@ -19,6 +20,10 @@ function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
 }
 
 function TypeInput() {
+  // 타이머 관련
+  const [minutes, setMinutes] = useState(1);
+  const [seconds, setSeconds] = useState(0);
+
   const [currentInputString, setCurrentInputString] = useState("");
   const hiddenInputRef = useRef();
 
@@ -44,6 +49,16 @@ function TypeInput() {
           ))}
         </Paragraph>
       </ContentBox>
+      <Timer
+        minutes={minutes}
+        setMinutes={setMinutes}
+        seconds={seconds}
+        setSeconds={setSeconds}
+      />
+      <p>
+        타자속도: {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
+        {Math.round((currentInputString.length / (60 - seconds)) * 60)}
+      </p>
     </TypeInputContainer>
   );
 }
