@@ -47,6 +47,8 @@ function TypeInput() {
 
   // 줄이 바뀌는 index 따로 관리
   const breakpoints = useMemo(() => parseNewline(MOCKUP_STRING), []);
+  // 현재 매 line 의 끝에 와 있는지 아닌지 판단.
+  // false: line 끝 아님. true: line 끝임.
   const EOLFlag = useRef(false);
 
   // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
@@ -65,8 +67,8 @@ function TypeInput() {
       // 직접 각 분기문에서 setState 사용 시 비동기(async) 로 처리되는
       // setState 때문에 오탈자 수를 정확히 셀 수가 없음.
       let tempInputString = currentInputString;
-      // if Backspace < 이거 windows 대응 이슈 있을수도??
 
+      // if Backspace < 이거 windows 대응 이슈 있을수도??
       if (e.keyCode === 8) {
         // 틀린 글자를 지우는 경우 mistakes 감소시키기
         if (tempInputString.length === 0) {
@@ -97,15 +99,8 @@ function TypeInput() {
         // console.log(e.key, "||", e.keyCode);
       }
       setCurrentInputString(tempInputString);
-      if (tempInputString.length === MOCKUP_STRING.length) {
-        alert(
-          `현재 타수 ${Math.round(
-            ((currentInputString.length - mistakes) / (60 - seconds)) * 60
-          )}, 오탈자: ${mistakes} 개`
-        );
-      }
     },
-    [currentInputString, mistakes, seconds]
+    [currentInputString, mistakes]
   );
 
   // 전체 문서에 대해 keydown event bind 시키기
@@ -125,6 +120,19 @@ function TypeInput() {
       document.addEventListener("keydown", enterPress);
     }
   }, [breakpoints, currentInputString, enterPress]);
+
+  useEffect(() => {
+    if (currentInputString.length === MOCKUP_STRING.length) {
+      // TODO: 시계 멈추기
+      // TODO: alert 의 문제 때문인지 alert 가 뜨고 마지막 글자가 렌더링됨. -> 빨리 custom modal 만들기
+      // alert(
+      //   `현재 타수 ${Math.round(
+      //     ((currentInputString.length - mistakes) / (60 - seconds)) * 60
+      //   )}, 오탈자: ${mistakes} 개`
+      // );
+      console.log("끝!");
+    }
+  }, [currentInputString, mistakes]);
 
   return (
     <TypeInputContainer>
