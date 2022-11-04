@@ -104,14 +104,8 @@ function TypeInput() {
           )}, 오탈자: ${mistakes} 개`
         );
       }
-      // 만약 line 끝에 도달했다면
-      if (breakpoints.includes(tempInputString.length)) {
-        console.log("EOL");
-        EOLFlag.current = true;
-        document.addEventListener("keydown", enterPress);
-      }
     },
-    [breakpoints, currentInputString, enterPress, mistakes, seconds]
+    [currentInputString, mistakes, seconds]
   );
 
   // 전체 문서에 대해 keydown event bind 시키기
