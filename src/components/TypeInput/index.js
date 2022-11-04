@@ -36,9 +36,12 @@ function TypeInput() {
       if (e.keyCode === 8) {
         tempInputString = tempInputString.slice(0, -1);
         // 틀린 글자를 지우는 경우 mistakes 감소시키기
-        if (
-          tempInputString.slice(-2) !==
-          MOCKUP_STRING.charAt(tempInputString.length - 2)
+        if (tempInputString.length === 0) {
+          // 한 글자도 안 남은 경우 (mistakes 가 음수 되는 것 대응)
+          setMistakes(0);
+        } else if (
+          tempInputString.slice(-1) !==
+          MOCKUP_STRING.charAt(tempInputString.length - 1)
         ) {
           setMistakes(mistakes - 1);
         }
