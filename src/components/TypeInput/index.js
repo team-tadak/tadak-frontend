@@ -3,9 +3,8 @@ import {
   ContentBox,
   Letter,
   TypeInputContainer,
-  HiddenInput,
 } from "components/TypeInput/styles";
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Paragraph } from "./styles";
 
 const MOCKUP_STRING =
@@ -24,16 +23,11 @@ function TypeInput() {
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
 
+  // 현재 입력받은 글자를 state 로 관리
   const [currentInputString, setCurrentInputString] = useState("");
-  const [mistakes, setMistakes] = useState(0);
-  const hiddenInputRef = useRef();
 
-  // 글자 부분을 클릭하면 자동으로 hidden Input 을 focusing 하게 하고,
-  // state 도 업데이트 하게 변경
-  function handleContentBoxClick() {
-    hiddenInputRef.current.focus();
-    // setCurrentInputString(hiddenInputRef.current.value);
-  }
+  // 현재 오탈자 수를 state 로 관리
+  const [mistakes, setMistakes] = useState(0);
 
   const keyPress = useCallback(
     (e) => {
@@ -43,6 +37,7 @@ function TypeInput() {
       // if Backspace < 이거 windows 대응 이슈 있을수도??
       if (e.keyCode === 8) {
         tempInputString = tempInputString.slice(0, -1);
+        // 틀린 글자를 지우는 경우 mistakes 감소시키기
         if (
           tempInputString.slice(-2) !==
           MOCKUP_STRING.charAt(tempInputString.length - 2)
@@ -56,11 +51,7 @@ function TypeInput() {
         // 이런 실제 값이 아닌 조작용 키들이 바로 input 으로 먹어버리는 걸 검증하기 위함.
         if (e.key.length === 1) {
           tempInputString = tempInputString + e.key;
-          console.log(
-            tempInputString.slice(-1),
-            "||",
-            MOCKUP_STRING.charAt(tempInputString.length - 1)
-          );
+          // 마지막으로 들어온 글자와 비교기준 글자가 다를 경우, mistakes 증가시키기
           if (
             tempInputString.slice(-1) !==
             MOCKUP_STRING.charAt(tempInputString.length - 1)
@@ -75,6 +66,8 @@ function TypeInput() {
     [currentInputString, mistakes]
   );
 
+  // 전체 문서에 대해 keydown event bind 시키기
+  // TODO: 이거를 input 에만 bind 시켜야 할 거같은데?
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
@@ -82,8 +75,7 @@ function TypeInput() {
 
   return (
     <TypeInputContainer>
-      <ContentBox onClick={handleContentBoxClick}>
-        <HiddenInput onChange={handleContentBoxClick} ref={hiddenInputRef} />
+      <ContentBox>
         <Paragraph>
           {MOCKUP_STRING.split("").map((letter, index) => (
             <Letter
