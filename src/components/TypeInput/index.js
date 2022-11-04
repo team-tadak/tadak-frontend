@@ -34,7 +34,6 @@ function TypeInput() {
       let tempInputString = currentInputString;
       // if Backspace < 이거 windows 대응 이슈 있을수도??
       if (e.keyCode === 8) {
-        tempInputString = tempInputString.slice(0, -1);
         // 틀린 글자를 지우는 경우 mistakes 감소시키기
         if (tempInputString.length === 0) {
           // 한 글자도 안 남은 경우 (mistakes 가 음수 되는 것 대응)
@@ -45,6 +44,7 @@ function TypeInput() {
         ) {
           setMistakes(mistakes - 1);
         }
+        tempInputString = tempInputString.slice(0, -1);
       }
       // 나머지 모든 키들에 대해서는
       else {
