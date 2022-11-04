@@ -4,7 +4,13 @@ import {
   Letter,
   TypeInputContainer,
 } from "components/TypeInput/styles";
-import React, { useState, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
 
@@ -14,6 +20,18 @@ function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
     : currentInputString[currentLetterIndex] === letter
     ? "correct" // 입력을 했고, 맞는 글자
     : "wrong"; // 입력은 했으나, 틀린 글자
+}
+
+// paragraph 받아서 \n (newline) 의 index 위치를 반환해줌
+function parseNewline(paragraph) {
+  let newLineIndices = [];
+  for (var i = 0; i < paragraph.length; i++) {
+    if (paragraph[i] === "\n") {
+      newLineIndices.push(i);
+    }
+  }
+  console.log("new line indices", newLineIndices);
+  return newLineIndices;
 }
 
 function TypeInput() {
@@ -27,12 +45,28 @@ function TypeInput() {
   // 현재 오탈자 수를 state 로 관리
   const [mistakes, setMistakes] = useState(0);
 
+  // 줄이 바뀌는 index 따로 관리
+  const breakpoints = useMemo(() => parseNewline(MOCKUP_STRING), []);
+  const EOLFlag = useRef(false);
+
+  // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
+  const enterPress = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        EOLFlag.current = false;
+        setCurrentInputString(currentInputString + " ");
+      }
+    },
+    [currentInputString]
+  );
+
   const keyPress = useCallback(
     (e) => {
       // 직접 각 분기문에서 setState 사용 시 비동기(async) 로 처리되는
       // setState 때문에 오탈자 수를 정확히 셀 수가 없음.
       let tempInputString = currentInputString;
       // if Backspace < 이거 windows 대응 이슈 있을수도??
+
       if (e.keyCode === 8) {
         // 틀린 글자를 지우는 경우 mistakes 감소시키기
         if (tempInputString.length === 0) {
@@ -70,29 +104,50 @@ function TypeInput() {
           )}, 오탈자: ${mistakes} 개`
         );
       }
+      // 만약 line 끝에 도달했다면
+      if (breakpoints.includes(tempInputString.length)) {
+        console.log("EOL");
+        EOLFlag.current = true;
+        document.addEventListener("keydown", enterPress);
+      }
     },
-    [currentInputString, mistakes, seconds]
+    [breakpoints, currentInputString, enterPress, mistakes, seconds]
   );
 
   // 전체 문서에 대해 keydown event bind 시키기
   // TODO: 이거를 input 에만 bind 시켜야 할 거같은데?
   useEffect(() => {
-    document.addEventListener("keydown", keyPress);
+    if (!EOLFlag.current) {
+      document.addEventListener("keydown", keyPress);
+    }
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
+
+  useEffect(() => {
+    // 만약 line 끝에 도달했다면
+    if (breakpoints.includes(currentInputString.length)) {
+      console.log("EOL");
+      EOLFlag.current = true;
+      document.addEventListener("keydown", enterPress);
+    }
+  }, [breakpoints, currentInputString, enterPress]);
 
   return (
     <TypeInputContainer>
       <ContentBox>
         <Paragraph>
-          {MOCKUP_STRING.split("").map((letter, index) => (
-            <Letter
-              status={generateLetterStatus(currentInputString, letter, index)}
-              key={index}
-            >
-              {letter}
-            </Letter>
-          ))}
+          {MOCKUP_STRING.split("").map((letter, index) =>
+            letter === "\n" ? (
+              <br key={index} />
+            ) : (
+              <Letter
+                status={generateLetterStatus(currentInputString, letter, index)}
+                key={index}
+              >
+                {letter}
+              </Letter>
+            )
+          )}
         </Paragraph>
       </ContentBox>
       <Timer
