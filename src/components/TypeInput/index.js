@@ -15,11 +15,16 @@ import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
-  return currentInputString.length - 1 < currentLetterIndex
-    ? "untyped" // 아직 입력하지 않은 글자
-    : currentInputString[currentLetterIndex] === letter
-    ? "correct" // 입력을 했고, 맞는 글자
-    : "wrong"; // 입력은 했으나, 틀린 글자
+  if (currentInputString.length === currentLetterIndex) {
+    return "current"; // 현재 입력부
+  }
+  if (currentInputString.length - 1 < currentLetterIndex) {
+    return "untyped"; // 아직 입력하지 않은 글자
+  }
+  if (currentInputString[currentLetterIndex] === letter) {
+    return "correct"; // 입력을 했고, 맞는 글자
+  }
+  return "wrong"; // 입력은 했으나, 틀린 글자
 }
 
 // paragraph 받아서 \n (newline) 의 index 위치를 반환해줌
