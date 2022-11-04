@@ -25,6 +25,7 @@ function TypeInput() {
   const [seconds, setSeconds] = useState(0);
 
   const [currentInputString, setCurrentInputString] = useState("");
+  const [mistakes, setMistakes] = useState(0);
   const hiddenInputRef = useRef();
 
   // 글자 부분을 클릭하면 자동으로 hidden Input 을 focusing 하게 하고,
@@ -36,21 +37,42 @@ function TypeInput() {
 
   const keyPress = useCallback(
     (e) => {
+      // 직접 각 분기문에서 setState 사용 시 비동기(async) 로 처리되는
+      // setState 때문에 오탈자 수를 정확히 셀 수가 없음.
+      let tempInputString = currentInputString;
       // if Backspace < 이거 windows 대응 이슈 있을수도??
       if (e.keyCode === 8) {
-        setCurrentInputString(currentInputString.slice(0, -1));
+        tempInputString = tempInputString.slice(0, -1);
+        if (
+          tempInputString.slice(-2) !==
+          MOCKUP_STRING.charAt(tempInputString.length - 2)
+        ) {
+          setMistakes(mistakes - 1);
+        }
       }
       // 나머지 모든 키들에 대해서는
       else {
         // 눌러진 키가 한 글자인지 점검하는 건 Control, Alt, Shift, Backsapce 등
         // 이런 실제 값이 아닌 조작용 키들이 바로 input 으로 먹어버리는 걸 검증하기 위함.
         if (e.key.length === 1) {
-          setCurrentInputString(currentInputString + e.key);
+          tempInputString = tempInputString + e.key;
+          console.log(
+            tempInputString.slice(-1),
+            "||",
+            MOCKUP_STRING.charAt(tempInputString.length - 1)
+          );
+          if (
+            tempInputString.slice(-1) !==
+            MOCKUP_STRING.charAt(tempInputString.length - 1)
+          ) {
+            setMistakes(mistakes + 1);
+          }
         }
         // console.log(e.key, "||", e.keyCode);
       }
+      setCurrentInputString(tempInputString);
     },
-    [currentInputString]
+    [currentInputString, mistakes]
   );
 
   useEffect(() => {
@@ -81,7 +103,13 @@ function TypeInput() {
       />
       <p>
         타자속도: {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
-        {Math.round((currentInputString.length / (60 - seconds)) * 60)}
+        {Math.round(
+          ((currentInputString.length - mistakes) / (60 - seconds)) * 60
+        )}
+      </p>
+      <p>
+        실수:
+        {mistakes}
       </p>
     </TypeInputContainer>
   );
