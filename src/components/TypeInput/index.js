@@ -63,8 +63,15 @@ function TypeInput() {
         // console.log(e.key, "||", e.keyCode);
       }
       setCurrentInputString(tempInputString);
+      if (tempInputString.length === MOCKUP_STRING.length) {
+        alert(
+          `현재 타수 ${Math.round(
+            ((currentInputString.length - mistakes) / (60 - seconds)) * 60
+          )}, 오탈자: ${mistakes} 개`
+        );
+      }
     },
-    [currentInputString, mistakes]
+    [currentInputString, mistakes, seconds]
   );
 
   // 전체 문서에 대해 keydown event bind 시키기
