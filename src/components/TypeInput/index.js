@@ -5,10 +5,8 @@ import {
   TypeInputContainer,
 } from "components/TypeInput/styles";
 import React, { useState, useCallback, useEffect } from "react";
-import { Paragraph } from "./styles";
-
-const MOCKUP_STRING =
-  "Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d";
+import { Paragraph } from "components/TypeInput/styles";
+import { MOCKUP_STRING } from "constants/paragraphs";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
   return currentInputString.length - 1 < currentLetterIndex
