@@ -90,19 +90,21 @@ function TypeInput() {
       }
       // 나머지 모든 키들에 대해서는
       else {
-        // 눌러진 키가 한 글자인지 점검하는 건 Control, Alt, Shift, Backsapce 등
-        // 이런 실제 값이 아닌 조작용 키들이 바로 input 으로 먹어버리는 걸 검증하기 위함.
-        if (e.key.length === 1) {
-          tempInputString = tempInputString + e.key;
-          // 마지막으로 들어온 글자와 비교기준 글자가 다를 경우, mistakes 증가시키기
-          if (
-            tempInputString.slice(-1) !==
-            MOCKUP_STRING.charAt(tempInputString.length - 1)
-          ) {
-            setMistakes(mistakes + 1);
+        if (!EOLFlag.current) {
+          // 눌러진 키가 한 글자인지 점검하는 건 Control, Alt, Shift, Backsapce 등
+          // 이런 실제 값이 아닌 조작용 키들이 바로 input 으로 먹어버리는 걸 검증하기 위함.
+          if (e.key.length === 1) {
+            tempInputString = tempInputString + e.key;
+            // 마지막으로 들어온 글자와 비교기준 글자가 다를 경우, mistakes 증가시키기
+            if (
+              tempInputString.slice(-1) !==
+              MOCKUP_STRING.charAt(tempInputString.length - 1)
+            ) {
+              setMistakes(mistakes + 1);
+            }
           }
+          // console.log(e.key, "||", e.keyCode);
         }
-        // console.log(e.key, "||", e.keyCode);
       }
       setCurrentInputString(tempInputString);
     },
