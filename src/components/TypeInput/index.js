@@ -3,14 +3,12 @@ import {
   ContentBox,
   Letter,
   TypeInputContainer,
-  HiddenInput,
   Container,
   EmojiBox,
   RealTimeResults,
   Emoji,
   NameFont,
   FastFont,
-  TimeFont,
 } from "components/TypeInput/styles";
 import React, {
   useState,
