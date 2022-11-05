@@ -82,7 +82,8 @@ export const Emoji = styled.article`
   height: 400px;
   width: 300px;
   background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"});
-  background-size: 100% 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
 `;
 
 export const NameFont = styled.span`
