@@ -3,6 +3,14 @@ import {
   ContentBox,
   Letter,
   TypeInputContainer,
+  HiddenInput,
+  Container,
+  EmojiBox,
+  RealTimeResults,
+  Emoji,
+  NameFont,
+  FastFont,
+  TimeFont,
 } from "components/TypeInput/styles";
 import React, {
   useState,
@@ -159,53 +167,66 @@ function TypeInput() {
     }
   }, [currentInputString, mistakes, seconds]);
 
+  //{/* TODO: currentInputString.length 에서 mistakes 빼기 */}
+  //{Math.round((currentInputString.length / (60 - seconds)) * 60)}
   return (
-    <TypeInputContainer>
-      <ContentBox>
-        <Paragraph>
-          {TEST_STRING.split("").map((letter, index) =>
-            letter === "\n" ? (
-              <br key={index} />
-            ) : (
-              <Letter
-                status={generateLetterStatus(currentInputString, letter, index)}
-                key={index}
-              >
-                {letter === " " ? (
-                  <>&nbsp;</>
-                ) : letter === "-" ? (
-                  <>&#x2011;</>
-                ) : (
-                  letter
-                )}
-              </Letter>
-            )
-          )}
-        </Paragraph>
-      </ContentBox>
-      <Timer
-        minutes={minutes}
-        setMinutes={setMinutes}
-        seconds={seconds}
-        setSeconds={setSeconds}
-      />
-      <p>
-        타자속도: {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
-        {seconds === 0
-          ? Math.round(
-              ((currentInputString.length - mistakes) /
-                (60 - totalSecondsSpent.current)) *
-                60
-            )
-          : Math.round(
-              ((currentInputString.length - mistakes) / (60 - seconds)) * 60
+    <>
+      <TypeInputContainer>
+        <ContentBox>
+          <Paragraph>
+            {TEST_STRING.split("").map((letter, index) =>
+              letter === "\n" ? (
+                <br key={index} />
+              ) : (
+                <Letter
+                  status={generateLetterStatus(
+                    currentInputString,
+                    letter,
+                    index
+                  )}
+                  key={index}
+                >
+                  {letter === " " ? (
+                    <>&nbsp;</>
+                  ) : letter === "-" ? (
+                    <>&#x2011;</>
+                  ) : (
+                    letter
+                  )}
+                </Letter>
+              )
             )}
-      </p>
-      <p>
-        실수:
-        {mistakes}
-      </p>
-    </TypeInputContainer>
+          </Paragraph>
+        </ContentBox>
+      </TypeInputContainer>
+
+      <Container>
+        <EmojiBox>
+          <NameFont>최영준</NameFont>
+          <Emoji />
+        </EmojiBox>
+        <RealTimeResults>
+          <FastFont>
+            {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
+            {seconds === 0
+              ? Math.round(
+                  ((currentInputString.length - mistakes) /
+                    (60 - totalSecondsSpent.current)) *
+                    60
+                )
+              : Math.round(
+                  ((currentInputString.length - mistakes) / (60 - seconds)) * 60
+                )}
+          </FastFont>
+          <Timer
+            minutes={minutes}
+            setMinutes={setMinutes}
+            seconds={seconds}
+            setSeconds={setSeconds}
+          />
+        </RealTimeResults>
+      </Container>
+    </>
   );
 }
 
