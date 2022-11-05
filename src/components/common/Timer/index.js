@@ -1,4 +1,16 @@
 import { useEffect } from "react";
+import styled from "@emotion/styled";
+const TimeFont = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  width: 200px;
+  height: 80px;
+  background-color: #1f263d;
+  border-radius: 10px;
+`;
 
 function Timer({ minutes, setMinutes, seconds, setSeconds }) {
   // const [minutes, setMinutes] = useState(1);
@@ -23,11 +35,10 @@ function Timer({ minutes, setMinutes, seconds, setSeconds }) {
 
   return (
     <div className="App">
-      <h1>CountDown!</h1>
       <div>
-        <h2>
+        <TimeFont>
           {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-        </h2>
+        </TimeFont>
       </div>
     </div>
   );
