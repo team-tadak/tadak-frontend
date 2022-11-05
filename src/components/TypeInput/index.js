@@ -4,6 +4,13 @@ import {
   Letter,
   TypeInputContainer,
   HiddenInput,
+  Container,
+  EmojiBox,
+  RealTimeResults,
+  Emoji,
+  NameFont,
+  FastFont,
+  TimeFont,
 } from "components/TypeInput/styles";
 import React, { useRef, useState } from "react";
 import { Paragraph } from "./styles";
@@ -34,32 +41,44 @@ function TypeInput() {
     setCurrentInputString(hiddenInputRef.current.value);
   }
 
+  //{/* TODO: currentInputString.length 에서 mistakes 빼기 */}
+  //{Math.round((currentInputString.length / (60 - seconds)) * 60)}
   return (
-    <TypeInputContainer>
-      <ContentBox onClick={handleContentBoxClick}>
-        <HiddenInput onChange={handleContentBoxClick} ref={hiddenInputRef} />
-        <Paragraph>
-          {MOCKUP_STRING.split("").map((letter, index) => (
-            <Letter
-              status={generateLetterStatus(currentInputString, letter, index)}
-              key={index}
-            >
-              {letter}
-            </Letter>
-          ))}
-        </Paragraph>
-      </ContentBox>
-      <Timer
-        minutes={minutes}
-        setMinutes={setMinutes}
-        seconds={seconds}
-        setSeconds={setSeconds}
-      />
-      <p>
-        타자속도: {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
-        {Math.round((currentInputString.length / (60 - seconds)) * 60)}
-      </p>
-    </TypeInputContainer>
+    <>
+      <TypeInputContainer>
+        <ContentBox onClick={handleContentBoxClick}>
+          <HiddenInput onChange={handleContentBoxClick} ref={hiddenInputRef} />
+          <Paragraph>
+            {MOCKUP_STRING.split("").map((letter, index) => (
+              <Letter
+                status={generateLetterStatus(currentInputString, letter, index)}
+                key={index}
+              >
+                {letter}
+              </Letter>
+            ))}
+          </Paragraph>
+        </ContentBox>
+      </TypeInputContainer>
+      <Container>
+        <EmojiBox>
+          <NameFont>최영준</NameFont>
+          <Emoji />
+        </EmojiBox>
+        <RealTimeResults>
+          <FastFont>
+            {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
+            {Math.round((currentInputString.length / (60 - seconds)) * 60)}
+          </FastFont>
+          <Timer
+            minutes={minutes}
+            setMinutes={setMinutes}
+            seconds={seconds}
+            setSeconds={setSeconds}
+          />
+        </RealTimeResults>
+      </Container>
+    </>
   );
 }
 
