@@ -62,6 +62,7 @@ function TypeInput() {
       if (e.key === "Enter") {
         EOLFlag.current = false;
         setCurrentInputString(currentInputString + " ");
+        document.removeEventListener("keydown", enterPress);
       }
     },
     [currentInputString]
