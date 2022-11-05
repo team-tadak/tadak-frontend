@@ -41,8 +41,10 @@ export const Letter = styled.span`
       : props.status === "correct"
       ? "blue"
       : "red"};
+  /* background-color: ${(props) =>
+    props.status === "current" ? "black" : "transparent"}; */
   background-color: ${(props) =>
-    props.status === "current" ? "black" : "transparent"};
+    props.status === "wrong" ? "rgba(255, 0, 0, 0.1)" : "transparent"};
 
   animation: ${(props) =>
     props.status === "current"
