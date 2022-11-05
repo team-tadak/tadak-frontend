@@ -39,7 +39,7 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
-const TEST_STRING_INDEX = 1;
+const TEST_STRING_INDEX = 3;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
 function TypeInput() {
@@ -58,6 +58,10 @@ function TypeInput() {
   // 현재 매 line 의 끝에 와 있는지 아닌지 판단.
   // false: line 끝 아님. true: line 끝임.
   const EOLFlag = useRef(false);
+
+  // 현재 타이핑이 끝났는지 점검하는 flag
+  // false: 아직 끝에 못 도달함, true: 끝에 도달함.
+  const EOFFlag = useRef(false);
 
   // 마지막에 타이머 초 0 으로 바꾸기 전에 마지막 경과 초 값 저장
   const totalSecondsSpent = useRef(0);
@@ -120,7 +124,7 @@ function TypeInput() {
   // 전체 문서에 대해 keydown event bind 시키기
   // TODO: 이거를 input 에만 bind 시켜야 할 거같은데?
   useEffect(() => {
-    if (!EOLFlag.current) {
+    if (!EOLFlag.current && !EOFFlag.current) {
       document.addEventListener("keydown", keyPress);
     }
     return () => document.removeEventListener("keydown", keyPress);
@@ -131,13 +135,15 @@ function TypeInput() {
     if (breakpoints.includes(currentInputString.length)) {
       console.log("EOL");
       EOLFlag.current = true;
-      document.addEventListener("keydown", enterPress);
+      if (!EOFFlag.current) {
+        document.addEventListener("keydown", enterPress);
+      }
     }
   }, [breakpoints, currentInputString, enterPress]);
 
   useEffect(() => {
+    // 만약 file 끝에 도달했다면
     if (currentInputString.length === TEST_STRING.length) {
-      // TODO: 시계 멈추기
       // TODO: alert 의 문제 때문인지 alert 가 뜨고 마지막 글자가 렌더링됨. -> 빨리 custom modal 만들기
       // alert(
       //   `현재 타수 ${Math.round(
@@ -145,6 +151,8 @@ function TypeInput() {
       //   )}, 오탈자: ${mistakes} 개`
       // );
       console.log("끝!");
+      EOFFlag.current = true;
+      console.log("EOF Flag", EOFFlag.current);
       totalSecondsSpent.current = seconds;
       setMinutes(0);
       setSeconds(0);
@@ -163,7 +171,13 @@ function TypeInput() {
                 status={generateLetterStatus(currentInputString, letter, index)}
                 key={index}
               >
-                {letter}
+                {letter === " " ? (
+                  <>&nbsp;</>
+                ) : letter === "-" ? (
+                  <>&#x2011;</>
+                ) : (
+                  letter
+                )}
               </Letter>
             )
           )}

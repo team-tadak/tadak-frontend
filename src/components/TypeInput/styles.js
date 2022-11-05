@@ -27,10 +27,12 @@ export const ContentBox = styled.article`
 
 export const Paragraph = styled.p`
   line-height: 200%;
+  word-wrap: break-word;
 `;
 
 export const Letter = styled.span`
-  font-family: "Courier New";
+  font-family: "Courier New", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif,
+    "Roboto";
   font-weight: 700;
   font-size: 21px;
   color: ${(props) =>
