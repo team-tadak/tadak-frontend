@@ -39,6 +39,9 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
+const TEST_STRING_INDEX = 1;
+const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
+
 function TypeInput() {
   // 타이머 관련
   const [minutes, setMinutes] = useState(1);
@@ -51,7 +54,7 @@ function TypeInput() {
   const [mistakes, setMistakes] = useState(0);
 
   // 줄이 바뀌는 index 따로 관리
-  const breakpoints = useMemo(() => parseNewline(MOCKUP_STRING), []);
+  const breakpoints = useMemo(() => parseNewline(TEST_STRING), []);
   // 현재 매 line 의 끝에 와 있는지 아닌지 판단.
   // false: line 끝 아님. true: line 끝임.
   const EOLFlag = useRef(false);
@@ -82,7 +85,7 @@ function TypeInput() {
           setMistakes(0);
         } else if (
           tempInputString.slice(-1) !==
-          MOCKUP_STRING.charAt(tempInputString.length - 1)
+          TEST_STRING.charAt(tempInputString.length - 1)
         ) {
           setMistakes(mistakes - 1);
         }
@@ -98,7 +101,7 @@ function TypeInput() {
             // 마지막으로 들어온 글자와 비교기준 글자가 다를 경우, mistakes 증가시키기
             if (
               tempInputString.slice(-1) !==
-              MOCKUP_STRING.charAt(tempInputString.length - 1)
+              TEST_STRING.charAt(tempInputString.length - 1)
             ) {
               setMistakes(mistakes + 1);
             }
@@ -130,7 +133,7 @@ function TypeInput() {
   }, [breakpoints, currentInputString, enterPress]);
 
   useEffect(() => {
-    if (currentInputString.length === MOCKUP_STRING.length) {
+    if (currentInputString.length === TEST_STRING.length) {
       // TODO: 시계 멈추기
       // TODO: alert 의 문제 때문인지 alert 가 뜨고 마지막 글자가 렌더링됨. -> 빨리 custom modal 만들기
       // alert(
@@ -146,7 +149,7 @@ function TypeInput() {
     <TypeInputContainer>
       <ContentBox>
         <Paragraph>
-          {MOCKUP_STRING.split("").map((letter, index) =>
+          {TEST_STRING.split("").map((letter, index) =>
             letter === "\n" ? (
               <br key={index} />
             ) : (
