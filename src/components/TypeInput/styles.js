@@ -21,7 +21,7 @@ export const TypeInputContainer = styled.div`
   width: 1000px;
   height: 700px;
   background-color: #3a4050;
-  //border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   padding: 35px;
 `;
 
@@ -72,7 +72,7 @@ export const EmojiBox = styled.div`
   width: 300px;
   height: 450px;
   background-color: #3a4050;
-  //border-radius: 10px;
+  border-radius: 0 10px 0 0;
 `;
 
 export const Emoji = styled.article`
@@ -107,7 +107,7 @@ export const RealTimeResults = styled.div`
   justify-content: center;
   width: 300px;
   height: 250px;
-  //border-radius: 10px;
+  border-radius: 0 0 10px 0;
   background-color: #3a4050;
   padding-bottom: 30px;
 `;
