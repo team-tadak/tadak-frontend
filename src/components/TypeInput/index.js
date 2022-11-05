@@ -59,6 +59,9 @@ function TypeInput() {
   // false: line 끝 아님. true: line 끝임.
   const EOLFlag = useRef(false);
 
+  // 마지막에 타이머 초 0 으로 바꾸기 전에 마지막 경과 초 값 저장
+  const totalSecondsSpent = useRef(0);
+
   // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
   const enterPress = useCallback(
     (e) => {
@@ -142,8 +145,11 @@ function TypeInput() {
       //   )}, 오탈자: ${mistakes} 개`
       // );
       console.log("끝!");
+      totalSecondsSpent.current = seconds;
+      setMinutes(0);
+      setSeconds(0);
     }
-  }, [currentInputString, mistakes]);
+  }, [currentInputString, mistakes, seconds]);
 
   return (
     <TypeInputContainer>
@@ -171,9 +177,15 @@ function TypeInput() {
       />
       <p>
         타자속도: {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
-        {Math.round(
-          ((currentInputString.length - mistakes) / (60 - seconds)) * 60
-        )}
+        {seconds === 0
+          ? Math.round(
+              ((currentInputString.length - mistakes) /
+                (60 - totalSecondsSpent.current)) *
+                60
+            )
+          : Math.round(
+              ((currentInputString.length - mistakes) / (60 - seconds)) * 60
+            )}
       </p>
       <p>
         실수:
