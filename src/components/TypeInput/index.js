@@ -39,7 +39,7 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
-const TEST_STRING_INDEX = 3;
+const TEST_STRING_INDEX = 1;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
 function TypeInput() {
@@ -100,7 +100,7 @@ function TypeInput() {
       }
       // 나머지 모든 키들에 대해서는
       else {
-        if (!EOLFlag.current) {
+        if (!EOLFlag.current && !EOFFlag.current) {
           // 눌러진 키가 한 글자인지 점검하는 건 Control, Alt, Shift, Backsapce 등
           // 이런 실제 값이 아닌 조작용 키들이 바로 input 으로 먹어버리는 걸 검증하기 위함.
           if (e.key.length === 1) {
