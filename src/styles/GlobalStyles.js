@@ -25,7 +25,7 @@ export const globalStyles = (theme, isOpen) => css`
     /* 메인 페이지에서 불필요한 스크롤바 제거 */
   }
   body {
-    background-color: #17a2b8;
+    background-color: #292c33;
   }
 `;
 

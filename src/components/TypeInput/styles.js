@@ -3,13 +3,13 @@ import styled from "@emotion/styled";
 
 const cursorBlink = keyframes`
  0% {
-      background-color: black;
+      background-color: #ACB2BE;
     }
     50.0% {
       background-color: transparent;
     }
     100.0% {
-      background-color: black;
+      background-color: #ACB2BE;
     }
 `;
 export const Container = styled.div`
@@ -21,7 +21,7 @@ export const TypeInputContainer = styled.div`
   width: 1000px;
   height: 700px;
   background-color: #3a4050;
-  //border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   padding: 35px;
 `;
 
@@ -45,21 +45,21 @@ export const Letter = styled.span`
   font-size: 21px;
   color: ${(props) =>
     props.status === "current"
-      ? "lightgray"
+      ? props.theme.color.gray
       : props.status === "untyped"
-      ? "lightgray"
+      ? props.theme.color.gray
       : props.status === "correct"
-      ? "blue"
-      : "red"};
+      ? props.theme.color.blue.light
+      : props.theme.color.red.light};
   /* background-color: ${(props) =>
     props.status === "current" ? "black" : "transparent"}; */
   background-color: ${(props) =>
-    props.status === "wrong" ? "rgba(255, 0, 0, 0.1)" : "transparent"};
-
+    props.status === "wrong" ? "rgba(255, 0, 0, 0.3)" : "transparent"};
+  border-radius: 2px;
   animation: ${(props) =>
     props.status === "current"
       ? css`
-          ${cursorBlink} 1s ease infinite
+          ${cursorBlink} 0.8s ease infinite
         `
       : "none"};
 `;
@@ -72,7 +72,7 @@ export const EmojiBox = styled.div`
   width: 300px;
   height: 450px;
   background-color: #3a4050;
-  //border-radius: 10px;
+  border-radius: 0 10px 0 0;
 `;
 
 export const Emoji = styled.article`
@@ -81,8 +81,18 @@ export const Emoji = styled.article`
   //padding: 13px 20px 0;
   height: 400px;
   width: 300px;
-  background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"});
-  background-size: 100% 100%;
+  ${(props) =>
+    props.face === "happy"
+      ? css`
+          background-image: url(${process.env.PUBLIC_URL +
+          "/img/emoji_good.png"});
+        `
+      : css`
+          background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"});
+        `}
+  /* background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"}); */
+  background-size: 100%;
+  background-repeat: no-repeat;
 `;
 
 export const NameFont = styled.span`
@@ -106,7 +116,7 @@ export const RealTimeResults = styled.div`
   justify-content: center;
   width: 300px;
   height: 250px;
-  //border-radius: 10px;
+  border-radius: 0 0 10px 0;
   background-color: #3a4050;
   padding-bottom: 30px;
 `;
