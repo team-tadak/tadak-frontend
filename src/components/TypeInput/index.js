@@ -45,7 +45,7 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
-const TEST_STRING_INDEX = 1;
+const TEST_STRING_INDEX = 3;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
 function TypeInput() {
@@ -58,6 +58,9 @@ function TypeInput() {
 
   // 현재 오탈자 수를 state 로 관리
   const [mistakes, setMistakes] = useState(0);
+
+  // 미모지 표정 관리용
+  const [face, setFace] = useState("happy");
 
   // 줄이 바뀌는 index 따로 관리
   const breakpoints = useMemo(() => parseNewline(TEST_STRING), []);
@@ -93,6 +96,7 @@ function TypeInput() {
       // if Backspace < 이거 windows 대응 이슈 있을수도??
       if (e.keyCode === 8) {
         // 틀린 글자를 지우는 경우 mistakes 감소시키기
+        setFace("sad");
         if (tempInputString.length === 0) {
           // 한 글자도 안 남은 경우 (mistakes 가 음수 되는 것 대응)
           setMistakes(0);
@@ -116,7 +120,10 @@ function TypeInput() {
               tempInputString.slice(-1) !==
               TEST_STRING.charAt(tempInputString.length - 1)
             ) {
+              setFace("sad");
               setMistakes(mistakes + 1);
+            } else {
+              setFace("happy");
             }
           }
           // console.log(e.key, "||", e.keyCode);
@@ -201,7 +208,7 @@ function TypeInput() {
       <Container>
         <EmojiBox>
           <NameFont>최영준</NameFont>
-          <Emoji />
+          <Emoji face={face} />
         </EmojiBox>
         <RealTimeResults>
           <FastFont>
@@ -214,7 +221,8 @@ function TypeInput() {
                 )
               : Math.round(
                   ((currentInputString.length - mistakes) / (60 - seconds)) * 60
-                )}
+                )}{" "}
+            타
           </FastFont>
           <Timer
             minutes={minutes}

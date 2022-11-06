@@ -81,7 +81,16 @@ export const Emoji = styled.article`
   //padding: 13px 20px 0;
   height: 400px;
   width: 300px;
-  background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"});
+  ${(props) =>
+    props.face === "happy"
+      ? css`
+          background-image: url(${process.env.PUBLIC_URL +
+          "/img/emoji_good.png"});
+        `
+      : css`
+          background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"});
+        `}
+  /* background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"}); */
   background-size: 100%;
   background-repeat: no-repeat;
 `;
