@@ -14,10 +14,12 @@ import TypePage from "pages/TypePage";
 import { ThemeProvider } from "@emotion/react";
 //import FitContent
 import { theme } from "styles/theme";
+import GlobalStyles from "styles/GlobalStyles";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <Router>
         <Routes>
           {/* 언어 선택 페이지 */}
