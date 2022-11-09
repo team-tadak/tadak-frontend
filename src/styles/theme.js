@@ -7,5 +7,6 @@ export const theme = {
       light: "#CE7075",
     },
     gray: "#5D636F",
+    warning300: "#F3B161",
   },
 };
