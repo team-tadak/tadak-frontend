@@ -1,3 +1,4 @@
+import Logo from "components/common/Logo";
 import {
   NavBarContainer,
   NavBarLogoContainer,
@@ -14,6 +15,7 @@ function NavBar() {
     <StyledNavBar>
       <NavBarContainer>
         <NavBarLogoContainer>
+          <Logo />
           <NavBarLogoText>TADAK</NavBarLogoText>
         </NavBarLogoContainer>
         <NavBarMenuContainer>
