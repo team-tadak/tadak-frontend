@@ -7,12 +7,12 @@ import ResultContainer from "./ResultContainer";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   //align-items: flex-start;
   padding: 24px;
   gap: 8px;
   width: 300px;
-  height: 800px;
+  height: 700px;
   left: 1373px;
   top: 192px;
   background: #161b21;
@@ -87,21 +87,19 @@ function UserContainer() {
         </UserInfo>
       </UserInfoContainer>
       <ResultContainer title={"기록"} icon="1" record={"437타"} />
-      <ResultContainer title={"랭킹"} icon="2" record={"233d위"} />
+      <ResultContainer title={"랭킹"} icon="2" record={"233위"} />
       <ButtonContainer>
         <Link to="/languageselect">
           <Button icon="1" content={"언어선택"} />
         </Link>
         <Link to="/syntaxselect">
-          <Button>
-            <Button icon="2" content={"문법선택"} />
-          </Button>
+          <Button icon="2" content={"문법선택"} />
         </Link>
         <Link to="/leaderboard">
           <Button icon="3" content={"랭킹보드"} />
         </Link>
         <Link to="/leaderboard">
-          <Button icon="1" content={"로그아웃"} />
+          <Button icon="4" content={"로그아웃"} />
         </Link>
       </ButtonContainer>
     </Container>

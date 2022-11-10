@@ -9,11 +9,15 @@ const ButtonShape = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
   padding: 0px;
   gap: 16px;
 
   width: 200px;
   height: 60px;
+  &.active {
+    background-color: lightblue;
+  }
 `;
 
 const ButtonFont = styled.div`
@@ -34,12 +38,11 @@ const IconPositioner = styled.div`
 function Button({ icon, content }) {
   return (
     <ButtonShape>
-      <IconPositioner>
-        {icon === "1" && <img src={Rectangle} width="30" />}
-        {icon === "2" && <img src={Switch} width="30" />}
-        {icon === "3" && <img src={Trophy} width="30" />}
-        {icon === "4" && <img src={SignIn} width="30" />}
-      </IconPositioner>
+      {icon === "1" && <img src={Rectangle} width="15" height="15" />}
+      {icon === "2" && <img src={Switch} width="20" height="20" />}
+      {icon === "3" && <img src={Trophy} width="20" height="20" />}
+      {icon === "4" && <img src={SignIn} width="20" height="20" />}
+
       <ButtonFont>{content}</ButtonFont>
     </ButtonShape>
   );
