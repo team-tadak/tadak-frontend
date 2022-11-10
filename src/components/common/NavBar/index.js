@@ -11,17 +11,21 @@ import {
   NavBarMenuText,
   StyledNavBar,
 } from "components/common/NavBar/styles";
+import useScrollPosition from "hooks/useScrollPosition";
 import useUser from "hooks/useUser";
 import { MOCKUP_USER } from "mockups/users";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar(props) {
+  // 현재 페이지의 스크롤 상태 확인 (맨 위면 배경 투명하게, 그 외엔 배경 색 부여)
+  const { scrollY } = useScrollPosition();
+
   // 유저의 로그인 상태 확인.
   const { loggedOut } = useUser();
 
   return (
-    <StyledNavBar>
+    <StyledNavBar transparent={scrollY === 0} {...props}>
       <NavBarContainer>
         <Link to={"/"}>
           <NavBarLogoContainer>
