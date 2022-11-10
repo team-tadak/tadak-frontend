@@ -22,7 +22,9 @@ export const globalStyles = (theme, isOpen) => css`
     -ms-text-size-adjust: none; /* IE */
     -moz-text-size-adjust: none; /* 파이어폭스 */
     -o-text-size-adjust: none; /* 오페라 구버전 */
-    /* 메인 페이지에서 불필요한 스크롤바 제거 */
+
+    /* 컨텐츠 양에 따라 스크롤바 생성 여부 달라짐 -> positioning 달라지는 문제 해결 */
+    overflow-y: scroll;
   }
   body {
     background-color: #101217;
