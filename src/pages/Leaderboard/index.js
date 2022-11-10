@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
 import { motion } from "framer-motion";
+import { MOCKUP_RANKS } from "mockups/ranks";
 function Leaderboard() {
   return (
     <LeaderBoardPageContainer
@@ -27,8 +28,24 @@ function Leaderboard() {
         exit="exit"
       >
         <LeaderBoardTopRankingContainer variants={staggerHalf}>
-          <LeaderBoardTopItem variants={defaultFadeInVariants} ranking="first" />
-          <LeaderBoardTopItem variants={defaultFadeInVariants} ranking="second" />
+          <LeaderBoardTopItem
+            variants={defaultFadeInVariants}
+            username={MOCKUP_RANKS.ranks[0].user.username}
+            email={MOCKUP_RANKS.ranks[0].user.email}
+            KPM={MOCKUP_RANKS.ranks[0].record}
+            language={MOCKUP_RANKS.ranks[0].language_no}
+            syntax={MOCKUP_RANKS.ranks[0].grammar_no}
+            ranking="first"
+          />
+          <LeaderBoardTopItem
+            variants={defaultFadeInVariants}
+            username={MOCKUP_RANKS.ranks[1].user.username}
+            email={MOCKUP_RANKS.ranks[1].user.email}
+            KPM={MOCKUP_RANKS.ranks[1].record}
+            language={MOCKUP_RANKS.ranks[1].language_no}
+            syntax={MOCKUP_RANKS.ranks[1].grammar_no}
+            ranking="second"
+          />
         </LeaderBoardTopRankingContainer>
       </motion.div>
       <LeaderBoardAllRankingText variants={defaultFadeInVariants}>
