@@ -10,6 +10,7 @@ export const StyledNavBar = styled.header`
     transparent ? "rgba(255, 255, 255, 0)" : theme.color.navbarBG};
 
   transition: background-color 0.3s;
+  z-index: 100;
 `;
 
 export const NavBarContainer = styled.nav`
