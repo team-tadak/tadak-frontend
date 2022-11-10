@@ -12,6 +12,7 @@ import {
   StyledNavBar,
 } from "components/common/NavBar/styles";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -22,8 +23,12 @@ function NavBar() {
           <NavBarLogoText>TADAK</NavBarLogoText>
         </NavBarLogoContainer>
         <NavBarMenuContainer>
-          <NavBarMenuText>로그인</NavBarMenuText>
-          <NavBarMenuText>회원가입</NavBarMenuText>
+          <NavBarMenuText>
+            <Link to={"/login"}>로그인</Link>
+          </NavBarMenuText>
+          <NavBarMenuText>
+            <Link to={"/register"}>회원가입</Link>
+          </NavBarMenuText>
           <NavBarLogoutContainer>
             <NavBarLogoutText>로그아웃</NavBarLogoutText>
             <NavBarLogoutIcon>
