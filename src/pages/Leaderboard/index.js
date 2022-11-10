@@ -1,11 +1,6 @@
 import LeaderBoard from "components/LeaderBoard";
 import LeaderBoardTopItem from "components/LeaderBoard/LeaderBoardTopItem";
-import {
-  LeaderBoardAllRankingText,
-  LeaderBoardPageContainer,
-  LeaderBoardTopRankingContainer,
-  LeaderBoardTopRankingText,
-} from "pages/Leaderboard/styles";
+import { LeaderBoardPageContainer, LeaderBoardTopRankingContainer } from "pages/Leaderboard/styles";
 import React from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
 import { motion } from "framer-motion";
