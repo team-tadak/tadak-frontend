@@ -12,5 +12,7 @@ export const theme = {
     warning300: "#F3B161",
     background: "#101217",
     navbarBG: "#202737",
+    board: "#161B21",
+    grayText: "#6F7680",
   },
 };
