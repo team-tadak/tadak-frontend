@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 
 export const StyledNavBar = styled.header`
   padding: 16px 0;
