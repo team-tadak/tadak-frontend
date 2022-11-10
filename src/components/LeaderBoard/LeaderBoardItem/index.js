@@ -33,23 +33,23 @@ function LeaderBoardItem({
       <RankNumberText isHeader={type === "header"}>
         {type === "header" ? "순위" : rank}
       </RankNumberText>
-      <UserProfileContainer>
-        <UserProfileContainer isHeader={type === "header"}>
-          {type === "header" ? (
-            "사용자"
-          ) : (
-            <>
-              <UserProfileImageContainer>
-                <Logo />
-              </UserProfileImageContainer>
-              <UserProfileTextContainer>
-                <UserProfileNameText>{username}</UserProfileNameText>
-                <UserProfileEmailText>{email}</UserProfileEmailText>
-              </UserProfileTextContainer>
-            </>
-          )}
-        </UserProfileContainer>
+
+      <UserProfileContainer isHeader={type === "header"}>
+        {type === "header" ? (
+          "사용자"
+        ) : (
+          <>
+            <UserProfileImageContainer>
+              <Logo />
+            </UserProfileImageContainer>
+            <UserProfileTextContainer>
+              <UserProfileNameText>{username}</UserProfileNameText>
+              <UserProfileEmailText>{email}</UserProfileEmailText>
+            </UserProfileTextContainer>
+          </>
+        )}
       </UserProfileContainer>
+
       <KPMText isHeader={type === "header"}>{type === "header" ? "타수" : `${KPM} 타`}</KPMText>
       <Badge
         css={css`
