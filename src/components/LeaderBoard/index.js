@@ -12,6 +12,16 @@ function LeaderBoard() {
         whileInView="animate"
         exit="exit"
       >
+        <LeaderBoardItem
+          type="header"
+          rank="d"
+          variants={defaultFadeInScaleVariants}
+          username="사용자"
+          email="이메일"
+          KPM="타수"
+          language="언어"
+          syntax="문법"
+        />
         {MOCKUP_RANKS.ranks.map((rank, index) => (
           <LeaderBoardItem
             rank={index + 1}

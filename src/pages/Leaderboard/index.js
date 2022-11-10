@@ -20,7 +20,7 @@ function Leaderboard() {
       <LeaderBoardAllRankingText variants={defaultFadeInVariants}>
         모든 사용자
       </LeaderBoardAllRankingText>
-      <LeaderBoard />;
+      <LeaderBoard />
     </LeaderBoardPageContainer>
   );
 }
