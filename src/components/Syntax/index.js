@@ -59,7 +59,9 @@ export const SyntaxSummary = styled.div`
   font-size: 14px;
 `;
 
-export const SyntaxStartButton = styled.div`
+export const SyntaxStartButton = styled.button`
+  border: none;
+  outline: none;
   width: 100%;
   height: 40px;
   background-color: #bfcdf0;
@@ -68,7 +70,6 @@ export const SyntaxStartButton = styled.div`
   font-size: 16px;
   color: #26262d;
   text-align: center;
-  line-height: 40px;
   font-weight: bold;
 `;
 
@@ -91,7 +92,7 @@ function SyntaxSelectComponent({ example, title, level, summary }) {
         <SyntaxLevel>{stars}</SyntaxLevel>
       </SyntaxTitleBox>
       <SyntaxSummary>{summary}</SyntaxSummary>
-      <SyntaxStartButton>시작하기!</SyntaxStartButton>
+      <SyntaxStartButton onClick={""}>시작하기!</SyntaxStartButton>
     </SyntaxSelectContainer>
   );
 }
