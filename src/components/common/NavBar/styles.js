@@ -1,10 +1,11 @@
 import styled from "@emotion/styled/macro";
+import { NAVBAR_HEIGHT } from "constants/navbar";
 
 export const StyledNavBar = styled.header`
   position: fixed;
   padding: 16px 0;
   width: 100%;
-  height: 56px;
+  height: ${NAVBAR_HEIGHT}px;
   background-color: ${({ theme, transparent }) =>
     transparent ? "rgba(255, 255, 255, 0)" : theme.color.navbarBG};
 

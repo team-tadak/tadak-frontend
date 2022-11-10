@@ -1,12 +1,8 @@
-import NavBar from "components/common/NavBar";
+/** @jsxImportSource @emotion/react */
 import React from "react";
 
 function Main() {
-  return (
-    <div>
-      <NavBar />
-    </div>
-  );
+  return <div>Main</div>;
 }
 
 export default Main;
