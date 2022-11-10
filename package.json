@@ -48,6 +48,7 @@
     "@babel/core": "^7.20.2",
     "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@emotion/babel-plugin": "^11.10.5",
-    "@emotion/babel-plugin-jsx-pragmatic": "^0.2.0"
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.2.0",
+    "gh-pages": "^4.0.0"
   }
 }
