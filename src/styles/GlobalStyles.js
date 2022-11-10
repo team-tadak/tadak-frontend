@@ -1,4 +1,5 @@
 import { css, Global, useTheme } from "@emotion/react";
+import { resetAnchorStyle } from "styles/utils/anchor";
 import { resetCSS } from "./reset";
 
 export const globalStyles = (theme, isOpen) => css`
@@ -26,6 +27,10 @@ export const globalStyles = (theme, isOpen) => css`
   body {
     background-color: #101217;
     color: white;
+  }
+
+  a {
+    ${resetAnchorStyle}
   }
 `;
 
