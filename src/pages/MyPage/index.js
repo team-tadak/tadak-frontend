@@ -1,7 +1,8 @@
 import React from "react";
+import UserContainer from "./UserContainer";
 
 function MyPage() {
-  return <div>MyPage</div>;
+  return <UserContainer />;
 }
 
 export default MyPage;
