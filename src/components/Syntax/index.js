@@ -18,7 +18,7 @@ export const SyntaxExampleBox = styled.div`
   font-weight: bold;
   padding-left: 15px;
   padding-top: 20px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Courier New", Courier, monospace; // 임의로 폰트 설정 (그에 따라 padding, line-height 설정)
   line-height: 0.7cm;
 `;
 

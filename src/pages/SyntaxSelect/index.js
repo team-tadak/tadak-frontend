@@ -2,6 +2,9 @@ import SyntaxSelectComponent from "components/Syntax";
 import DropdownComponent from "components/Dropdown";
 import React from "react";
 
+{
+  /* 컴포넌트 확인하기 위함 없애도 됨 */
+}
 function SyntaxSelect() {
   return (
     <>

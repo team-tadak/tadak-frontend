@@ -56,7 +56,7 @@ export const OptionItem = styled.li`
 `;
 
 function DropdownComponent({ list }) {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("성별");
   return (
     <DropdownContainer>
