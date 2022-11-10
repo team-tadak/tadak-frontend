@@ -36,13 +36,13 @@ const IconPositioner = styled.div`
   color: #ffffff;
 `;
 
-function ResultContainer(title, icon, record) {
+function ResultContainer({ title, icon, record }) {
   return (
     <RecordShape>
       <TitleFont>{title}</TitleFont>
       <IconPositioner>
-        {icon === "1" && <Code size="30" />}
-        {icon === "2" && <Trophy size="30" />}
+        {icon === "1" && <img src={Code} width="30" />}
+        {icon === "2" && <img src={Trophy} width="30" />}
       </IconPositioner>
       <RecordFont>{record}</RecordFont>
     </RecordShape>

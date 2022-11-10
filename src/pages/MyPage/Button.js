@@ -35,10 +35,10 @@ function Button({ icon, content }) {
   return (
     <ButtonShape>
       <IconPositioner>
-        {icon === "1" && <Rectangle size="30" />}
-        {icon === "2" && <Switch size="30" />}
-        {icon === "3" && <Trophy size="30" />}
-        {icon === "4" && <SignIn size="30" />}
+        {icon === "1" && <img src={Rectangle} width="30" />}
+        {icon === "2" && <img src={Switch} width="30" />}
+        {icon === "3" && <img src={Trophy} width="30" />}
+        {icon === "4" && <img src={SignIn} width="30" />}
       </IconPositioner>
       <ButtonFont>{content}</ButtonFont>
     </ButtonShape>
