@@ -12,5 +12,6 @@ export const theme = {
     warning300: "#F3B161",
     background: "#101217",
     navbarBG: "#202737",
+    modalBG: "#29323D",
   },
 };
