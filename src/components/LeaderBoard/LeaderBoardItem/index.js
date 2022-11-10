@@ -2,21 +2,16 @@
 import Badge from "components/common/Badge";
 import ExternalIcon from "components/common/icons/ExternalIcon";
 import TagIcon from "components/common/icons/TagIcon";
-import Logo from "components/common/Logo";
 import {
   KPMText,
   RankNumberText,
   StyledLeaderBoardItem,
-  UserProfileContainer,
-  UserProfileEmailText,
-  UserProfileImageContainer,
-  UserProfileNameText,
-  UserProfileTextContainer,
 } from "components/LeaderBoard/LeaderBoardItem/styles";
 import React from "react";
 import { css } from "@emotion/react";
 import { LANGUAGES } from "constants/languages";
 import { SYNTAXES } from "constants/syntaxes";
+import UserProfile from "components/common/UserProfile";
 
 function LeaderBoardItem({
   type = "item",
@@ -34,21 +29,7 @@ function LeaderBoardItem({
         {type === "header" ? "순위" : rank}
       </RankNumberText>
 
-      <UserProfileContainer isHeader={type === "header"}>
-        {type === "header" ? (
-          "사용자"
-        ) : (
-          <>
-            <UserProfileImageContainer>
-              <Logo />
-            </UserProfileImageContainer>
-            <UserProfileTextContainer>
-              <UserProfileNameText>{username}</UserProfileNameText>
-              <UserProfileEmailText>{email}</UserProfileEmailText>
-            </UserProfileTextContainer>
-          </>
-        )}
-      </UserProfileContainer>
+      <UserProfile type={type} username={username} email={email} />
 
       <KPMText isHeader={type === "header"}>{type === "header" ? "타수" : `${KPM} 타`}</KPMText>
       <Badge
