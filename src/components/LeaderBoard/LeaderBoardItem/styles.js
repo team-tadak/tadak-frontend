@@ -1,6 +1,7 @@
 import styled from "@emotion/styled/macro";
+import { motion } from "framer-motion";
 
-export const StyledLeaderBoardItem = styled.li`
+export const StyledLeaderBoardItem = styled(motion.li)`
   padding: 16px;
   width: 100%;
   background-color: ${({ theme }) => theme.color.board};

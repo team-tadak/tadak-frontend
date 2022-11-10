@@ -15,30 +15,32 @@ import {
 } from "components/LeaderBoard/LeaderBoardItem/styles";
 import React from "react";
 import { css } from "@emotion/react";
+import { LANGUAGES } from "constants/languages";
+import { SYNTAXES } from "constants/syntaxes";
 
-function LeaderBoardItem() {
+function LeaderBoardItem({ rank, username, email, KPM, language, syntax, ...props }) {
   return (
-    <StyledLeaderBoardItem>
-      <RankNumberText>3</RankNumberText>
+    <StyledLeaderBoardItem {...props}>
+      <RankNumberText>{rank}</RankNumberText>
       <UserProfileContainer>
         <UserProfileContainer>
           <UserProfileImageContainer>
             <Logo />
           </UserProfileImageContainer>
           <UserProfileTextContainer>
-            <UserProfileNameText>홍 길동</UserProfileNameText>
-            <UserProfileEmailText>hongkildong@hongkildong.com</UserProfileEmailText>
+            <UserProfileNameText>{username}</UserProfileNameText>
+            <UserProfileEmailText>{email}</UserProfileEmailText>
           </UserProfileTextContainer>
         </UserProfileContainer>
       </UserProfileContainer>
-      <KPMText>1022 타</KPMText>
+      <KPMText>{KPM} 타</KPMText>
       <Badge
         css={css`
           width: 180px;
         `}
         IconComponent={TagIcon}
       >
-        Python
+        {LANGUAGES[language - 1]}
       </Badge>
       <Badge
         css={css`
@@ -46,7 +48,7 @@ function LeaderBoardItem() {
         `}
         IconComponent={ExternalIcon}
       >
-        while 문 써보기
+        {SYNTAXES[LANGUAGES[language - 1]][syntax - 1]}
       </Badge>
     </StyledLeaderBoardItem>
   );
