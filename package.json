@@ -47,8 +47,6 @@
     "@babel/core": "^7.20.2",
     "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@emotion/babel-plugin": "^11.10.5",
-    "@emotion/babel-plugin-jsx-pragmatic": "^0.2.0",
-    "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.2.1"
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.2.0"
   }
 }
