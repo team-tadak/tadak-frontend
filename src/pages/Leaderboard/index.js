@@ -10,6 +10,7 @@ import React from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
 import { motion } from "framer-motion";
 import { MOCKUP_RANKS } from "mockups/ranks";
+import Typography from "components/common/Typography";
 function Leaderboard() {
   return (
     <LeaderBoardPageContainer
@@ -18,9 +19,7 @@ function Leaderboard() {
       whileInView="animate"
       exit="exit"
     >
-      <LeaderBoardTopRankingText variants={defaultFadeInVariants}>
-        상위 사용자
-      </LeaderBoardTopRankingText>
+      <Typography variants={defaultFadeInVariants}>상위 사용자</Typography>
       <motion.div
         variants={defaultFadeInVariants}
         initial="initial"
@@ -48,9 +47,9 @@ function Leaderboard() {
           />
         </LeaderBoardTopRankingContainer>
       </motion.div>
-      <LeaderBoardAllRankingText variants={defaultFadeInVariants}>
+      <Typography type="subHeading" variants={defaultFadeInVariants}>
         모든 사용자
-      </LeaderBoardAllRankingText>
+      </Typography>
       <LeaderBoard />
     </LeaderBoardPageContainer>
   );
