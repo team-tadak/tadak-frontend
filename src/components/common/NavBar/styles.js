@@ -27,6 +27,7 @@ export const NavBarLogoText = styled.h1`
 export const NavBarMenuContainer = styled.ul`
   display: flex;
   column-gap: 40px;
+  align-items: center;
 `;
 
 export const NavBarMenuText = styled.li`
@@ -34,8 +35,18 @@ export const NavBarMenuText = styled.li`
   font-size: 16px;
 `;
 
-export const NavBarLogoutText = styled.li`
+export const NavBarLogoutContainer = styled.li`
+  display: flex;
+  align-items: center;
+`;
+export const NavBarLogoutText = styled.div`
   font-weight: 400;
   font-size: 16px;
   color: ${(props) => props.theme.color.warning300};
+  margin-right: 6px;
+`;
+
+export const NavBarLogoutIcon = styled.div`
+  width: 24px;
+  height: 24px;
 `;

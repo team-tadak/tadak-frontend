@@ -1,9 +1,12 @@
+import LogoutIcon from "components/common/icons/LogoutIcon";
 import Logo from "components/common/Logo";
 import {
   NavBarContainer,
   NavBarLogoContainer,
   NavBarLogoText,
+  NavBarLogoutContainer,
   NavBarLogoutText,
+  NavBarLogoutIcon,
   NavBarMenuContainer,
   NavBarMenuText,
   StyledNavBar,
@@ -21,7 +24,12 @@ function NavBar() {
         <NavBarMenuContainer>
           <NavBarMenuText>로그인</NavBarMenuText>
           <NavBarMenuText>회원가입</NavBarMenuText>
-          <NavBarLogoutText>로그아웃</NavBarLogoutText>
+          <NavBarLogoutContainer>
+            <NavBarLogoutText>로그아웃</NavBarLogoutText>
+            <NavBarLogoutIcon>
+              <LogoutIcon />
+            </NavBarLogoutIcon>
+          </NavBarLogoutContainer>
         </NavBarMenuContainer>
       </NavBarContainer>
     </StyledNavBar>
