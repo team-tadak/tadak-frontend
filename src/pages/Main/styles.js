@@ -6,10 +6,10 @@ export const MainPageContainer = styled.main`
   min-height: 100vh;
 `;
 
-export const MainPageContentSection = styled.section`
+export const MainPageContentSection = styled(motion.section)`
   flex-shrink: 0;
 `;
-export const MainPageImageSection = styled.section`
+export const MainPageImageSection = styled(motion.section)`
   flex-grow: 1;
 `;
 
