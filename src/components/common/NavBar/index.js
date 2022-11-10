@@ -17,6 +17,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function NavBar() {
+  // 유저의 로그인 상태 확인.
   const { loggedOut } = useUser();
 
   return (
