@@ -16,3 +16,9 @@ export const LeaderBoardAllRankingText = styled(motion.div)`
   font-weight: 700;
   color: ${({ theme }) => theme.color.white};
 `;
+
+export const LeaderBoardTopRankingContainer = styled(motion.div)`
+  display: flex;
+  width: 100%;
+  column-gap: 20px;
+`;
