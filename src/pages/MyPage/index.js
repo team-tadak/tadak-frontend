@@ -1,4 +1,4 @@
-import { MyPageContainer } from "pages/MyPage/styles";
+import { MyPageContainer, MyPageContentContainer } from "pages/MyPage/styles";
 import UserContainer from "./UserContainer";
 import React from "react";
 import { staggerQuarter, defaultFadeInVariants } from "styles/motions";
@@ -7,10 +7,17 @@ import HistoryBoard from "components/HistoryBoard";
 
 function MyPage() {
   return (
-    <MyPageContainer variants={staggerQuarter} initial="initial" whileInView="animate" exit="exit">
-      <Typography variants={defaultFadeInVariants}>내 플레이 기록</Typography>
+    <MyPageContainer>
+      <MyPageContentContainer
+        variants={staggerQuarter}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+      >
+        <Typography variants={defaultFadeInVariants}>내 플레이 기록</Typography>
+        <HistoryBoard />
+      </MyPageContentContainer>
       <UserContainer />
-      <HistoryBoard />
     </MyPageContainer>
   );
 }
