@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from "@emotion/styled";
-
+import React from "react";
+import styled from "@emotion/styled/macro";
+import RightIcon from "components/common/icons/RightIcon";
+import PythonIcon from "components/common/icons/PythonIcon";
 
 const StyledImgButton = styled.button`
   display: flex;
@@ -15,15 +16,14 @@ const StyledImgButton = styled.button`
   width: 360px;
   height: 84px;
 
-    
   left: 100px;
   top: 906px;
 
-  background: #26262D;
+  background: #26262d;
   border-radius: 10px;
 
   cursor: pointer;
-`
+`;
 
 const InnerContainer = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ const InnerContainer = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-`
+`;
 
 const StrContainer = styled.div`
   display: flex;
@@ -54,7 +54,7 @@ const StrContainer = styled.div`
   flex: none;
   order: 1;
   flex-grow: 0;
-`
+`;
 
 const TitleContainer = styled.div`
   display: flex;
@@ -70,31 +70,31 @@ const TitleContainer = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-`
+`;
 
 const Title = styled.div`
   width: 55px;
   height: 19px;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 
   letter-spacing: 0.15px;
-  color: #FFFFFF;
+  color: #ffffff;
 
   flex: none;
   order: 0;
   flex-grow: 0;
-`
+`;
 
 const Explanation = styled.div`
   width: 190px;
   height: 28px;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -102,12 +102,12 @@ const Explanation = styled.div`
   letter-spacing: 0.15px;
 
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
 
   flex: none;
   order: 1;
   flex-grow: 0;
-`
+`;
 const LangIcon = styled.div`
   width: 64px;
   height: 64px;
@@ -117,7 +117,7 @@ const LangIcon = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-`
+`;
 
 const Arrow = styled.div`
   width: 24px;
@@ -126,10 +126,9 @@ const Arrow = styled.div`
   flex: none;
   order: 1;
   flex-grow: 0;
-`
+`;
 
 const ArrowIcon = styled.div`
-
   box-sizing: border-box;
 
   position: absolute;
@@ -138,33 +137,24 @@ const ArrowIcon = styled.div`
   top: 25%;
   bottom: 25%;
 
-  border: 2px solid #FFFFFF;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
-
-`
+  /* border: 2px solid #ffffff; */
+  /* transform: matrix(-1, 0, 0, 1, 0, 0); */
+`;
 
 function ImgButton(props) {
   return (
     <StyledImgButton>
       <InnerContainer>
-        <LangIcon>
-          /* Python Icon */
-        </LangIcon>
+        <LangIcon>{/* <PythonIcon /> */}</LangIcon>
         <StrContainer>
           <TitleContainer>
-            <Title>
-              {props.title}
-            </Title>
+            <Title>{props.title}</Title>
           </TitleContainer>
-          <Explanation>
-            {props.explanation}
-          </Explanation>
+          <Explanation>{props.explanation}</Explanation>
         </StrContainer>
       </InnerContainer>
       <Arrow>
-        <ArrowIcon>
-          /* Arrow Icon */
-        </ArrowIcon>
+        <ArrowIcon>{/* <RightIcon /> */}</ArrowIcon>
       </Arrow>
     </StyledImgButton>
   );
