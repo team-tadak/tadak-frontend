@@ -1,4 +1,4 @@
-import { ContentBox, Letter, StyledTypeInput } from "components/TypeInput/styles";
+import { Letter, StyledTypeInput } from "components/TypeInput/styles";
 import React, { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
@@ -31,7 +31,7 @@ function parseNewline(paragraph) {
 const TEST_STRING_INDEX = 3;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
-function TypeInput() {
+function TypeInput({ timePassed, setCurrentKPM }) {
   // 타이머 관련
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
@@ -107,8 +107,9 @@ function TypeInput() {
         }
       }
       setCurrentInputString(tempInputString);
+      setCurrentKPM(Math.round(((currentInputString.length - mistakes) / timePassed) * 60));
     },
-    [currentInputString, mistakes]
+    [currentInputString, mistakes, setCurrentKPM, timePassed]
   );
 
   // 전체 문서에 대해 keydown event bind 시키기
@@ -165,6 +166,17 @@ function TypeInput() {
             )
           )}
         </Paragraph>
+        {/* 아래는 테스트용입니다.  */}
+        {/* <p> */}
+        {/* TODO: currentInputString.length 에서 mistakes 빼기 */}
+        {/* {timePassed === 0
+            ? Math.round(
+                ((currentInputString.length - mistakes) / (60 - totalSecondsSpent.current)) * 60
+              )
+            : Math.round(((currentInputString.length - mistakes) / timePassed) * 60)}{" "}
+          타
+        </p>
+        <p>{timePassed}</p> */}
       </StyledTypeInput>
     </>
   );

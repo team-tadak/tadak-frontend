@@ -7,13 +7,15 @@ import { useState } from "react";
 
 function TypePage() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [timePassed, setTimePassed] = useState(0);
+  const [currentKPM, setCurrentKPM] = useState(null);
 
   return (
     <TypePageContainer>
-      <TypeInput />
+      <TypeInput timePassed={Math.floor(timePassed / 1000)} setCurrentKPM={setCurrentKPM} />
       <TypePageAsideContainer>
-        <UserContainer />
-        <Timer isStopped={!isPlaying} />
+        <UserContainer currentKPM={currentKPM} />
+        <Timer isStopped={!isPlaying} setTimePassed={setTimePassed} />
         <PlayController
           isPlaying={isPlaying}
           onPause={() => {

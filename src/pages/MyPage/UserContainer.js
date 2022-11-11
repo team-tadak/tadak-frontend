@@ -78,7 +78,7 @@ const ButtonContainer = styled.div`
   padding: 0px;
 `;
 
-function UserContainer() {
+function UserContainer({ currentKPM }) {
   return (
     <Container>
       <UserInfoContainer>
@@ -88,7 +88,11 @@ function UserContainer() {
           <EmailFont>hongkildong@hongkildong.com</EmailFont>
         </UserInfo>
       </UserInfoContainer>
-      <ResultContainer title={"기록"} icon="1" record={"437타"} />
+      <ResultContainer
+        title={"기록"}
+        icon="1"
+        record={currentKPM ? `${currentKPM} 타` : "000 타"}
+      />
       <ResultContainer title={"랭킹"} icon="2" record={"233위"} />
       <ButtonContainer>
         <Link to="/languageselect">
