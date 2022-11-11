@@ -28,7 +28,7 @@ export const SelectedLabel = styled.button`
 `;
 
 const activeExist = ({ active = true }) => {
-  return `max-height: ${active ? "300px" : "0"}; border: ${active ? "1px solid #fff" : "none"};`;
+  return `display: ${active ? "block" : "none"}`;
 };
 
 export const OptionList = styled.ul`
@@ -43,13 +43,13 @@ export const OptionList = styled.ul`
   overflow: hidden;
   box-sizing: border-box;
   ${activeExist};
-  transition: 0.1s ease-in-out;
+  transition: 0.5s;
 `;
 
 export const OptionItem = styled.li`
   box-sizing: border-box;
   padding: 15px;
-  transition: 0.2s;
+  transition: 0.5s;
   &:hover {
     background-color: #161b21;
   }
