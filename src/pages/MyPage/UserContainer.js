@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 import Button from "./Button";
 import ResultContainer from "./ResultContainer";
 
@@ -13,8 +12,8 @@ const Container = styled.div`
   //align-items: flex-start;
   padding: 24px;
   gap: 8px;
-  width: 300px;
-  height: 700px;
+  width: 256px;
+  height: max-content;
   left: 1373px;
   top: 192px;
   background: #161b21;
@@ -95,18 +94,11 @@ function UserContainer({ currentKPM }) {
       />
       <ResultContainer title={"랭킹"} icon="2" record={"233위"} />
       <ButtonContainer>
-        <Link to="/languageselect">
-          <Button icon="1" content={"언어선택"} />
-        </Link>
-        <Link to="/syntaxselect">
-          <Button icon="2" content={"문법선택"} />
-        </Link>
-        <Link to="/leaderboard">
-          <Button icon="3" content={"랭킹보드"} />
-        </Link>
-        <Link to="/leaderboard">
-          <Button icon="4" content={"로그아웃"} />
-        </Link>
+        <Button to="/languageselect" icon="1" content={"언어선택"} />
+        {/* end 속성은 /python 까지만 비교. 그렇지 않으면 /python/2 도 같은 링크로 취급해서 타자 치는 곳에서 active 되버림.  */}
+        <Button end to="/python" icon="2" content={"문법선택"} />
+        <Button to="/leaderboard" icon="3" content={"랭킹보드"} />
+        <Button kind="logout" to="/" icon="4" content={"로그아웃"} />
       </ButtonContainer>
     </Container>
   );
