@@ -6,7 +6,7 @@ function InputUserName() {
     let errorMessage = "";
 
     const [text, setText] = useState("");
-    const handleChange =  (e)=> {
+    const handleBlur =  (e)=> {
         setText(e.target.value);
         console.log(e.target.value);
         let pattern = /^[가-힣|a-z|A-Z]+$/;
@@ -29,7 +29,7 @@ function InputUserName() {
     return(
         <InputContainer>
             <LabelBox htmlFor="username">닉네임</LabelBox>
-            <InputBox type="text" name="username" placeholder="닉네임을 입력하세요." onChange={handleChange}></InputBox>
+            <InputBox type="text" name="username" placeholder="닉네임을 입력하세요." onBlur={handleBlur}></InputBox>
             <ErrorMessageBox id="userNameErrorMessageBox"></ErrorMessageBox>
         </InputContainer>
        
