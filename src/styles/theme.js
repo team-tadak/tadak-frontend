@@ -9,6 +9,7 @@ export const theme = {
     gray: "#5D636F",
     white: "#FFFFFF",
     primary500: "#4760FA",
+    primary200: "#8394FC",
     warning300: "#F3B161",
     background: "#101217",
     navbarBG: "#202737",
