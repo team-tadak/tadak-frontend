@@ -1,6 +1,7 @@
 import styled from "@emotion/styled/macro";
 
 export const StyledFooter = styled.footer`
+  margin-top: 100px;
   display: flex;
 
   padding: 40px 0;
