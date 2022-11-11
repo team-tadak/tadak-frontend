@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 import { motion } from "framer-motion";
 
 export const MyPageContainer = styled(motion.main)`
   display: flex;
 
-  column-gap: 36px;
+  justify-content: space-between;
 `;
 
 export const MyPageContentContainer = styled(motion.div)`

@@ -7,6 +7,8 @@ import ResultContainer from "./ResultContainer";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+  box-sizing: border-box;
   //justify-content: center;
   //align-items: flex-start;
   padding: 24px;
