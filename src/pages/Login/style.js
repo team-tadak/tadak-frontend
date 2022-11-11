@@ -1,21 +1,13 @@
 import styled from "@emotion/styled/macro";
 
-export const RegisterTitle = styled.h1`
+export const LoginTitle = styled.h1`
     text-align: center;
     font-weight: 700;
     font-size: 40px;
     line-height: 48px;
-    margin-top: 30px;
+    margin: 30px;
 `;
 
-export const RegisterInformation = styled.p`
-    text-align: center;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    margin: 60px;
-    color: #6F7680;
-`;
 
 export const ButtonDiv = styled.div`
     display: flex;
@@ -24,7 +16,7 @@ export const ButtonDiv = styled.div`
     margin-top: 68px;
 `;
 
-export const ToLoginParagraph = styled.p`
+export const ToRegisterParagraph = styled.p`
     text-align: center;  
     font-weight: 400;
     font-size: 12px;
@@ -34,6 +26,6 @@ export const ToLoginParagraph = styled.p`
 
 `;
 
-export const ToLogin = styled.span`
+export const ToRegister = styled.span`
     text-decoration: underline;
 `;

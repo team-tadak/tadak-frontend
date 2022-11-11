@@ -46,7 +46,7 @@ function Register() {
       <ButtonDiv>
           <Button>시작하기!</Button>
         <ToLoginParagraph>
-          계정이 이미 있으세요? <ToLogin><a href="">로그인하러 가기</a></ToLogin>
+          계정이 이미 있으세요? <ToLogin><a href="./login">로그인</a></ToLogin>하러 가기
         </ToLoginParagraph>
       </ButtonDiv>
       
