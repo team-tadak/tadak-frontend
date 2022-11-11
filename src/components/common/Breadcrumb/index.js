@@ -20,7 +20,7 @@ function Breadcrumbs() {
                 : "breadcrumb-not-active"
             }
           >
-            ttdtt
+            TTDTT
           </BreadcrumbColor>
         </Link>
       </BreadcrumbShown>
