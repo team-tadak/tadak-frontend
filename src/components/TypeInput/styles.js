@@ -1,5 +1,6 @@
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { hexToRgba } from "utils/color";
 
 const cursorBlink = keyframes`
  0% {
@@ -13,20 +14,12 @@ const cursorBlink = keyframes`
     }
 `;
 
-export const TypeInputContainer = styled.div`
-  width: 1000px;
-  height: 700px;
-  background-color: #3a4050;
-  border-radius: 10px 0 0 10px;
+export const StyledTypeInput = styled.div`
+  width: 992px;
+  height: 800px;
+  background-color: ${({ theme }) => theme.color.board};
+  border-radius: 20px;
   padding: 35px;
-`;
-
-export const ContentBox = styled.article`
-  //border: 1px solid #bfbfbf;
-  border-radius: 10px;
-  padding: 13px 20px 0;
-  height: 600px;
-  background-color: #1f263d;
 `;
 
 export const Paragraph = styled.p`
@@ -37,7 +30,7 @@ export const Paragraph = styled.p`
 export const Letter = styled.span`
   font-family: "Courier New", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, "Roboto";
   font-weight: 700;
-  font-size: 21px;
+  font-size: 20px;
   color: ${(props) =>
     props.status === "current"
       ? props.theme.color.gray
@@ -45,10 +38,10 @@ export const Letter = styled.span`
       ? props.theme.color.gray
       : props.status === "correct"
       ? props.theme.color.blue.light
-      : props.theme.color.red.light};
+      : props.theme.color.warning300};
   /* background-color: ${(props) => (props.status === "current" ? "black" : "transparent")}; */
   background-color: ${(props) =>
-    props.status === "wrong" ? "rgba(255, 0, 0, 0.3)" : "transparent"};
+    props.status === "wrong" ? hexToRgba(props.theme.color.warning300, 0.1) : "transparent"};
   border-radius: 2px;
   animation: ${(props) =>
     props.status === "current"

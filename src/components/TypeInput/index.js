@@ -1,4 +1,4 @@
-import { ContentBox, Letter, TypeInputContainer } from "components/TypeInput/styles";
+import { ContentBox, Letter, StyledTypeInput } from "components/TypeInput/styles";
 import React, { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
@@ -153,24 +153,19 @@ function TypeInput() {
   //{Math.round((currentInputString.length / (60 - seconds)) * 60)}
   return (
     <>
-      <TypeInputContainer>
-        <ContentBox>
-          <Paragraph>
-            {TEST_STRING.split("").map((letter, index) =>
-              letter === "\n" ? (
-                <br key={index} />
-              ) : (
-                <Letter
-                  status={generateLetterStatus(currentInputString, letter, index)}
-                  key={index}
-                >
-                  {letter === " " ? <>&nbsp;</> : letter === "-" ? <>&#x2011;</> : letter}
-                </Letter>
-              )
-            )}
-          </Paragraph>
-        </ContentBox>
-      </TypeInputContainer>
+      <StyledTypeInput>
+        <Paragraph>
+          {TEST_STRING.split("").map((letter, index) =>
+            letter === "\n" ? (
+              <br key={index} />
+            ) : (
+              <Letter status={generateLetterStatus(currentInputString, letter, index)} key={index}>
+                {letter === " " ? <>&nbsp;</> : letter === "-" ? <>&#x2011;</> : letter}
+              </Letter>
+            )
+          )}
+        </Paragraph>
+      </StyledTypeInput>
     </>
   );
 }
