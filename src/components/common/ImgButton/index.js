@@ -2,8 +2,9 @@ import React from "react";
 import styled from "@emotion/styled/macro";
 import RightIcon from "components/common/icons/RightIcon";
 import PythonIcon from "components/common/icons/PythonIcon";
+import { Link } from "react-router-dom";
 
-const StyledImgButton = styled.button`
+const StyledImgButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,7 +49,7 @@ const StrContainer = styled.div`
   padding: 0px;
   gap: 6px;
 
-  width: 167px;
+  width: 90%;
   height: 53px;
 
   flex: none;
@@ -91,7 +92,7 @@ const Title = styled.div`
 `;
 
 const Explanation = styled.div`
-  width: 190px;
+  width: 100%;
   height: 28px;
 
   font-family: "Pretendard";
@@ -113,15 +114,36 @@ const LangIcon = styled.div`
   height: 64px;
 
   border-radius: 32px;
-
   flex: none;
   order: 0;
   flex-grow: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
+
+const IconBorder = styled.div`
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 12px;
+  top: 10px;
+
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  box-shadow: 0px 4px 40px rgba(9, 9, 12, 0.1);
+  border-radius: 10px;
+`
 
 const Arrow = styled.div`
   width: 24px;
   height: 24px;
+
+  right: 0px;
 
   flex: none;
   order: 1;
@@ -132,10 +154,11 @@ const ArrowIcon = styled.div`
   box-sizing: border-box;
 
   position: absolute;
-  left: 62.5%;
-  right: 12.5%;
-  top: 25%;
-  bottom: 25%;
+
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   /* border: 2px solid #ffffff; */
   /* transform: matrix(-1, 0, 0, 1, 0, 0); */
@@ -143,20 +166,23 @@ const ArrowIcon = styled.div`
 
 function ImgButton(props) {
   return (
-    <StyledImgButton>
-      <InnerContainer>
-        <LangIcon>{/* <PythonIcon /> */}</LangIcon>
-        <StrContainer>
-          <TitleContainer>
-            <Title>{props.title}</Title>
-          </TitleContainer>
-          <Explanation>{props.explanation}</Explanation>
-        </StrContainer>
-      </InnerContainer>
-      <Arrow>
-        <ArrowIcon>{/* <RightIcon /> */}</ArrowIcon>
-      </Arrow>
-    </StyledImgButton>
+    <Link to = "/python">
+      <StyledImgButton>
+        <InnerContainer>
+          <IconBorder></IconBorder>
+          <LangIcon> <PythonIcon /> </LangIcon>
+          <StrContainer>
+            <TitleContainer>
+              <Title>{props.title}</Title>
+            </TitleContainer>
+            <Explanation>{props.explanation}</Explanation>
+          </StrContainer>
+        </InnerContainer>
+        <Arrow>
+          <ArrowIcon> <RightIcon /> </ArrowIcon>
+        </Arrow>
+      </StyledImgButton>
+    </Link>
   );
 }
 
