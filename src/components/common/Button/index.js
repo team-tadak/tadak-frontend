@@ -30,7 +30,7 @@ const StyledButton = styled.button`
   padding: 16px 12px 16px 16px;
   column-gap: 7px;
 
-  position: absolute;
+  // position: absolute;
   width: 129px;
   height: 56px;
 

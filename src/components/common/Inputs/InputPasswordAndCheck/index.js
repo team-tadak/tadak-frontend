@@ -19,7 +19,6 @@ function InputPasswordAndCheck() {
       console.log(errorMessage);
     } else {
       errorMessage = "";
-      errorMessageBox.style.color = "blue";
     }
     errorMessageBox.innerHTML = errorMessage;
   };
