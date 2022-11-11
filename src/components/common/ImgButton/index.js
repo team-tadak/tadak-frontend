@@ -92,7 +92,7 @@ const Title = styled.div`
 `;
 
 const Explanation = styled.div`
-  width: 100%;
+  width: 90%;
   height: 28px;
 
   font-family: "Pretendard";
