@@ -26,7 +26,7 @@ function InputEmail() {
 
     return (
         <InputContainer>
-            <LabelBox htmlFor="email">이메일 주소</LabelBox>
+            <LabelBox htmlFor="email">이메일</LabelBox>
             <InputBox type="text" name="email" placeholder="이메일 주소를 입력하세요." onBlur={handleBlur}></InputBox>
             <ErrorMessageBox id="emailErrorMessageBox"></ErrorMessageBox>
         </InputContainer>
