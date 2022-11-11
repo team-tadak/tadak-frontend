@@ -7,7 +7,7 @@ function InputEmail() {
     let errorMessage = "";
 
     const [text, setText] = useState("");
-    const handleChange =  (e)=> {
+    const handleBlur =  (e)=> {
         setText(e.target.value);
         console.log(e.target.value);
         let errorMessageBox = document.getElementById("emailErrorMessageBox");
@@ -27,8 +27,8 @@ function InputEmail() {
     return (
         <InputContainer>
             <LabelBox htmlFor="email">이메일 주소</LabelBox>
-            <InputBox type="text" name="email" placeholder="이메일 주소를 입력하세요." onChange={handleChange}></InputBox>
-            <ErrorMessageBox id="emailErrorMessageBox">{errorMessage}</ErrorMessageBox>
+            <InputBox type="text" name="email" placeholder="이메일 주소를 입력하세요." onBlur={handleBlur}></InputBox>
+            <ErrorMessageBox id="emailErrorMessageBox"></ErrorMessageBox>
         </InputContainer>
     );
     
