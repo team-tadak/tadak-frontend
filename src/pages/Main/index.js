@@ -33,7 +33,7 @@ function Main() {
             `}
             onClick={console.log("Hi")}
           >
-            시작하기! -{">"}
+            시작하기!
           </Button>
         </MainPageContentSection>
 
