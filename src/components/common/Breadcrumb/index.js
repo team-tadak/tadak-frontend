@@ -1,5 +1,10 @@
 import React from "react";
-import { StyledBreadcrumb, BreadcrumbColor, BreadcrumbShown } from "components/common/Badge/styles";
+import {
+  StyledBreadcrumb,
+  BreadcrumbColor,
+  BreadcrumbShown,
+  Arrow,
+} from "components/common/Breadcrumb/styles";
 import { Link, useLocation } from "react-router-dom";
 
 function Breadcrumbs() {
@@ -10,7 +15,7 @@ function Breadcrumbs() {
         <Link to="/">
           <BreadcrumbColor
             status={
-              !location.pathname.startsWith("/languageselect")
+              !location.pathname.startsWith("/python")
                 ? "breadcrumb-active"
                 : "breadcrumb-not-active"
             }
@@ -20,8 +25,8 @@ function Breadcrumbs() {
         </Link>
       </BreadcrumbShown>
       <BreadcrumbShown status={location.pathname.startsWith("/python") ? "shown" : "notShown"}>
+        <Arrow className="breadcrumb-Arrow">&gt;</Arrow>
         <Link to="/python">
-          <span className="breadcrumb-arrow">&gt;</span>
           <BreadcrumbColor
             status={
               !location.pathname.startsWith("/python/typePage")
@@ -36,8 +41,8 @@ function Breadcrumbs() {
       <BreadcrumbShown
         status={location.pathname.startsWith("/python/typePage") ? "shown" : "notShown"}
       >
+        <Arrow className="breadcrumb-Arrow">&gt;</Arrow>
         <Link>
-          <span className="breadcrumb-arrow">&gt;</span>
           <BreadcrumbColor status="breadcrumb-active">while.html</BreadcrumbColor>
         </Link>
       </BreadcrumbShown>
@@ -46,4 +51,3 @@ function Breadcrumbs() {
 }
 
 export default Breadcrumbs;
-

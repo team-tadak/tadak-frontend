@@ -17,6 +17,7 @@ export const StyledBreadcrumb = styled.nav`
 
 export const BreadcrumbShown = styled.div`
   visibility: ${(props) => (props.status === "shown" ? "visible" : "hidden")};
+  display: flex;
 `;
 
 export const BreadcrumbColor = styled.div`
@@ -27,4 +28,9 @@ export const BreadcrumbColor = styled.div`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const Arrow = styled.span`
+  margin-left: 5px;
+  margin-right: 10px;
 `;
