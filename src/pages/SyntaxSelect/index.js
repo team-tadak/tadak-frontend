@@ -7,8 +7,8 @@ import React from "react";
 }
 function SyntaxSelect() {
   return (
-    <>
-      <SyntaxSelectComponent
+    <div>
+      {/* <SyntaxSelectComponent
         example={
           <p>
             def sum(a, b):
@@ -21,8 +21,9 @@ function SyntaxSelect() {
         level="2"
         summary="파이썬에서 재사용을 위한 함수를 배웁니다! 함수는 프로그래밍 언어에서 핵심적입니다!"
       />
-      <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent>
-    </>
+      <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent> */}
+      SyntaxSelect
+    </div>
   );
 }
 
