@@ -3,7 +3,7 @@ import { authFetcher } from "utils/fetcher";
 
 // 유저의 로그인 여부를 검증하고, 로그인이 돼 있으면, 유저 데이터를, 돼 있지 않으면 loggedOut 에 true 를 반환.
 function useUser() {
-  const { data, mutate, error } = useSWR("/login", authFetcher, {
+  const { data, mutate, error } = useSWR("/users/me", authFetcher, {
     revalidateOnFocus: false,
     shouldRetryOnError: false,
   });
