@@ -10,6 +10,9 @@ export const staggerOne = {
 export const staggerHalf = {
   animate: { transition: { staggerChildren: STAGGER_CHILDREN_ONE / 2 } },
 };
+export const staggerQuarter = {
+  animate: { transition: { staggerChildren: STAGGER_CHILDREN_ONE / 4 } },
+};
 
 export const defaultFadeInVariants = {
   initial: {

@@ -3,7 +3,7 @@ import { NAVBAR_HEIGHT } from "constants/navbar";
 
 export const StyledNavBar = styled.header`
   position: fixed;
-  padding: 16px 0;
+  padding: 16px;
   width: 100%;
   height: ${NAVBAR_HEIGHT}px;
   background-color: ${({ theme, transparent }) =>
