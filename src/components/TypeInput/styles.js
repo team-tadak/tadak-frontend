@@ -15,7 +15,7 @@ const cursorBlink = keyframes`
 `;
 
 export const StyledTypeInput = styled.div`
-  width: 992px;
+  width: 960px;
   height: 800px;
   background-color: ${({ theme }) => theme.color.board};
   border-radius: 20px;
