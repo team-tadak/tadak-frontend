@@ -5,6 +5,10 @@ function LanguageSelect() {
     <div>
       <p> 언어 선택 페이지입니다! </p>
       <p>
+        이 페이지를 수정하시려면 src/pages/LanguageSelect/index.js 의 LanguageSelect( ) 컴포넌트를
+        수정해주세요!
+      </p>
+      <p>
         {" "}
         이 페이지에서는 Python, HTML, C 를 선택할 수 있습니다 (반드시 이 순서로 배열해 주세요!){" "}
       </p>
