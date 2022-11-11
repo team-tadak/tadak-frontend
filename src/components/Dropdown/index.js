@@ -64,6 +64,10 @@ export const OptionItem = styled.li`
   }}
 `;
 
+// 사용 예시
+//
+// <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent>
+
 function DropdownComponent({ list }) {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("성별");
