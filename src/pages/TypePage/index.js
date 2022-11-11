@@ -1,11 +1,33 @@
+import Timer from "components/Timer";
 import TypeInput from "components/TypeInput";
-import React from "react";
+import UserContainer from "pages/MyPage/UserContainer";
+import PlayController from "pages/TypePage/PlayController";
+import { TypePageAsideContainer, TypePageContainer } from "pages/TypePage/styles";
+import { useState } from "react";
 
 function TypePage() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
   return (
-    <div>
+    <TypePageContainer>
       <TypeInput />
-    </div>
+      <TypePageAsideContainer>
+        <UserContainer />
+        <Timer isStopped={!isPlaying} />
+        <PlayController
+          isPlaying={isPlaying}
+          onPause={() => {
+            setIsPlaying(false);
+          }}
+          onResume={() => {
+            setIsPlaying(true);
+          }}
+          onStop={() => {
+            setIsPlaying(false);
+          }}
+        />
+      </TypePageAsideContainer>
+    </TypePageContainer>
   );
 }
 
