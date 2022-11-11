@@ -58,7 +58,9 @@ function App() {
                 <Route path="/register" exact={true} element={<Register />} />
 
                 {/* 문법 선택 페이지 */}
-                <Route path="/syntaxselect" exact={true} element={<SyntaxSelect />} />
+                <Route path="/python" exact={true} element={<SyntaxSelect language="python" />} />
+                <Route path="/html" exact={true} element={<SyntaxSelect language="html" />} />
+                <Route path="/c" exact={true} element={<SyntaxSelect language="c" />} />
 
                 {/* 타자 연습 페이지 */}
                 <Route path="/typepage" exact={true} element={<TypePage />} />
