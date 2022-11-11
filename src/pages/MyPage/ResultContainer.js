@@ -11,7 +11,7 @@ const RecordShape = styled.div`
   align-items: center;
   padding: 0px;
   gap: 16px;
-  background-color: blue;
+  background-color: transparent; // 임시로 배포 위해 transparent 로 설정했습니다. 다시 임의의 색상으로 바꾸셔도 됩니다!
 `;
 
 const TitleFont = styled.div`
