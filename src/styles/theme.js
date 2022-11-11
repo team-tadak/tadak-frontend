@@ -14,5 +14,6 @@ export const theme = {
     navbarBG: "#202737",
     board: "#161B21",
     grayText: "#6F7680",
+    modalBG: "#29323D",
   },
 };
