@@ -53,6 +53,15 @@ export const OptionItem = styled.li`
   &:hover {
     background-color: #161b21;
   }
+  ${({ selectedCheck }) => {
+    return selectedCheck
+      ? `background: url("/images/check_ring.png") calc(100% - 15px) center no-repeat;`
+      : null;
+  }}
+
+  ${({ selectedCheck }) => {
+    return selectedCheck ? `background-color: #161b21; ` : null;
+  }}
 `;
 
 function DropdownComponent({ list }) {
@@ -64,19 +73,18 @@ function DropdownComponent({ list }) {
         {selected}
       </SelectedLabel>
       <OptionList active={active}>
-        {list
-          .filter((element) => element !== selected)
-          .map((element) => (
-            <OptionItem
-              key={element}
-              onClick={() => {
-                setActive(false);
-                setSelected(element);
-              }}
-            >
-              {element}
-            </OptionItem>
-          ))}
+        {list.map((element) => (
+          <OptionItem
+            key={element}
+            selectedCheck={element === selected ? true : false}
+            onClick={() => {
+              setActive(false);
+              setSelected(element);
+            }}
+          >
+            {element}
+          </OptionItem>
+        ))}
       </OptionList>
     </DropdownContainer>
   );
