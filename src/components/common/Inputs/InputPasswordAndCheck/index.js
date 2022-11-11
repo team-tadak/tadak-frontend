@@ -47,13 +47,13 @@ function InputPasswordAndCheck() {
         <>
             <InputContainer>
                 <LabelBox htmlFor="password">비밀번호</LabelBox>
-                <InputBox type="text" id="password" name="password" placeholder="비밀번호를 입력하세요." onBlur={handleBlur}></InputBox>
+                <InputBox type="password" id="password" name="password" placeholder="비밀번호를 입력하세요." onBlur={handleBlur}></InputBox>
                 <ErrorMessageBox id="passWordErrorMessageBox"></ErrorMessageBox>
             </InputContainer>
 
             <InputContainer>
             <LabelBox>비밀번호 확인</LabelBox>
-            <InputBox type="text" id= "passwordCheck" name="passwordCheck" placeholder="비밀번호를 다시 입력하세요." onChange={handleChange}></InputBox>
+            <InputBox type="password" id= "passwordCheck" name="passwordCheck" placeholder="비밀번호를 다시 입력하세요." onChange={handleChange}></InputBox>
             <ErrorMessageBox id="passWordCheckErrorMessageBox"></ErrorMessageBox>
             </InputContainer>
     </>
