@@ -5,7 +5,7 @@ export const StyledBreadcrumb = styled.nav`
   flex-direction: row;
   align-items: center;
   padding: 16px;
-  gap: 10px;
+  gap: 6px;
 
   width: 1280px;
   height: 51px;
@@ -17,6 +17,7 @@ export const StyledBreadcrumb = styled.nav`
 
 export const BreadcrumbShown = styled.div`
   visibility: ${(props) => (props.status === "shown" ? "visible" : "hidden")};
+  display: flex;
 `;
 
 export const BreadcrumbColor = styled.div`
@@ -24,7 +25,13 @@ export const BreadcrumbColor = styled.div`
     props.status === "breadcrumb-not-active"
       ? props.theme.color.white
       : props.theme.color.primary500};
+  border-radius: 6px;
   &:hover {
-    text-decoration: underline;
+    background-color: rgba(71, 96, 250, 0.3);
   }
+`;
+
+export const Arrow = styled.span`
+  margin-left: 3px;
+  margin-right: 6px;
 `;
