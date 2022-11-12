@@ -42,7 +42,7 @@ function LeaderBoardTopItem({
           {type === "header" ? "언어" : LANGUAGES[language - 1]}
         </Badge>
         <Badge IconComponent={ExternalIcon}>
-          {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1]}
+          {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
         </Badge>
       </LeaderBoardTopItemLanguageSyntaxContainer>
     </StyledLeaderBoardTopItem>
