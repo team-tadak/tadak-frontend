@@ -22,7 +22,7 @@ function NavBar(props) {
   const { scrollY } = useScrollPosition();
 
   // 유저의 로그인 상태 확인.
-  const { loggedOut } = useUser();
+  const { loggedOut, user } = useUser();
 
   return (
     <StyledNavBar transparent={scrollY === 0} {...props}>
@@ -45,7 +45,7 @@ function NavBar(props) {
             </>
           ) : (
             <>
-              <NavBarMenuText>{MOCKUP_USER.username}님 환영합니다!</NavBarMenuText>
+              <NavBarMenuText>{user?.username}님 환영합니다!</NavBarMenuText>
               <NavBarMenuText>
                 <Link to={"/mypage"}>마이페이지</Link>
               </NavBarMenuText>
