@@ -3,10 +3,17 @@ import { staggerQuarter, defaultFadeInScaleVariants } from "styles/motions";
 import { MOCKUP_HISTORIES } from "mockups/histories";
 import { StyledHistoryBoard } from "components/HistoryBoard/styles";
 import HistoryBoardItem from "components/HistoryBoard/HisoryBoardItem";
+import useHistories from "hooks/useHistories";
 
 function HistoryBoard() {
+  const { histories, error } = useHistories(1, 5);
+
+  if (!histories) {
+    return <p>로딩 중</p>;
+  }
   return (
     <>
+      {console.log(histories, error)}
       <StyledHistoryBoard
         variants={staggerQuarter}
         initial="initial"
@@ -21,16 +28,17 @@ function HistoryBoard() {
           language="언어"
           syntax="문법"
         />
-        {MOCKUP_HISTORIES.histories.map((history, index) => (
-          <HistoryBoardItem
-            variants={defaultFadeInScaleVariants}
-            date={new Date(history.createdAt)}
-            KPM={history.record}
-            language={history.language_no}
-            syntax={history.grammar_no}
-            key={index}
-          />
-        ))}
+        {histories &&
+          histories.map((history, index) => (
+            <HistoryBoardItem
+              variants={defaultFadeInScaleVariants}
+              date={new Date(history.created_at)}
+              KPM={history.record}
+              language={history.language_no}
+              syntax={history.grammar_no}
+              key={index}
+            />
+          ))}
       </StyledHistoryBoard>
     </>
   );
