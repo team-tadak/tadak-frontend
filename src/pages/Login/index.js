@@ -6,8 +6,10 @@ import { ButtonDiv, LoginTitle, ToRegister, ToRegisterParagraph } from "./style"
 import InputEmail from "components/common/Inputs/InputEmail";
 import InputPassword from "components/common/Inputs/InputPassword";
 import Button from "components/common/Button";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     async function login() {
@@ -34,6 +36,8 @@ function Login() {
             // 로그인 성공 시
             // this.props.history.push("/");
             console.log("로그인 성공");
+            mutate("/users/me"); // 로그인 함과 동시에 상단바에 NavBar 업데이트 하도록
+            navigate("/");
           });
       } catch (e) {
         // 로그인 실패 시
