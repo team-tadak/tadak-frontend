@@ -26,13 +26,15 @@ function Login() {
 
           // 쿠키로 보내줄거같아서 localStorage.setItem 을 불필요할 것 같긴 한데 일단 넣어두겠습니다.
           // localStorage.setItem("token", response.data.token);
-          mutate();
+          // mutate();
           // 로그인 성공 시
-          this.props.history.push("/");
+          // this.props.history.push("/");
+          console.log("로그인 성공");
         });
       } catch (e) {
         // 로그인 실패 시
-        console.log(e);
+        // console.log(e);
+        console.log("없는 계정입니다. ");
       }
     }
     login();
@@ -41,15 +43,19 @@ function Login() {
   return (
     <>
       <LoginTitle>로그인하기</LoginTitle>
-      <InputEmail></InputEmail>
-      <InputPassword></InputPassword>
+      <form onSubmit={handleSubmit}>
+        <InputEmail></InputEmail>
+        <InputPassword></InputPassword>
+        <Button type="submit">로그인</Button>
+      </form>
       <ButtonDiv>
-        <Button>로그인</Button>
         <ToRegisterParagraph>
-          <ToRegister><a href="./register">회원가입</a></ToRegister>하러 가기
+          <ToRegister>
+            <a href="./register">회원가입</a>
+          </ToRegister>
+          하러 가기
         </ToRegisterParagraph>
       </ButtonDiv>
-
     </>
   );
 }
