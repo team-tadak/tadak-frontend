@@ -21,16 +21,20 @@ function Login() {
           password: formElements?.password.value,
         };
 
-        serverAxios.post("/users/me", body).then(function (response) {
-          // POST 요청 성공 시
+        serverAxios
+          .post("/users/me", body, {
+            withCredentials: true,
+          })
+          .then(function (response) {
+            // POST 요청 성공 시
 
-          // 쿠키로 보내줄거같아서 localStorage.setItem 을 불필요할 것 같긴 한데 일단 넣어두겠습니다.
-          // localStorage.setItem("token", response.data.token);
-          // mutate();
-          // 로그인 성공 시
-          // this.props.history.push("/");
-          console.log("로그인 성공");
-        });
+            // 쿠키로 보내줄거같아서 localStorage.setItem 을 불필요할 것 같긴 한데 일단 넣어두겠습니다.
+            // localStorage.setItem("token", response.data.token);
+            // mutate();
+            // 로그인 성공 시
+            // this.props.history.push("/");
+            console.log("로그인 성공");
+          });
       } catch (e) {
         // 로그인 실패 시
         // console.log(e);
