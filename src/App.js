@@ -17,6 +17,7 @@ import { theme } from "styles/theme";
 import GlobalStyles from "styles/GlobalStyles";
 import NavBar from "components/common/NavBar";
 import AppLayout from "components/common/layout/AppLayout";
+import Breadcrumbs from "components/common/Breadcrumb/index";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <NavBar />
         <AppLayout>
+        <Breadcrumbs>
           <Routes>
             {/* 언어 선택 페이지 */}
             <Route path="/languageselect" exact={true} element={<LanguageSelect />} />
@@ -50,6 +52,7 @@ function App() {
             {/* 타자 연습 페이지 */}
             <Route path="/typepage" exact={true} element={<TypePage />} />
           </Routes>
+          </Breadcrumbs>
         </AppLayout>
       </Router>
     </ThemeProvider>
