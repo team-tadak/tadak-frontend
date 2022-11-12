@@ -2,6 +2,8 @@ import { Letter, StyledTypeInput } from "components/TypeInput/styles";
 import React, { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
+import { useLocation } from "react-router-dom";
+import { serverAxios } from "utils/commonAxios";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
   if (currentInputString.length === currentLetterIndex) {
@@ -28,7 +30,7 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
-const TEST_STRING_INDEX = 3;
+const TEST_STRING_INDEX = 1;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
 function TypeInput({ timePassed, setCurrentKPM }) {
@@ -57,6 +59,50 @@ function TypeInput({ timePassed, setCurrentKPM }) {
 
   // 마지막에 타이머 초 0 으로 바꾸기 전에 마지막 경과 초 값 저장
   const totalSecondsSpent = useRef(0);
+
+  const location = useLocation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    async function sendRecord() {
+      let language = location.pathname.substring(
+        location.pathname.indexOf("/") + 1,
+        location.pathname.indexOf("/", location.pathname.indexOf("/") + 1)
+      );
+      console.log(language);
+      const grammar = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+      console.log(grammar);
+
+      if (language === "python") {
+        language = 1;
+      } else if (language === "html") {
+        language = 2;
+      } else if (language === "c") {
+        language = 3;
+      }
+
+      console.log(language);
+
+      try {
+        const body = {
+          language_no: language,
+          grammar_no: grammar,
+          record: Math.round(((currentInputString.length - mistakes) / timePassed) * 60),
+        };
+
+        serverAxios.post("/users/me/histories", body).then(function (response) {
+          // POST 요청 성공 시
+          // this.props.history.push("/");
+          console.log("전송 성공");
+        });
+      } catch (e) {
+        //전송 실패
+        console.log(e);
+        console.log("없는 계정입니다. ");
+      }
+    }
+    sendRecord();
+  };
 
   // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
   const enterPress = useCallback(
@@ -145,6 +191,7 @@ function TypeInput({ timePassed, setCurrentKPM }) {
       //     ((currentInputString.length - mistakes) / (60 - seconds)) * 60
       //   )}, 오탈자: ${mistakes} 개`
       // );
+      handleSubmit();
       console.log("끝!");
       // API 전송 로직을 짜세요.
       // language_no 는 python === 1, html === 2, c === 3
