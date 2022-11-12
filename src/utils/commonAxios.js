@@ -2,7 +2,8 @@ import axios from "axios";
 
 // post 요청 보낼 때 사용하는 공통 Axios
 export const serverAxios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
+  baseURL: "http://localhost:8000",
+  // baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
 });
 
 export function getServerAxiosErrorInfo(error) {
