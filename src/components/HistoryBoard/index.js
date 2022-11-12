@@ -1,15 +1,22 @@
 import React from "react";
 import { staggerQuarter, defaultFadeInScaleVariants } from "styles/motions";
 import { MOCKUP_HISTORIES } from "mockups/histories";
-import { StyledHistoryBoard } from "components/HistoryBoard/styles";
+import { SpinnerContainer, StyledHistoryBoard } from "components/HistoryBoard/styles";
 import HistoryBoardItem from "components/HistoryBoard/HisoryBoardItem";
 import useHistories from "hooks/useHistories";
+import Spinner from "components/common/Spinner";
 
 function HistoryBoard() {
   const { histories, error } = useHistories(1, 5);
 
   if (!histories) {
-    return <p>로딩 중</p>;
+    return (
+      <SpinnerContainer>
+        <div>
+          <Spinner />
+        </div>
+      </SpinnerContainer>
+    );
   }
   return (
     <>
