@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledBreadcrumb, BreadcrumbColor, BreadcrumbShown } from "components/common/Badge/styles";
+import { StyledBreadcrumb, BreadcrumbColor, BreadcrumbShown } from "components/common/Breadcrumb/styles";
 import { Link, useLocation } from "react-router-dom";
 
 function Breadcrumbs() {
