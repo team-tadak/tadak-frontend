@@ -1,17 +1,19 @@
 import Breadcrumbs from "components/common/Breadcrumb";
 import React from "react";
 import styled from "@emotion/styled";
+import { SYNTAXES } from "constants/syntaxes";
+import SyntaxSelectComponent from "components/Syntax";
+import UserContainer from "pages/MyPage/UserContainer";
 
 const SyntaxSelectPageContainer = styled.div`
   padding-top: 32px;
   display: flex;
   flex-wrap: nowrap;
-  background-color: pink;
+  gap: 1em;
 `;
 
 const SyntaxSelectContainer = styled.div`
   flex-basis: 100%;
-  background-color: blue;
 `;
 
 const SyntaxText = styled.div`
@@ -25,7 +27,6 @@ const SyntaxText = styled.div`
 const SyntaxContainer = styled.div`
   width: 100%;
   display: flex;
-  background-color: red;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: space-around;
@@ -35,16 +36,10 @@ const SyntaxContainer = styled.div`
 const SyntaxItem = styled.div`
   width: 280px;
   height: 322px;
-  background-color: green;
-`;
-
-const UserProfileContainer = styled.div`
-  flex-basis: 256px;
-  height: 684px;
-  background-color: orange;
 `;
 
 function SyntaxSelect({ language }) {
+  const selectedlanguage = language.replace(/^[a-z]/, (char) => char.toUpperCase());
   return (
     <>
       <Breadcrumbs />
@@ -52,15 +47,19 @@ function SyntaxSelect({ language }) {
         <SyntaxSelectContainer>
           <SyntaxText>어떤 문법을 연습해볼까요?</SyntaxText>
           <SyntaxContainer>
-            <SyntaxItem>1</SyntaxItem>
-            <SyntaxItem>2</SyntaxItem>
-            <SyntaxItem>3</SyntaxItem>
-            <SyntaxItem>4</SyntaxItem>
-            <SyntaxItem>5</SyntaxItem>
-            <SyntaxItem>6</SyntaxItem>
+            {SYNTAXES[selectedlanguage].map((element) => (
+              <SyntaxItem>
+                <SyntaxSelectComponent
+                  example={element.example}
+                  title={element.title}
+                  level={element.level}
+                  summary={element.summary}
+                ></SyntaxSelectComponent>
+              </SyntaxItem>
+            ))}
           </SyntaxContainer>
         </SyntaxSelectContainer>
-        <UserProfileContainer />
+        <UserContainer />
       </SyntaxSelectPageContainer>
     </>
   );
