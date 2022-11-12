@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
 import ResultContainer from "./ResultContainer";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -77,7 +78,24 @@ const ButtonContainer = styled.div`
   padding: 0px;
 `;
 
+// URL 을 parsing 해서 현재 typepage 인지 아닌지 판단
+// 원시적인 방법이라 추후 다른 방법 대체 필요
+function isTypePage(url) {
+  if (url.startsWith("/python/") && url.length >= 9) {
+    return true;
+  }
+  if (url.startsWith("/html/") && url.length >= 7) {
+    return true;
+  }
+  if (url.startsWith("/c/") && url.length >= 4) {
+    return true;
+  }
+  return false;
+}
+
 function UserContainer({ currentKPM }) {
+  const location = useLocation();
+
   return (
     <Container>
       <UserInfoContainer>
@@ -88,11 +106,17 @@ function UserContainer({ currentKPM }) {
         </UserInfo>
       </UserInfoContainer>
       <ResultContainer
-        title={"기록"}
+        title={isTypePage(location.pathname) ? "현재 타수" : "내 기록"}
         icon="1"
-        record={currentKPM ? `${currentKPM} 타` : "000 타"}
+        record={
+          isTypePage(location.pathname) ? (currentKPM ? `${currentKPM} 타` : "000 타") : "기록 없음"
+        }
       />
-      <ResultContainer title={"랭킹"} icon="2" record={"233위"} />
+      <ResultContainer
+        title={isTypePage(location.pathname) ? "정확도" : "내 랭킹"}
+        icon="2"
+        record={isTypePage(location.pathname) ? "123%" : "233위"}
+      />
       <ButtonContainer>
         <Button to="/languageselect" icon="1" content={"언어선택"} />
         {/* end 속성은 /python 까지만 비교. 그렇지 않으면 /python/2 도 같은 링크로 취급해서 타자 치는 곳에서 active 되버림.  */}
