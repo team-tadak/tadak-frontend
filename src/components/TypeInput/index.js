@@ -146,6 +146,13 @@ function TypeInput({ timePassed, setCurrentKPM }) {
       //   )}, 오탈자: ${mistakes} 개`
       // );
       console.log("끝!");
+      // API 전송 로직을 짜세요.
+      // language_no 는 python === 1, html === 2, c === 3
+      // grammar_no 는 맨 마지막 / 뒤 숫자
+      // 타수 : Math.round(((currentInputString.length - mistakes) / timePassed) * 60)
+      // 사용자 는 자동으로 전송됨 (로그인 돼 있으면) (로그인 안 돼있으면 오류 띄울꺼임)
+
+      // 여기까지
       EOFFlag.current = true;
       console.log("EOF Flag", EOFFlag.current);
       totalSecondsSpent.current = seconds;
