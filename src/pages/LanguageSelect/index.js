@@ -1,15 +1,16 @@
 import React from "react";
 import Breadcrumbs from "components/common/Breadcrumb";
 import UserContainer from "pages/MyPage/UserContainer";
-import ImgButton from "components/common/ImgButton";
-import SyntaxSelectComponent from "components/Syntax";
 
 import {
+  BluredLanguageCardList,
+  CenterText,
+  LanguageCardList,
   LanguageSelectContainer,
-  LanguageSelectContents,
+  LanguageSelectSection,
+  LanguageSelectTitle,
   LanguageSelectUserContainer
 } from "./style";
-import { css } from "@emotion/react";
 import LanguageCard from "components/LanguageCard";
 import PythonIcon from "components/common/icons/PythonIcon";
 
@@ -21,18 +22,26 @@ function LanguageSelect() {
   return (
     <>
       <Breadcrumbs></Breadcrumbs>
-      <LanguageSelectContents>
-
+      <LanguageSelectSection>
         <LanguageSelectContainer>
-          <LanguageCard link="/python" LangIcon={PythonIcon} title="Python" summary={pythonSummary}/>
-          <LanguageCard link="/html" LangIcon={PythonIcon} title="Html" summary={htmlSummary}/>
-          <LanguageCard link="/c" LangIcon={PythonIcon} title="C" summary={cSummary}/>
+          <LanguageCardList>
+            <LanguageSelectTitle>어떤 언어로 연습해볼까요?</LanguageSelectTitle>
+            <LanguageCard link="/python" LangIcon={PythonIcon} title="Python" summary={pythonSummary} />
+            <LanguageCard link="/html" LangIcon={PythonIcon} title="Html" summary={htmlSummary} />
+            <LanguageCard link="/c" LangIcon={PythonIcon} title="C" summary={cSummary} />
+            <BluredLanguageCardList>
+              <CenterText>hey</CenterText>
+              <LanguageCard link="/html" LangIcon={PythonIcon} title="Html" summary={htmlSummary} />
+              <LanguageCard link="/html" LangIcon={PythonIcon} title="Html" summary={htmlSummary} />
+              <LanguageCard link="/c" LangIcon={PythonIcon} title="C" summary={cSummary} />
+            </BluredLanguageCardList>
+          </LanguageCardList>
         </LanguageSelectContainer>
 
         <LanguageSelectUserContainer>
           <UserContainer></UserContainer>
         </LanguageSelectUserContainer>
-      </LanguageSelectContents>
+      </LanguageSelectSection>
     </>
   );
 }
