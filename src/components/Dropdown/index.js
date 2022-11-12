@@ -24,6 +24,7 @@ export const SelectedLabel = styled.button`
   color: #fff;
   font-size: 16px;
   background: url("/images/expand_down.png") calc(100% - 15px) center no-repeat;
+  margin: 9px 0;
   cursor: pointer;
 `;
 
@@ -68,7 +69,7 @@ export const OptionItem = styled.li`
 //
 // <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent>
 
-function DropdownComponent({ list }) {
+function DropdownComponent({ list, onSelect = (selected) => { } }) {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("성별");
   return (
@@ -84,6 +85,7 @@ function DropdownComponent({ list }) {
             onClick={() => {
               setActive(false);
               setSelected(element);
+              onSelect(element);
             }}
           >
             {element}

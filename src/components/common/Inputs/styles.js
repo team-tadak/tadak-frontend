@@ -2,7 +2,7 @@ import styled from "@emotion/styled/macro";
 
 export const InputContainer = styled.div`
     display: table;
-    margin: 0 auto;
+    margin: 0 0;
     padding: 12px;
 `;
 

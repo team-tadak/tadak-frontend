@@ -5,7 +5,6 @@ import RightArrowIcon from "components/common/icons/RightArrowIcon";
 const TextWritten = styled.div`
   height: 19px;
 
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
