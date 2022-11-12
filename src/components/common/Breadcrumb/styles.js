@@ -1,4 +1,5 @@
 import styled from "@emotion/styled/macro";
+import { hexToRgba } from "utils/color";
 
 export const StyledBreadcrumb = styled.nav`
   display: flex;
@@ -27,7 +28,7 @@ export const BreadcrumbColor = styled.div`
       : props.theme.color.primary500};
   border-radius: 6px;
   &:hover {
-    background-color: rgba(71, 96, 250, 0.3);
+    background-color: ${(props) => hexToRgba(props.theme.color.primary500, 0.3)};
   }
 `;
 
