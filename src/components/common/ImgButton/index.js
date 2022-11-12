@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled/macro";
 import RightIcon from "components/common/icons/RightIcon";
-import PythonIcon from "components/common/icons/PythonIcon";
+import PythonIcon from "components/common/icons/languages/PythonIcon";
 import { Link } from "react-router-dom";
 
 const StyledImgButton = styled.div`

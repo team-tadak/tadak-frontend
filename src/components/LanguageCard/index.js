@@ -1,4 +1,4 @@
-import PythonIcon from "components/common/icons/PythonIcon"
+import PythonIcon from "components/common/icons/languages/PythonIcon"
 import RightIcon from "components/common/icons/RightIcon"
 import { CardContainer, IconContainer, Title, Summary, TextContainer } from "./styles"
 import styled from "@emotion/styled"
