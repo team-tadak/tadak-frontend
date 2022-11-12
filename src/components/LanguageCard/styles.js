@@ -10,11 +10,6 @@ export const CardContainer = styled.div`
     padding: 12px;
     gap: 16px;
 
-    width: 360px;
-    height: 84px;
-    left: 395px;
-    top: 906px;
-
     background: #26262D;
     border-radius: 10px;
 `
