@@ -1,25 +1,39 @@
 import React from "react";
+import Breadcrumbs from "components/common/Breadcrumb";
+import UserContainer from "pages/MyPage/UserContainer";
+import ImgButton from "components/common/ImgButton";
+import SyntaxSelectComponent from "components/Syntax";
+
+import {
+  LanguageSelectContainer,
+  LanguageSelectContents,
+  LanguageSelectUserContainer
+} from "./style";
+import { css } from "@emotion/react";
+import LanguageCard from "components/LanguageCard";
+import PythonIcon from "components/common/icons/PythonIcon";
 
 function LanguageSelect() {
+  const pythonSummary = `입문자들을 위한 쉬운 언어 파이썬. \n코딩 초심자도 쉽게 시도 가능!`;
+  const htmlSummary = `웹 개발 기본 중의 기본!\nHTML 배워서 내 블로그도 직접 만들기!`;
+  const cSummary = `컴퓨터과학의 근-본!\n복잡한 문법의 C 로 진짜 실력을 측정해보세요!`;
+
   return (
-    <div>
-      <p> 언어 선택 페이지입니다! </p>
-      <p>
-        이 페이지를 수정하시려면 src/pages/LanguageSelect/index.js 의 LanguageSelect( ) 컴포넌트를
-        수정해주세요!
-      </p>
-      <p>
-        {" "}
-        이 페이지에서는 Python, HTML, C 를 선택할 수 있습니다 (반드시 이 순서로 배열해 주세요!){" "}
-      </p>
-      <p>사용하실 컴포넌트는 Breadcrumbs, UserContainer, ImgButton 입니다.</p>
-      <p>
-        컴포넌트가 필요한 prop 을 받지 않고 있거나, 사소한 수정사항이 필요한 경우 직접 수정해주셔도
-        되고
-      </p>
-      <p>컴포넌트 제작자 또는, 저에게 문의하시면 됩니다!</p>
-      <p>그럼 화이팅입니다!</p>
-    </div>
+    <>
+      <Breadcrumbs></Breadcrumbs>
+      <LanguageSelectContents>
+
+        <LanguageSelectContainer>
+          <LanguageCard link="/python" LangIcon={PythonIcon} title="Python" summary={pythonSummary}/>
+          <LanguageCard link="/html" LangIcon={PythonIcon} title="Html" summary={htmlSummary}/>
+          <LanguageCard link="/c" LangIcon={PythonIcon} title="C" summary={cSummary}/>
+        </LanguageSelectContainer>
+
+        <LanguageSelectUserContainer>
+          <UserContainer></UserContainer>
+        </LanguageSelectUserContainer>
+      </LanguageSelectContents>
+    </>
   );
 }
 

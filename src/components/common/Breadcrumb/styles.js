@@ -34,4 +34,7 @@ export const BreadcrumbColor = styled.div`
 export const Arrow = styled.span`
   margin-left: 3px;
   margin-right: 6px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
