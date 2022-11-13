@@ -26,6 +26,13 @@ export const ToRegisterParagraph = styled.p`
 
 `;
 
+export const LoginForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+`;
+
 export const ToRegister = styled.span`
     text-decoration: underline;
 `;
