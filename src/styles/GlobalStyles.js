@@ -1,5 +1,6 @@
 import { css, Global, useTheme } from "@emotion/react";
 import { resetAnchorStyle } from "styles/utils/anchor";
+import { defaultFadeInSlideToRightVariants } from "./motions/motions";
 import { resetCSS } from "./reset";
 
 export const globalStyles = (theme, isOpen) => css`
@@ -34,6 +35,11 @@ export const globalStyles = (theme, isOpen) => css`
   a {
     ${resetAnchorStyle}
   }
+  
+  input, button {
+    font-family: inherit;
+  }
+
 `;
 
 const GlobalStyles = () => {
