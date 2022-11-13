@@ -8,7 +8,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { SYNTAXES } from "constants/syntaxes";
 
-function Breadcrumbs() {
+function Breadcrumbs(props) {
   const location = useLocation();
   // url array, /python/1이면 ["python", "1"] 로 저장
   const locationArray = location.pathname.split("/").filter((entry) => entry !== "");
@@ -32,7 +32,7 @@ function Breadcrumbs() {
   const BREADCRUMB_ARROW = "breadcrumb-Arrow";
 
   return (
-    <StyledBreadcrumb>
+    <StyledBreadcrumb {...props}>
       <BreadcrumbShown
         status={locArrLen >= 0 ? (UrlStartsWith("/") ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
       >
