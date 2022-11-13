@@ -17,7 +17,7 @@ function Breadcrumbs(props) {
   const codeId = locationArray[locArrLen - 1];
   // language있으면 language 반환, 없으면 undefined
   const language = locationArray[0];
-  const firstUpLanguage = language.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+  const firstUpLanguage = language?.toLowerCase().replace(/\b[a-z]/g, function (letter) {
     return letter.toUpperCase();
   });
   // url이 특정 path로 시작하는지 확인하여 보여주고 안 보여주고 나눔(있는 이유는 languageselect 때도 breadcrumb이 나타나서)
