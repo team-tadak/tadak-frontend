@@ -2,11 +2,15 @@ import useSWR from "swr";
 import { fetcher } from "utils/fetcher";
 
 // 전체 유저들의 랭킹을 가져옴. (본인 로그인 여부와 무관)
-function useRanks() {
-  const { data, mutate, error } = useSWR("/ranks", fetcher, {
-    revalidateOnFocus: false,
-    shouldRetryOnError: false,
-  });
+function useRanks(pageNumber, pageSize) {
+  const { data, mutate, error } = useSWR(
+    `/ranks?pageNumber=${pageNumber}&pageSize=${pageSize}&languageNo=1`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      shouldRetryOnError: false,
+    }
+  );
 
   return {
     ranks: data.ranks,
