@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import Timer from "components/Timer";
 import TypeInput from "components/TypeInput";
 import UserContainer from "pages/MyPage/UserContainer";
@@ -6,6 +7,8 @@ import { TypePageAsideContainer, TypePageContainer } from "pages/TypePage/styles
 import { useParams } from "react-router-dom";
 // import useSearchParams from "react-router-dom";
 import { useState } from "react";
+import Breadcrumbs from "components/common/Breadcrumb";
+import { css } from "@emotion/react";
 
 function TypePage({ language }) {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -18,6 +21,11 @@ function TypePage({ language }) {
 
   return (
     <>
+      <Breadcrumbs
+        css={css`
+          margin-bottom: 32px;
+        `}
+      />
       <TypePageContainer>
         <TypeInput timePassed={Math.floor(timePassed / 1000)} setCurrentKPM={setCurrentKPM} />
         <TypePageAsideContainer>
