@@ -45,8 +45,10 @@ function LeaderBoardItem({
           width: 180px;
         `}
         IconComponent={ExternalIcon}
+        language = {LANGUAGES[language - 1]}
+        syntax = {syntax}
       >
-        {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1]}
+        {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
       </Badge>
     </StyledLeaderBoardItem>
   );
