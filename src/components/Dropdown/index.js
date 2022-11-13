@@ -8,6 +8,7 @@ export const DropdownContainer = styled.div`
   border-radius: 10px;
   background-color: transparent;
   cursor: pointer;
+  z-index: 50;
 `;
 
 export const SelectedLabel = styled.button`
@@ -69,12 +70,17 @@ export const OptionItem = styled.li`
 //
 // <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent>
 
-function DropdownComponent({ list, onSelect = (selected) => { } }) {
+function DropdownComponent({ list, onSelect = (selected) => {}, onChange }) {
   const [active, setActive] = useState(false);
-  const [selected, setSelected] = useState("성별");
+  const [selected, setSelected] = useState("언어");
   return (
     <DropdownContainer>
-      <SelectedLabel value={selected} onClick={() => setActive(!active)}>
+      <SelectedLabel
+        value={selected}
+        onClick={() => {
+          setActive(!active);
+        }}
+      >
         {selected}
       </SelectedLabel>
       <OptionList active={active}>
@@ -86,6 +92,7 @@ function DropdownComponent({ list, onSelect = (selected) => { } }) {
               setActive(false);
               setSelected(element);
               onSelect(element);
+              onChange();
             }}
           >
             {element}
