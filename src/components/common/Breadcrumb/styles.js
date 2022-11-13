@@ -12,7 +12,7 @@ export const StyledBreadcrumb = styled.nav`
   height: 51px;
 
   background: #161b21;
-  color: #FFFFFF
+  color: #ffffff;
   border-radius: 10px;
 `;
 

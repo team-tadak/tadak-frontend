@@ -8,7 +8,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { SYNTAXES } from "constants/syntaxes";
 
-function Breadcrumbs() {
+function Breadcrumbs(props) {
   const location = useLocation();
   // url array, /python/1이면 ["python", "1"] 로 저장
   const locationArray = location.pathname.split("/").filter((entry) => entry !== "");
@@ -32,51 +32,51 @@ function Breadcrumbs() {
   const BREADCRUMB_ARROW = "breadcrumb-Arrow";
 
   return (
-    <StyledBreadcrumb>
-      <BreadcrumbShown
-        status={locArrLen >= 0 ? (UrlStartsWith("/") ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
-      >
-        <Link to="/languageselect">
-          <BreadcrumbColor status={locArrLen === 0 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
-            TTDTT
-          </BreadcrumbColor>
-        </Link>
-      </BreadcrumbShown>
-      <BreadcrumbShown
-        status={
-          locationArray.length >= 1
-            ? !UrlStartsWith("/languageselect")
-              ? SHOWN
-              : NOT_SHOWN
-            : NOT_SHOWN
-        }
-      >
-        <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
-        <Link to={`/${language}`}>
-          <BreadcrumbColor status={locArrLen === 1 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
-            {firstUpLanguage}
-          </BreadcrumbColor>
-        </Link>
-      </BreadcrumbShown>
-      <BreadcrumbShown
-        status={
-          locationArray >= 2
-            ? UrlStartsWith(`/${language}/${codeId}`)
-              ? SHOWN
-              : NOT_SHOWN
-            : NOT_SHOWN
-        }
-      >
-        <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
-        <Link>
-          <BreadcrumbColor status={BREADCRUMB_ACTIVE}>
-            {isNaN(parseInt(codeId))
-              ? "error"
-              : SYNTAXES[firstUpLanguage][parseInt(codeId) - 1]["title"]}
-          </BreadcrumbColor>
-        </Link>
-      </BreadcrumbShown>
-    </StyledBreadcrumb>
+    <>
+      {!(location.pathname === "/") && (
+        <StyledBreadcrumb>
+          <BreadcrumbShown
+            status={locArrLen >= 0 ? (UrlStartsWith("/") ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
+          >
+            <Link to="/languageselect">
+              <BreadcrumbColor status={locArrLen === 0 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
+                TTDTT
+              </BreadcrumbColor>
+            </Link>
+          </BreadcrumbShown>
+          <BreadcrumbShown
+            status={
+              locArrLen >= 1 ? (!UrlStartsWith("/languageselect") ? SHOWN : NOT_SHOWN) : NOT_SHOWN
+            }
+          >
+            <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
+            <Link to={`/${language}`}>
+              <BreadcrumbColor status={locArrLen === 1 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
+                {firstUpLanguage}
+              </BreadcrumbColor>
+            </Link>
+          </BreadcrumbShown>
+          <BreadcrumbShown
+            status={
+              locArrLen >= 2
+                ? UrlStartsWith(`/${language}/${codeId}`)
+                  ? SHOWN
+                  : NOT_SHOWN
+                : NOT_SHOWN
+            }
+          >
+            <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
+            <Link>
+              <BreadcrumbColor status={BREADCRUMB_ACTIVE}>
+                {isNaN(parseInt(codeId))
+                  ? "error"
+                  : SYNTAXES[firstUpLanguage][parseInt(codeId) - 1]["title"]}
+              </BreadcrumbColor>
+            </Link>
+          </BreadcrumbShown>
+        </StyledBreadcrumb>
+      )}
+    </>
   );
 }
 

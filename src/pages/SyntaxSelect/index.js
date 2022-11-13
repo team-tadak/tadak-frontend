@@ -42,7 +42,6 @@ function SyntaxSelect({ language }) {
   const selectedlanguage = language.replace(/^[a-z]/, (char) => char.toUpperCase());
   return (
     <>
-      <Breadcrumbs />
       <SyntaxSelectPageContainer>
         <SyntaxSelectContainer>
           <SyntaxText>어떤 문법을 연습해볼까요?</SyntaxText>
