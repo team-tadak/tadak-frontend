@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 //import styled from "@emotion/styled";
 
 import LanguageSelect from "pages/LanguageSelect";
@@ -19,6 +19,7 @@ import NavBar from "components/common/NavBar";
 import AppLayout from "components/common/layout/AppLayout";
 import Footer from "components/common/Footer";
 import styled from "@emotion/styled/macro";
+import Breadcrumbs from "components/common/Breadcrumb";
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ function App() {
           <NavBar />
           <ContentBox>
             <AppLayout>
+              <Breadcrumbs />
               <Routes>
                 {/* 언어 선택 페이지 */}
                 <Route path="/languageselect" exact={true} element={<LanguageSelect />} />
