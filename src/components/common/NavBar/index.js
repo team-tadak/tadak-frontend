@@ -13,9 +13,11 @@ import {
 } from "components/common/NavBar/styles";
 import useScrollPosition from "hooks/useScrollPosition";
 import useUser from "hooks/useUser";
-import { MOCKUP_USER } from "mockups/users";
-import React from "react";
+
 import { Link } from "react-router-dom";
+import { useCallback } from "react";
+import { deleteCookie } from "utils/cookie";
+import { mutate } from "swr";
 
 function NavBar(props) {
   // 현재 페이지의 스크롤 상태 확인 (맨 위면 배경 투명하게, 그 외엔 배경 색 부여)
@@ -23,6 +25,11 @@ function NavBar(props) {
 
   // 유저의 로그인 상태 확인.
   const { loggedOut, user } = useUser();
+
+  const handleLogout = useCallback(() => {
+    deleteCookie("ttdtt_web_token", "*", "localhost:3000");
+    mutate("/users/me");
+  }, []);
 
   return (
     <StyledNavBar transparent={scrollY === 0} {...props}>
@@ -51,7 +58,9 @@ function NavBar(props) {
               </NavBarMenuText>
               <NavBarLogoutContainer>
                 <NavBarLogoutText>
-                  <Link to={"/"}>로그아웃</Link>
+                  <Link to={"/"} onClick={handleLogout}>
+                    로그아웃
+                  </Link>
                 </NavBarLogoutText>
                 <NavBarLogoutIcon>
                   <LogoutIcon />
