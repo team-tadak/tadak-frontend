@@ -9,7 +9,6 @@ function Badge({ IconComponent, children, language, syntax, ...props }) {
   
   if(IconComponent === TagIcon) {
     linkURL = "/" + children;
-    console.log("iconcomponent is tagicon");
   }
 
   else {
