@@ -1,4 +1,5 @@
 import axios from "axios";
+import { serverAxios } from "utils/commonAxios";
 
 // custom 한 error
 class CustomError extends Error {
@@ -11,7 +12,7 @@ class CustomError extends Error {
 // 인증이 필요없는 (로그인이 필요없는) 데이터를 가져올 경우
 export async function fetcher(url) {
   return (
-    await axios.get("http://localhost:8000" + url, {
+    await serverAxios.get(url, {
       withCredentials: true,
     })
   ).data;
