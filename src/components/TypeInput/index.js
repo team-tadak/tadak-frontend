@@ -224,6 +224,9 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM }) {
         onClick={() => {
           setShowResultModal(false);
         }}
+        onClose={() => {
+          setShowResultModal(false);
+        }}
       />
       <StyledTypeInput>
         <Paragraph>

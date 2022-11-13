@@ -1,7 +1,20 @@
 import TimerIcon from "assets/svgs/Tumer_light.svg";
-import { ConfirmButton, Modal, NormalText, SpeedText, Icon } from "components/ResultModal/style";
+import {
+  ConfirmButton,
+  Modal,
+  NormalText,
+  SpeedText,
+  Icon,
+  DimmedArea,
+} from "components/ResultModal/style";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
+import usePreventScroll from "hooks/usePreventScroll";
+
+function ScrollPreventer() {
+  usePreventScroll();
+  return null;
+}
 
 // ex) <Result speed="113" onClick={() => console.log("hey")} />
 function ResultModal(props) {
@@ -14,14 +27,25 @@ function ResultModal(props) {
   const modal = (
     <>
       {props.open && (
-        <Modal>
-          <Icon src={TimerIcon} />
-          <NormalText> 내 타자 기록은 </NormalText>
-          <SpeedText> {props.speed} 타</SpeedText>
-          <ConfirmButton onClick={props.onClick}>
-            <NormalText>확인</NormalText>
-          </ConfirmButton>
-        </Modal>
+        <>
+          <ScrollPreventer />
+          <DimmedArea
+            onClick={({ target, currentTarget }) => {
+              if (target === currentTarget) {
+                props.onClose();
+              }
+            }}
+          >
+            <Modal>
+              <Icon src={TimerIcon} />
+              <NormalText> 내 타자 기록은 </NormalText>
+              <SpeedText> {props.speed} 타</SpeedText>
+              <ConfirmButton onClick={props.onClick}>
+                <NormalText>확인</NormalText>
+              </ConfirmButton>
+            </Modal>
+          </DimmedArea>
+        </>
       )}
     </>
   );
