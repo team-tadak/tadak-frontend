@@ -8,6 +8,7 @@ import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
 
 function LeaderBoard() {
+  //test
   const { ranks, error } = useRanks(1, 10);
   if (!ranks) {
     return (
