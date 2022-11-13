@@ -96,15 +96,15 @@ function isTypePage(url) {
 
 function UserContainer({ currentKPM }) {
   const location = useLocation();
-  const { users, error } = useUser(1, 1);
-
+  const { user, error } = useUser(1, 1);
+  console.log(user);
   return (
     <Container>
       <UserInfoContainer>
         <UserPicture />
         <UserInfo>
-          <UserFont>홍길동</UserFont>
-          <EmailFont>hongkildong@hongkildong.com</EmailFont>
+          <UserFont>{user?.username}</UserFont>
+          <EmailFont>{user?.email}</EmailFont>
         </UserInfo>
       </UserInfoContainer>
       <ResultContainer
@@ -115,13 +115,13 @@ function UserContainer({ currentKPM }) {
             ? currentKPM
               ? `${currentKPM} 타`
               : "000 타"
-            : `${users.highest_record} 타`
+            : `${user?.highest_record ?? "로그인해주세요"} 타`
         }
       />
       <ResultContainer
         title={isTypePage(location.pathname) ? "정확도" : "내 랭킹"}
         icon="2"
-        record={isTypePage(location.pathname) ? "123%" : `${users.ranking}`}
+        record={isTypePage(location.pathname) ? "123%" : `${user?.ranking}`}
       />
       <ButtonContainer>
         <Button to="/languageselect" icon="1" content={"언어선택"} />
