@@ -44,11 +44,7 @@ function Breadcrumbs() {
       </BreadcrumbShown>
       <BreadcrumbShown
         status={
-          locationArray.length >= 1
-            ? !UrlStartsWith("/languageselect")
-              ? SHOWN
-              : NOT_SHOWN
-            : NOT_SHOWN
+          locArrLen >= 1 ? (!UrlStartsWith("/languageselect") ? SHOWN : NOT_SHOWN) : NOT_SHOWN
         }
       >
         <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
@@ -60,11 +56,7 @@ function Breadcrumbs() {
       </BreadcrumbShown>
       <BreadcrumbShown
         status={
-          locationArray >= 2
-            ? UrlStartsWith(`/${language}/${codeId}`)
-              ? SHOWN
-              : NOT_SHOWN
-            : NOT_SHOWN
+          locArrLen >= 2 ? (UrlStartsWith(`/${language}/${codeId}`) ? SHOWN : NOT_SHOWN) : NOT_SHOWN
         }
       >
         <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
