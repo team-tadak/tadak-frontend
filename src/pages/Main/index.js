@@ -26,10 +26,10 @@ function Main() {
   const genderList = ["남성", "여성", "선택 안 함"];
   function handleSubmit() {
     if (nickName === undefined || gender === undefined) {
-      console.log("check nickName & gender")
-      return
+      console.log("check nickName & gender");
+      return;
     }
-    console.log("nickName: " + nickName + ", gender: " + gender)
+    console.log("nickName: " + nickName + ", gender: " + gender);
   }
   return (
     <>
@@ -46,19 +46,33 @@ function Main() {
             <SubTitle variants={defaultFadeInUpVariants}>
               나는 얼마나 빨리 코딩할 수 있을까요?
             </SubTitle>
-
           </TitleContainer>
           <MainPageInputContainer>
-            <InputUserName onChange={(e) => { setNickName(e.target.value) }} onError={() => { setNickName(undefined) }}></InputUserName>
+            <InputUserName
+              onChange={(e) => {
+                setNickName(e.target.value);
+              }}
+              onError={() => {
+                setNickName(undefined);
+              }}
+            ></InputUserName>
             <InputWrapper>
-              <LabelBox> <wbr /> </LabelBox>
+              <LabelBox>
+                {" "}
+                <wbr />{" "}
+              </LabelBox>
               <DropdownComponent list={genderList} onSelect={setSelected}></DropdownComponent>
             </InputWrapper>
             <InputWrapper>
-              <LabelBox> <wbr /> </LabelBox>
+              <LabelBox>
+                {" "}
+                <wbr />{" "}
+              </LabelBox>
               <Link to="/languageselect">
                 <Button
-                  css={css` margin: 9px 0;`}
+                  css={css`
+                    margin: 9px 0;
+                  `}
                   onClick={handleSubmit}
                 >
                   시작하기!
