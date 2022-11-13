@@ -2,11 +2,12 @@ import React from "react";
 import { useCallback } from "react";
 import { serverAxios } from "utils/commonAxios";
 import { mutate } from "swr";
-import { ButtonDiv, LoginTitle, ToRegister, ToRegisterParagraph } from "./style";
+import { ButtonDiv, LoginForm, LoginTitle, ToRegister, ToRegisterParagraph } from "./style";
 import InputEmail from "components/common/Inputs/InputEmail";
 import InputPassword from "components/common/Inputs/InputPassword";
 import Button from "components/common/Button";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -51,15 +52,15 @@ function Login() {
   return (
     <>
       <LoginTitle>로그인하기</LoginTitle>
-      <form onSubmit={handleSubmit}>
+      <LoginForm onSubmit={handleSubmit}>
         <InputEmail></InputEmail>
         <InputPassword></InputPassword>
         <Button type="submit">로그인</Button>
-      </form>
+      </LoginForm>
       <ButtonDiv>
         <ToRegisterParagraph>
           <ToRegister>
-            <a href="./register">회원가입</a>
+            <Link to="/register">회원가입</Link>
           </ToRegister>
           하러 가기
         </ToRegisterParagraph>

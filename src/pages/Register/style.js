@@ -34,6 +34,13 @@ export const ToLoginParagraph = styled.p`
 
 `;
 
+export const RegisterForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+`;
+
 export const ToLogin = styled.span`
     text-decoration: underline;
 `;

@@ -19,9 +19,20 @@ export const LanguageSelectContainer = styled.div`
 
 export const LanguageSelectTitle = styled.div`
     flex: 1 1 0;
-    font-style: bold;
-    font-size:40px;
-    margin: 20px;
+    // font-style: bold;
+    // font-size:40px;
+    // margin: 20px;
+    // font-weight: 700;
+    // font-size: 32px;
+    // line-height: 38px;
+    // margin-top: 24px;
+    // margin-bottom: 40px;
+    // text-align: center;
+    width: 100%;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 24px;
+    text-align: center;
 `
 
 export const LanguageCardList = styled.div`

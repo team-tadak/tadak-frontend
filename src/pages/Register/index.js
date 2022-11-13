@@ -4,8 +4,9 @@ import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndChec
 import InputUserName from "components/common/Inputs/InputUserName";
 import React from "react";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
-import { ButtonDiv, RegisterInformation, RegisterTitle, ToLogin, ToLoginParagraph } from "./style";
+import { ButtonDiv, RegisterForm, RegisterInformation, RegisterTitle, ToLogin, ToLoginParagraph } from "./style";
 
 function Register() {
   const handleSubmit = useCallback((e) => {
@@ -42,17 +43,17 @@ function Register() {
         회원으로 플레이해서 다른 사용자들과 누가 더 빠른지 겨뤄보세요! <br></br>
         나의 기록도 저장할 수 있답니다!
       </RegisterInformation>
-      <form onSubmit={handleSubmit}>
+      <RegisterForm onSubmit={handleSubmit}>
         <InputEmail></InputEmail>
         <InputPasswordAndCheck></InputPasswordAndCheck>
         <InputUserName></InputUserName>
         <Button type="submit">시작하기!</Button>
-      </form>
+      </RegisterForm>
       <ButtonDiv>
         <ToLoginParagraph>
           계정이 이미 있으세요?{" "}
           <ToLogin>
-            <a href="./login">로그인</a>
+            <Link to="/login">로그인</Link>
           </ToLogin>
           하러 가기
         </ToLoginParagraph>

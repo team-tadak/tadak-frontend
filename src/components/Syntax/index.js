@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const SyntaxSelectContainer = styled.div`
   width: 280px;
@@ -89,7 +90,10 @@ export const SyntaxStartButton = styled.button`
 // summary="파이썬에서 재사용을 위한 함수를 배웁니다! 함수는 프로그래밍 언어에서 핵심적입니다!"
 // />
 
-function SyntaxSelectComponent({ example, title, level, summary }) {
+function SyntaxSelectComponent({ language, example, title, level, summary }) {
+
+  const linkURL = "/" + language + "/" + level;
+
   var stars = [];
   for (var i = 0; i < 5; i++) {
     if (i < level) {
@@ -108,7 +112,10 @@ function SyntaxSelectComponent({ example, title, level, summary }) {
         <SyntaxLevel>{stars}</SyntaxLevel>
       </SyntaxTitleBox>
       <SyntaxSummary>{summary}</SyntaxSummary>
-      <SyntaxStartButton onClick={() => {}}>시작하기!</SyntaxStartButton>
+      <Link to={linkURL}>
+        <SyntaxStartButton>시작하기!</SyntaxStartButton>
+      </Link>  
+
     </SyntaxSelectContainer>
   );
 }

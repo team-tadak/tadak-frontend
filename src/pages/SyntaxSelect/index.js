@@ -49,6 +49,7 @@ function SyntaxSelect({ language }) {
             {SYNTAXES[selectedlanguage].map((element) => (
               <SyntaxItem>
                 <SyntaxSelectComponent
+                  language = {language}
                   example={element.example}
                   title={element.title}
                   level={element.level}
