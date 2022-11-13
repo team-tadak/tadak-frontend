@@ -4,6 +4,8 @@ import styled from "@emotion/styled";
 import { SYNTAXES } from "constants/syntaxes";
 import SyntaxSelectComponent from "components/Syntax";
 import UserContainer from "pages/MyPage/UserContainer";
+import { motion } from "framer-motion";
+import { defaultFadeInUpVariants, defaultFadeInVariants, staggerQuarter } from "styles/motions";
 
 const SyntaxSelectPageContainer = styled.div`
   padding-top: 32px;
@@ -12,7 +14,7 @@ const SyntaxSelectPageContainer = styled.div`
   gap: 1em;
 `;
 
-const SyntaxSelectContainer = styled.div`
+const SyntaxSelectContainer = styled(motion.div)`
   flex-basis: 100%;
 `;
 
@@ -43,19 +45,28 @@ function SyntaxSelect({ language }) {
   return (
     <>
       <SyntaxSelectPageContainer>
-        <SyntaxSelectContainer>
-          <SyntaxText>어떤 문법을 연습해볼까요?</SyntaxText>
+        <SyntaxSelectContainer
+          variants={staggerQuarter}
+          initial="initial"
+          whileInView="animate"
+          exit="exit"
+        >
+          <motion.div variants={defaultFadeInUpVariants}>
+            <SyntaxText>어떤 문법을 연습해볼까요?</SyntaxText>
+          </motion.div>
           <SyntaxContainer>
-            {SYNTAXES[selectedlanguage].map((element) => (
-              <SyntaxItem>
-                <SyntaxSelectComponent
-                  language = {language}
-                  example={element.example}
-                  title={element.title}
-                  level={element.level}
-                  summary={element.summary}
-                ></SyntaxSelectComponent>
-              </SyntaxItem>
+            {SYNTAXES[selectedlanguage].map((element, index) => (
+              <motion.div key={index} variants={defaultFadeInUpVariants}>
+                <SyntaxItem>
+                  <SyntaxSelectComponent
+                    language={language}
+                    example={element.example}
+                    title={element.title}
+                    level={element.level}
+                    summary={element.summary}
+                  ></SyntaxSelectComponent>
+                </SyntaxItem>
+              </motion.div>
             ))}
           </SyntaxContainer>
         </SyntaxSelectContainer>
