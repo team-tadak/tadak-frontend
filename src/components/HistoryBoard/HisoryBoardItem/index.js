@@ -33,6 +33,8 @@ function HistoryBoardItem({ type = "item", date, KPM, language, syntax, ...props
           width: 180px;
         `}
         IconComponent={ExternalIcon}
+        language = {LANGUAGES[language - 1]}
+        syntax = {syntax}
       >
         {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
       </Badge>
