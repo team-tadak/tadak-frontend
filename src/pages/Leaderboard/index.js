@@ -5,7 +5,7 @@ import {
   LeaderBoardPageContentContainer,
   LeaderBoardTopRankingContainer,
 } from "pages/Leaderboard/styles";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
 import { motion } from "framer-motion";
 import { MOCKUP_RANKS } from "mockups/ranks";
@@ -17,10 +17,22 @@ import DropdownComponent from "components/Dropdown";
 import { mutate } from "swr";
 function Leaderboard() {
   const [languageNo, setLanguageNo] = useState(1);
+  const [languageText, setLanguageText] = useState(null);
   const [grammarNo, setgrammarNo] = useState(1);
-  const { ranks, error } = useRanks(1, 2, languageNo, grammarNo);
+  const [grammarText, setGrammarText] = useState(null);
+  const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
+
+  useEffect(() => {
+    if (languageText === "PYTHON") {
+      setLanguageNo(1);
+    } else if (languageText === "HTML") {
+      setLanguageNo(2);
+    } else if (languageText === "C") {
+      setLanguageNo(3);
+    }
+  }, [languageText]);
 
   console.log(error);
   if (!ranks) {
@@ -58,16 +70,17 @@ function Leaderboard() {
                   syntax={ranks[0].grammar_no}
                   ranking="first"
                 />
-
-                {/* <LeaderBoardTopItem
-                  variants={defaultFadeInVariants}
-                  username={ranks[1].user.username}
-                  email={ranks[1].user.email}
-                  KPM={ranks[1].record}
-                  language={ranks[1].language_no}
-                  syntax={ranks[1].grammar_no}
-                  ranking="second"
-                /> */}
+                {ranks[1] && (
+                  <LeaderBoardTopItem
+                    variants={defaultFadeInVariants}
+                    username={ranks[1].user.username}
+                    email={ranks[1].user.email}
+                    KPM={ranks[1].record}
+                    language={ranks[1].language_no}
+                    syntax={ranks[1].grammar_no}
+                    ranking="second"
+                  />
+                )}
               </LeaderBoardTopRankingContainer>
             </motion.div>
             <Typography type="subHeading" variants={defaultFadeInVariants}>
@@ -78,11 +91,12 @@ function Leaderboard() {
               onSelect={setSelected}
               onChange={() => {
                 //mutate("/ranks?languageNo=2&pageNumber=1&pageSize=5");
-                setLanguageNo(3);
+                // setLanguageNo(3);
                 console.log("good");
               }}
+              setItem={setLanguageText}
             />
-            <LeaderBoard />
+            {ranks.slice(2).length !== 0 && <LeaderBoard ranks={ranks.slice(2)} />}
           </LeaderBoardPageContentContainer>
           <UserContainer />
         </LeaderBoardPageContainer>

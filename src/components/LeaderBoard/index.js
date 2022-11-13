@@ -7,16 +7,16 @@ import { TOP_DISPLAY_USER } from "constants/ranks";
 import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
 
-function LeaderBoard() {
+function LeaderBoard({ ranks }) {
   //test
-  const { ranks, error } = useRanks(1, 10);
-  if (!ranks) {
-    return (
-      <div>
-        <Spinner />
-      </div>
-    );
-  }
+  // const { ranks, error } = useRanks(1, 10);
+  // if (!ranks) {
+  //   return (
+  //     <div>
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
   return (
     <>
       <StyledLeaderBoard
@@ -35,20 +35,18 @@ function LeaderBoard() {
           syntax="문법"
         />
         {ranks &&
-          ranks
-            .slice(2)
-            .map((rank, index) => (
-              <LeaderBoardItem
-                rank={index + 1 + TOP_DISPLAY_USER}
-                variants={defaultFadeInScaleVariants}
-                username={rank.user.username}
-                email={rank.user.email}
-                KPM={rank.record}
-                language={rank.language_no}
-                syntax={rank.grammar_no}
-                key={index}
-              />
-            ))}
+          ranks.map((rank, index) => (
+            <LeaderBoardItem
+              rank={index + 1 + TOP_DISPLAY_USER}
+              variants={defaultFadeInScaleVariants}
+              username={rank.user.username}
+              email={rank.user.email}
+              KPM={rank.record}
+              language={rank.language_no}
+              syntax={rank.grammar_no}
+              key={index}
+            />
+          ))}
       </StyledLeaderBoard>
     </>
   );

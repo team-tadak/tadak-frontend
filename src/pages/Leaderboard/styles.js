@@ -17,6 +17,6 @@ export const LeaderBoardPageContentContainer = styled(motion.div)`
 
 export const LeaderBoardTopRankingContainer = styled(motion.div)`
   display: flex;
-  width: 100%;
+  width: 968px;
   column-gap: 20px;
 `;

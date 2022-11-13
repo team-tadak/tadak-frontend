@@ -11,7 +11,7 @@ function useRanks(pageNumber, pageSize, languageNo = 1, grammarNo = 1) {
       shouldRetryOnError: false,
     }
   );
-  console.log(data);
+  // console.log(data);
 
   return {
     ranks: data?.ranks,
