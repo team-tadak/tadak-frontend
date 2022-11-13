@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 //import styled from "@emotion/styled";
 
 import LanguageSelect from "pages/LanguageSelect";
@@ -26,7 +26,7 @@ function App() {
       <Router>
         <NavBar />
         <AppLayout>
-        <Breadcrumbs>
+          <Breadcrumbs />
           <Routes>
             {/* 언어 선택 페이지 */}
             <Route path="/languageselect" exact={true} element={<LanguageSelect />} />
@@ -52,7 +52,6 @@ function App() {
             {/* 타자 연습 페이지 */}
             <Route path="/typepage" exact={true} element={<TypePage />} />
           </Routes>
-          </Breadcrumbs>
         </AppLayout>
       </Router>
     </ThemeProvider>
