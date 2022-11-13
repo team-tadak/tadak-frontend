@@ -9,6 +9,10 @@ import Spinner from "components/common/Spinner";
 function HistoryBoard() {
   const { histories, error } = useHistories(1, 5);
 
+  if (error) {
+    return <p>기록을 이용하려면 로그인 해 주세요 </p>;
+  }
+
   if (!histories) {
     return (
       <SpinnerContainer>
