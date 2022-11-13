@@ -18,6 +18,7 @@ import { defaultFadeInUpVariants, staggerOne } from "styles/motions";
 import { css } from "@emotion/react";
 import InputUserName from "components/common/Inputs/InputUserName";
 import DropdownComponent from "components/Dropdown";
+import { Link } from "react-router-dom";
 
 function Main() {
   const [gender, setSelected] = useState(undefined);
@@ -55,12 +56,14 @@ function Main() {
             </InputWrapper>
             <InputWrapper>
               <LabelBox> <wbr /> </LabelBox>
-              <Button
-                css={css` margin: 9px 0;`}
-                onClick={handleSubmit}
-              >
-                시작하기!
-              </Button>
+              <Link to="/languageselect">
+                <Button
+                  css={css` margin: 9px 0;`}
+                  onClick={handleSubmit}
+                >
+                  시작하기!
+                </Button>
+              </Link>
             </InputWrapper>
           </MainPageInputContainer>
         </MainPageContentSection>

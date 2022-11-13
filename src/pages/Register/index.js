@@ -4,6 +4,7 @@ import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndChec
 import InputUserName from "components/common/Inputs/InputUserName";
 import React from "react";
 import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
 import { ButtonDiv, RegisterForm, RegisterInformation, RegisterTitle, ToLogin, ToLoginParagraph } from "./style";
 
@@ -52,7 +53,7 @@ function Register() {
         <ToLoginParagraph>
           계정이 이미 있으세요?{" "}
           <ToLogin>
-            <a href="./login">로그인</a>
+            <Link to="/login">로그인</Link>
           </ToLogin>
           하러 가기
         </ToLoginParagraph>

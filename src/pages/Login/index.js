@@ -6,6 +6,7 @@ import { ButtonDiv, LoginForm, LoginTitle, ToRegister, ToRegisterParagraph } fro
 import InputEmail from "components/common/Inputs/InputEmail";
 import InputPassword from "components/common/Inputs/InputPassword";
 import Button from "components/common/Button";
+import { Link } from "react-router-dom";
 
 function Login() {
   const handleSubmit = useCallback((e) => {
@@ -55,7 +56,7 @@ function Login() {
       <ButtonDiv>
         <ToRegisterParagraph>
           <ToRegister>
-            <a href="./register">회원가입</a>
+            <Link to="/register">회원가입</Link>
           </ToRegister>
           하러 가기
         </ToRegisterParagraph>
