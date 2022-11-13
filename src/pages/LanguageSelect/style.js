@@ -1,14 +1,15 @@
 import styled from "@emotion/styled/macro";
+import { motion } from "framer-motion";
 
-export const LanguageSelectSection = styled.div`
+export const LanguageSelectSection = styled(motion.div)`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 24px 0;
-    gap: 39px;
+    gap: 32px;
 `
 
-export const LanguageSelectContainer = styled.div`
+export const LanguageSelectContainer = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -17,17 +18,8 @@ export const LanguageSelectContainer = styled.div`
     gap: 10px;
 `
 
-export const LanguageSelectTitle = styled.div`
+export const LanguageSelectTitle = styled(motion.h1)`
     flex: 1 1 0;
-    // font-style: bold;
-    // font-size:40px;
-    // margin: 20px;
-    // font-weight: 700;
-    // font-size: 32px;
-    // line-height: 38px;
-    // margin-top: 24px;
-    // margin-bottom: 40px;
-    // text-align: center;
     width: 100%;
     font-size: 32px;
     font-weight: bold;
@@ -35,7 +27,7 @@ export const LanguageSelectTitle = styled.div`
     text-align: center;
 `
 
-export const LanguageCardList = styled.div`
+export const LanguageCardList = styled(motion.div)`
     display:flex;
     flex-direction: column;
     gap:10px;
