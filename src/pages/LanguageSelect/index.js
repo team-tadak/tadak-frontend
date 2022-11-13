@@ -10,7 +10,7 @@ import {
   LanguageSelectContainer,
   LanguageSelectSection,
   LanguageSelectTitle,
-  LanguageSelectUserContainer
+  LanguageSelectUserContainer,
 } from "./style";
 import LanguageCard from "components/LanguageCard";
 import PythonIcon from "components/common/icons/languages/PythonIcon";
@@ -25,12 +25,16 @@ function LanguageSelect() {
 
   return (
     <>
-      <Breadcrumbs></Breadcrumbs>
       <LanguageSelectSection>
         <LanguageSelectContainer>
           <LanguageCardList>
             <LanguageSelectTitle>어떤 언어로 연습해볼까요?</LanguageSelectTitle>
-            <LanguageCard link="/python" LangIcon={PythonIcon} title="Python" summary={pythonSummary} />
+            <LanguageCard
+              link="/python"
+              LangIcon={PythonIcon}
+              title="Python"
+              summary={pythonSummary}
+            />
             <LanguageCard link="/html" LangIcon={HtmlIcon} title="Html" summary={htmlSummary} />
             <LanguageCard link="/c" LangIcon={ClangIcon} title="C" summary={cSummary} />
             <BluredLanguageCardList>
