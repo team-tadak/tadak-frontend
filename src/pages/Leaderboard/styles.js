@@ -6,6 +6,7 @@ export const LeaderBoardPageContainer = styled(motion.main)`
   justify-content: space-between;
   /* column-gap: 36px; */
   /* width: 100%; */
+  margin-top: 32px;
 `;
 export const LeaderBoardPageContentContainer = styled(motion.div)`
   display: flex;
