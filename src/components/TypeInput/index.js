@@ -30,7 +30,7 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
-const TEST_STRING_INDEX = 16;
+const TEST_STRING_INDEX = 21;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
 function TypeInput({ timePassed, setCurrentKPM }) {
