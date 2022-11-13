@@ -21,7 +21,11 @@ function TypePage({ language }) {
 
   return (
     <>
-      <TypePageContainer>
+      <TypePageContainer
+        css={css`
+          margin-top: 32px;
+        `}
+      >
         <TypeInput
           timePassed={Math.floor(timePassed / 1000)}
           setCurrentKPM={setCurrentKPM}
