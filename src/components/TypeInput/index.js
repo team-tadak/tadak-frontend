@@ -4,6 +4,7 @@ import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
 import { useLocation } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
+import ResultModal from "components/ResultModal";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
   if (currentInputString.length === currentLetterIndex) {
@@ -33,7 +34,8 @@ function parseNewline(paragraph) {
 const TEST_STRING_INDEX = 1;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
-function TypeInput({ timePassed, setCurrentKPM }) {
+function TypeInput({ timePassed, setCurrentKPM, currentKPM }) {
+  const [showResultModal, setShowResultModal] = useState(false);
   // 타이머 관련
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
@@ -63,7 +65,7 @@ function TypeInput({ timePassed, setCurrentKPM }) {
   const location = useLocation();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     async function sendRecord() {
       let language = location.pathname.substring(
         location.pathname.indexOf("/") + 1,
@@ -90,11 +92,15 @@ function TypeInput({ timePassed, setCurrentKPM }) {
           record: Math.round(((currentInputString.length - mistakes) / timePassed) * 60),
         };
 
-        serverAxios.post("/users/me/histories", body).then(function (response) {
-          // POST 요청 성공 시
-          // this.props.history.push("/");
-          console.log("전송 성공");
-        });
+        serverAxios
+          .post("/users/me/histories", body, {
+            withCredentials: true,
+          })
+          .then(function (response) {
+            // POST 요청 성공 시
+            // this.props.history.push("/");
+            console.log("전송 성공");
+          });
       } catch (e) {
         //전송 실패
         console.log(e);
@@ -198,7 +204,7 @@ function TypeInput({ timePassed, setCurrentKPM }) {
       // grammar_no 는 맨 마지막 / 뒤 숫자
       // 타수 : Math.round(((currentInputString.length - mistakes) / timePassed) * 60)
       // 사용자 는 자동으로 전송됨 (로그인 돼 있으면) (로그인 안 돼있으면 오류 띄울꺼임)
-
+      setShowResultModal(true);
       // 여기까지
       EOFFlag.current = true;
       console.log("EOF Flag", EOFFlag.current);
@@ -212,6 +218,13 @@ function TypeInput({ timePassed, setCurrentKPM }) {
   //{Math.round((currentInputString.length / (60 - seconds)) * 60)}
   return (
     <>
+      <ResultModal
+        open={showResultModal}
+        speed={currentKPM}
+        onClick={() => {
+          setShowResultModal(false);
+        }}
+      />
       <StyledTypeInput>
         <Paragraph>
           {TEST_STRING.split("").map((letter, index) =>

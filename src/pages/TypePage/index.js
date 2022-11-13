@@ -27,7 +27,11 @@ function TypePage({ language }) {
         `}
       />
       <TypePageContainer>
-        <TypeInput timePassed={Math.floor(timePassed / 1000)} setCurrentKPM={setCurrentKPM} />
+        <TypeInput
+          timePassed={Math.floor(timePassed / 1000)}
+          setCurrentKPM={setCurrentKPM}
+          currentKPM={currentKPM}
+        />
         <TypePageAsideContainer>
           <UserContainer currentKPM={currentKPM} />
           <Timer isStopped={!isPlaying} setTimePassed={setTimePassed} />
