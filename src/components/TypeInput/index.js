@@ -214,7 +214,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying }) {
       setMinutes(0);
       setSeconds(0);
     }
-  }, [currentInputString, mistakes, seconds]);
+  }, [currentInputString, mistakes, seconds]); // handlesubmit  deps array 에 추가하면 무한번날라감
 
   useEffect(() => {
     // start
