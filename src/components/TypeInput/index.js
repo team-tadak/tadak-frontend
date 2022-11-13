@@ -31,10 +31,10 @@ function parseNewline(paragraph) {
   return newLineIndices;
 }
 
-const TEST_STRING_INDEX = 16;
-const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
+// const TEST_STRING_INDEX = 16;
 
-function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying }) {
+function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragraphIndex }) {
+  const TEST_STRING = MOCKUP_STRING[paragraphIndex];
   const [showResultModal, setShowResultModal] = useState(false);
   const [showCountdownModal, setShowCountdownModal] = useState(true);
   const [countDownSeconds, setCountDownSeconds] = useState(5);

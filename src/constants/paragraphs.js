@@ -1,28 +1,27 @@
 export const MOCKUP_STRING = [
-  "Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d",
-  "Authors often\nmisinterpret",
-  // eslint-disable-next-line no-template-curly-in-string
-  "${resetCSS}\n* {\n-webkit-tap-highlight-color: transparent;\nbox-sizing: border-box;\ntransition: background-color 0.2s;\nwill-change: background-color\n}",
-  '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>',
   // python
   'import random\nprint("Hello! What is your name?")\nmy_name = input()\nnumber = random.randint(1, 20)\nprint("Well, " + my_name + ", I am thinking of a number between 1 and 20.")',
   'year = int(input("Please enter the year:"))\nif year % 4 == 0 and year % 100 != 0:\n    print(year, "is a leap year")\nelif year % 400 == 0:\n    print(year, "is a leap year")\nelse:\n    print(year, "is not a leap year")',
   `'languages = ['python', 'perl', 'c', 'java']\n\nfor lang in languages:\n    if lang in ['pytohn', 'perl']:\n        print("%6s need interpreter" % lang)\n    elif lang in ['c', 'java']:\n        print("%6s need compiler" % lang)\n    else:\n        print("should not reach here")'`,
   'def fibonacci(n):\n    if n <= 1:\n        return n\n    else:\n        return(fibonacci(n-1) + fibonacci(n-2))\nnterms = int(input("How many Fibonacci do you want?: "))\nif nterms <= 0:\n    print("Error : Please enter a positive number")\nelse:\n    print("Fibonacci: ", end="")\n    for i in range(nterms):\n        print(fibonacci(i), end="")',
   `import random\nf1 = open('score.txt', 'w')\nfor i in range(5):\n    for j in range(5):\n        f1.write(str(random.randint(1, 100)) + ' ')\n    f1.write('\n')\nf1 = open('score.txt', 'r')\nf2 = open('report.txt', 'w')\nwhile True:\n    score = f1.readline()\n    if score == '':\n        break\n    scorelist = score.split()\n    sum = 0\n    for i in range(5):\n        sum += int(scorelist[i])\nf1.close()\nf2.close()`,
-  'class Caculator:\n    def __init__(self, first, second):        self.first = first\n        self.second = second\n    def add(self):\n        result = self.first + self.second\n        return result\n    def sub(self):\n        result = self.first - self.second\n        return result\n    def div(self):\n        result = self.first / self.second\n        return result\n    def mult(self):\n        result = self.first * self.second\n        return result', 
+  "class Caculator:\n    def __init__(self, first, second):        self.first = first\n        self.second = second\n    def add(self):\n        result = self.first + self.second\n        return result\n    def sub(self):\n        result = self.first - self.second\n        return result\n    def div(self):\n        result = self.first / self.second\n        return result\n    def mult(self):\n        result = self.first * self.second\n        return result",
+  // html
+  '<p>\n&#160; &nbsp; non-breaking space &iexcl; inverted exclamation mark &cent; cent sign &pound;\npound sign &curren; currency sign &yen; yen sign &brvbar; broken bar &sect; section sign &uml;\ndiaeresis &copy; copyright sign &ordf; feminine ordinal indicator &laquo; left pointing\nguillemet &not; not sign &shy; soft hyphen &reg; registered sign &macr; macron &deg; degree\nsign &plusmn; plus-minus sign &sup2; superscript two &sup3; superscript three &acute; acute\naccent &micro; micro sign &para; paragraph sign &middot; middle dot &cedil; spacing cedilla\n&sup1; superscript one &ordm; masculine ordinal indicator &raquo; right pointing guillemet\n&frac14; fraction one quarter &frac12; fraction one half &frac34; fraction three quarters\n&iquest; inverted question mark &Agrave; capital A with grave &Aacute; capital A with acute\n&Acirc; capital A with circumflex &Atilde; capital A with tilde &Auml; capital A with\ndiaeresis &Aring; capital A with ring &AElig; capital AE &Ccedil; capital C with cedilla\n&Egrave; capital E with grave &Eacute; capital E with acute &Ecirc; capital E with circumflex\n&Euml; capital E with diaeresis &Igrave; capital I with grave &Iacute; capital I with acute\n&Icirc; capital I with circumflex &Iuml; capital I with diaeresis\n</p>\n\n<h2>Html5</h2>\n<svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">\n<path\nd="M3.17456 32.2343L0.32251 0.222168H31.6778L28.8257 32.217L15.9742 35.7777"\nfill="#E44D26"\n/>\n<path d="M16 33.0555V2.84973H28.8169L26.3711 30.1603" fill="#F16529" />\n<path\nd="M6.14771 6.76465H16.0002V10.6884H10.4517L10.8147 14.7072H16.0002V18.6223H7.21938L6.14771 6.76465ZM7.39224 20.5928H11.3333L11.6098 23.73L16.0002 24.9054V29.002L7.94536 26.7549"\nfill="#EBEBEB"\n/>\n<path\nd="M25.8179 6.76465H15.9827V10.6884H25.4549L25.8179 6.76465ZM25.1006 14.7072H15.9827V18.6309H20.8225L20.3645 23.73L15.9827 24.9054V28.9847L24.0203 26.7549"\nfill="white"\n/>\n</svg>',
+
   // c
-  '#include <stdio.h>\n\n int main(){\n\n    printf(“Hello world” );\n    return 0;\n}',
+  "#include <stdio.h>\n\n int main(){\n\n    printf(“Hello world” );\n    return 0;\n}",
   '#include <stdio.h>\n\nint main() {\n  int myAge = 43;\n  printf("%p", &myAge);\n  return 0;\n}',
   '#include <stdio.h>\n\nint main() {\n  int i = 0;\n  for (i = 0; i <= 10; i = i + 2) {\n    printf("%d", i);\n  }\n}',
   '#include <stdio.h>\n\nint main() {\n  int integer = 15;\n\n  if(integer > 0) {\n    printf("positive");\n  }\n  else if(integer < 0) {\n    printf("negative");\n  }\n  else {\n    printf("0");\n  }\n}',
   '#include <stdio.h>\n\nint sum(int k) {\n  if (k > 0) {\n    return k + sum(k - 1);\n  }   else {\n    return 0;\n  }\n}\n\nint main() {\n  int result = sum(10);\n  printf("%d", result);\n  return 0;\n}',
   '#include <stdio.h>\n\nint main() {\n  int day = 4;\n  switch (day) {\n    case 1:\n      printf("Monday");\n      break;\n    case 2:\n      printf("Tuesday");\n      break;\n    case 3:\n      printf("Wednesday");\n      break;\n    case 4:\n      printf("Thursday");\n      break;\n    case 5:\n      printf("Friday");\n      break;\n    case 6:\n      printf("Saturday");\n      break;\n    case 7:\n      printf("Sunday");\n      break;\n  }\n}',
-  
-
 
   // 'include <stdio.h>\n#include <stdlib.h>\ntypedef struct NODE{\n    int data;\n    struct NODE* next;\n}node;\n\nint main(void) {\n    node* head = (node*)malloc(sizeof(node));\n    head->next=NULL;\n    node* node1 = (node*)malloc(sizeof(node));\n    node1->next = head->next;\n    node1->data = 10;\n    head->next = node1;\n\n    node* node2 = (node*)malloc(sizeof(node));\n    node2->next = node1->next;\n    node2->data = 20;\n    node1->next = node2;\n\n    node* curr = head->next;\n    while(curr != NULL){\n        printf("%d", curr->data);\n        curr = curr->next;    }\n\n    free(head);\n    free(node1);\n    free(node2);\n    return 0;\n}'
 
-  // html
-  
+  "Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d",
+  "Authors often\nmisinterpret",
+  // eslint-disable-next-line no-template-curly-in-string
+  "${resetCSS}\n* {\n-webkit-tap-highlight-color: transparent;\nbox-sizing: border-box;\ntransition: background-color 0.2s;\nwill-change: background-color\n}",
+  '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>',
 ];

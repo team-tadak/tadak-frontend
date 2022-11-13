@@ -65,9 +65,21 @@ function App() {
                 <Route path="/c" exact={true} element={<SyntaxSelect language="c" />} />
 
                 {/* 인게임 (타자 연습) 페이지 */}
-                <Route path="/python/:id" exact={true} element={<TypePage language="python" />} />
-                <Route path="/html/:id" exact={true} element={<TypePage language="html" />} />
-                <Route path="/c/:id" exact={true} element={<TypePage language="c" />} />
+                <Route
+                  path="/python/:id"
+                  exact={true}
+                  element={<TypePage language="python" languageCode={1} />}
+                />
+                <Route
+                  path="/html/:id"
+                  exact={true}
+                  element={<TypePage language="html" languageCode={2} />}
+                />
+                <Route
+                  path="/c/:id"
+                  exact={true}
+                  element={<TypePage language="c" languageCode={3} />}
+                />
               </Routes>
             </AppLayout>
           </ContentBox>

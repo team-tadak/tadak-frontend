@@ -10,7 +10,7 @@ import { useState } from "react";
 import Breadcrumbs from "components/common/Breadcrumb";
 import { css } from "@emotion/react";
 
-function TypePage({ language }) {
+function TypePage({ language, languageCode }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [timePassed, setTimePassed] = useState(0);
   const [currentKPM, setCurrentKPM] = useState(null);
@@ -18,7 +18,7 @@ function TypePage({ language }) {
   // const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams.get("no"));
   const { id } = useParams();
-
+  const paragraphIndex = (languageCode - 1) * 6 + (id - 1);
   return (
     <>
       <TypePageContainer
@@ -27,6 +27,7 @@ function TypePage({ language }) {
         `}
       >
         <TypeInput
+          paragraphIndex={paragraphIndex}
           timePassed={Math.floor(timePassed / 1000)}
           setCurrentKPM={setCurrentKPM}
           currentKPM={currentKPM}
