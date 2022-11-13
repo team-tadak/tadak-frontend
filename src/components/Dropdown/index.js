@@ -52,6 +52,7 @@ export const OptionItem = styled.li`
   box-sizing: border-box;
   padding: 15px;
   transition: 0.5s;
+  background-color: ${({ theme }) => theme.color.background};
   &:hover {
     background-color: #161b21;
   }
