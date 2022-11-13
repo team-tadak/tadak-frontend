@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Button from "./Button";
 import ResultContainer from "./ResultContainer";
 import { useLocation } from "react-router-dom";
+import useUser from "hooks/useUser";
 
 const Container = styled.div`
   display: flex;
@@ -95,6 +96,7 @@ function isTypePage(url) {
 
 function UserContainer({ currentKPM }) {
   const location = useLocation();
+  const { users, error } = useUser(1, 1);
 
   return (
     <Container>
@@ -109,13 +111,17 @@ function UserContainer({ currentKPM }) {
         title={isTypePage(location.pathname) ? "현재 타수" : "내 기록"}
         icon="1"
         record={
-          isTypePage(location.pathname) ? (currentKPM ? `${currentKPM} 타` : "000 타") : "기록 없음"
+          isTypePage(location.pathname)
+            ? currentKPM
+              ? `${currentKPM} 타`
+              : "000 타"
+            : `${users.highest_record} 타`
         }
       />
       <ResultContainer
         title={isTypePage(location.pathname) ? "정확도" : "내 랭킹"}
         icon="2"
-        record={isTypePage(location.pathname) ? "123%" : "233위"}
+        record={isTypePage(location.pathname) ? "123%" : `${users.ranking}`}
       />
       <ButtonContainer>
         <Button to="/languageselect" icon="1" content={"언어선택"} />
