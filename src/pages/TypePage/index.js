@@ -21,11 +21,6 @@ function TypePage({ language }) {
 
   return (
     <>
-      <Breadcrumbs
-        css={css`
-          margin-bottom: 32px;
-        `}
-      />
       <TypePageContainer>
         <TypeInput
           timePassed={Math.floor(timePassed / 1000)}
