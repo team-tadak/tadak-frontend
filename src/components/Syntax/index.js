@@ -108,7 +108,7 @@ function SyntaxSelectComponent({ example, title, level, summary }) {
         <SyntaxLevel>{stars}</SyntaxLevel>
       </SyntaxTitleBox>
       <SyntaxSummary>{summary}</SyntaxSummary>
-      <SyntaxStartButton onClick={""}>시작하기!</SyntaxStartButton>
+      <SyntaxStartButton onClick={() => {}}>시작하기!</SyntaxStartButton>
     </SyntaxSelectContainer>
   );
 }
