@@ -17,42 +17,62 @@ import { theme } from "styles/theme";
 import GlobalStyles from "styles/GlobalStyles";
 import NavBar from "components/common/NavBar";
 import AppLayout from "components/common/layout/AppLayout";
-import Breadcrumbs from "components/common/Breadcrumb/index";
+import Footer from "components/common/Footer";
+import styled from "@emotion/styled/macro";
+import Breadcrumbs from "components/common/Breadcrumb";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`;
+
+const ContentBox = styled.div``;
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <NavBar />
-        <AppLayout>
-          <Breadcrumbs />
-          <Routes>
-            {/* 언어 선택 페이지 */}
-            <Route path="/languageselect" exact={true} element={<LanguageSelect />} />
+        <Container>
+          <NavBar />
+          <ContentBox>
+            <AppLayout>
+              <Breadcrumbs />
+              <Routes>
+                {/* 언어 선택 페이지 */}
+                <Route path="/languageselect" exact={true} element={<LanguageSelect />} />
 
-            {/* 랭킹 체이지 */}
-            <Route path="/leaderboard" exact={true} element={<Leaderboard />} />
+                {/* 랭킹 체이지 */}
+                <Route path="/leaderboard" exact={true} element={<Leaderboard />} />
 
-            {/* 로그인 페이지 */}
-            <Route path="/login" exact={true} element={<Login />} />
+                {/* 로그인 페이지 */}
+                <Route path="/login" exact={true} element={<Login />} />
 
-            {/* 대문 페이지 */}
-            <Route path="/" exact={true} element={<Main />} />
+                {/* 대문 페이지 */}
+                <Route path="/" exact={true} element={<Main />} />
 
-            {/* 마이 페이지 */}
-            <Route path="/mypage" exact={true} element={<MyPage />} />
+                {/* 마이 페이지 */}
+                <Route path="/mypage" exact={true} element={<MyPage />} />
 
-            {/* 회원가입 페이지 */}
-            <Route path="/register" exact={true} element={<Register />} />
+                {/* 회원가입 페이지 */}
+                <Route path="/register" exact={true} element={<Register />} />
 
-            {/* 문법 선택 페이지 */}
-            <Route path="/syntaxselect" exact={true} element={<SyntaxSelect />} />
+                {/* 문법 선택 페이지 */}
+                <Route path="/python" exact={true} element={<SyntaxSelect language="python" />} />
+                <Route path="/html" exact={true} element={<SyntaxSelect language="html" />} />
+                <Route path="/c" exact={true} element={<SyntaxSelect language="c" />} />
 
-            {/* 타자 연습 페이지 */}
-            <Route path="/typepage" exact={true} element={<TypePage />} />
-          </Routes>
-        </AppLayout>
+                {/* 인게임 (타자 연습) 페이지 */}
+                <Route path="/python/:id" exact={true} element={<TypePage language="python" />} />
+                <Route path="/html/:id" exact={true} element={<TypePage language="html" />} />
+                <Route path="/c/:id" exact={true} element={<TypePage language="c" />} />
+              </Routes>
+            </AppLayout>
+          </ContentBox>
+          <Footer />
+        </Container>
       </Router>
     </ThemeProvider>
   );

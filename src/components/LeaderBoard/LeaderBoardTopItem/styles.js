@@ -2,7 +2,7 @@ import styled from "@emotion/styled/macro";
 import { motion } from "framer-motion";
 
 export const StyledLeaderBoardTopItem = styled(motion.li)`
-  width: 100%;
+  flex: 1;
   padding: 16px;
   background: ${({ ranking }) =>
     ranking === "first"

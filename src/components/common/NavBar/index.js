@@ -29,7 +29,7 @@ function NavBar(props) {
       <NavBarContainer>
         <Link to={"/"}>
           <NavBarLogoContainer>
-            <Logo />
+            <Logo variant="large" />
             <NavBarLogoText>TADAK</NavBarLogoText>
           </NavBarLogoContainer>
         </Link>
