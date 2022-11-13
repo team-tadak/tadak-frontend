@@ -34,8 +34,10 @@ function parseNewline(paragraph) {
 const TEST_STRING_INDEX = 1;
 const TEST_STRING = MOCKUP_STRING[TEST_STRING_INDEX];
 
-function TypeInput({ timePassed, setCurrentKPM, currentKPM }) {
+function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying }) {
   const [showResultModal, setShowResultModal] = useState(false);
+  const [showCountdownModal, setShowCountdownModal] = useState(true);
+  const [countDownSeconds, setCountDownSeconds] = useState(5);
   // 타이머 관련
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
@@ -171,11 +173,11 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM }) {
   // 전체 문서에 대해 keydown event bind 시키기
   // TODO: 이거를 input 에만 bind 시켜야 할 거같은데?
   useEffect(() => {
-    if (!EOLFlag.current && !EOFFlag.current) {
+    if (!EOLFlag.current && !EOFFlag.current && !showCountdownModal) {
       document.addEventListener("keydown", keyPress);
     }
     return () => document.removeEventListener("keydown", keyPress);
-  }, [keyPress]);
+  }, [keyPress, showCountdownModal]);
 
   useEffect(() => {
     // 만약 line 끝에 도달했다면
@@ -214,6 +216,23 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM }) {
     }
   }, [currentInputString, mistakes, seconds]);
 
+  useEffect(() => {
+    // start
+
+    const timer = setInterval(() => {
+      setCountDownSeconds(countDownSeconds - 1);
+      if (countDownSeconds === 1) {
+        // 시작 직전에
+        setShowCountdownModal(false); // countdown 모달 끄고
+        setIsPlaying(true); // 타이머 작동!
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [countDownSeconds, setIsPlaying]);
+
   //{/* TODO: currentInputString.length 에서 mistakes 빼기 */}
   //{Math.round((currentInputString.length / (60 - seconds)) * 60)}
   return (
@@ -227,6 +246,12 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM }) {
         onClose={() => {
           setShowResultModal(false);
         }}
+      />
+      <ResultModal
+        open={showCountdownModal}
+        speed={countDownSeconds}
+        onClick={() => {}}
+        onClose={() => {}}
       />
       <StyledTypeInput>
         <Paragraph>

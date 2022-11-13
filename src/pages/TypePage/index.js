@@ -11,7 +11,7 @@ import Breadcrumbs from "components/common/Breadcrumb";
 import { css } from "@emotion/react";
 
 function TypePage({ language }) {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [timePassed, setTimePassed] = useState(0);
   const [currentKPM, setCurrentKPM] = useState(null);
 
@@ -31,6 +31,7 @@ function TypePage({ language }) {
           timePassed={Math.floor(timePassed / 1000)}
           setCurrentKPM={setCurrentKPM}
           currentKPM={currentKPM}
+          setIsPlaying={setIsPlaying}
         />
         <TypePageAsideContainer>
           <UserContainer currentKPM={currentKPM} />
