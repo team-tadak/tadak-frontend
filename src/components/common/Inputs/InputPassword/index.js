@@ -13,11 +13,9 @@ function InputPassword() {
 
     const handleBlur = (e) => {
         setText(e.target.value);
-        console.log(e.target.value);
         let errorMessageBox = document.getElementById("passWordErrorMessageBox");
         if (e.target.value.length > 20 || e.target.value.length < 8) {
           errorMessage = "비밀번호(8자리 이상 20자리 이하)를 다시 입력하세요.";
-          console.log(errorMessage);
         } else {
           errorMessage = "";
         }
