@@ -9,14 +9,11 @@ function InputEmail() {
     const [text, setText] = useState("");
     const handleBlur =  (e)=> {
         setText(e.target.value);
-        console.log(e.target.value);
         let errorMessageBox = document.getElementById("emailErrorMessageBox");
         let pattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
         let isValid = pattern.test(e.target.value);
-        console.log(isValid);
         if(!isValid) {
             errorMessage = "이메일 주소를 다시 입력하세요.";
-            console.log(errorMessage);
         }
         else {
             errorMessage ="";
