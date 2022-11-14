@@ -14,7 +14,6 @@ function InputEmail() {
         let isValid = pattern.test(e.target.value);
         if(!isValid) {
             errorMessage = "이메일 주소를 다시 입력하세요.";
-            console.log(errorMessage);
         }
         else {
             errorMessage ="";
