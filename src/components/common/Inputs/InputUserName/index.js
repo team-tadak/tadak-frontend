@@ -8,7 +8,6 @@ function InputUserName({onChange,onError}) {
     const [text, setText] = useState("");
     const handleBlur =  (e)=> {
         setText(e.target.value);
-        console.log(e.target.value);
         let pattern = /^[가-힣|a-z|A-Z]+$/;
         let isValid = pattern.test(e.target.value);
 
