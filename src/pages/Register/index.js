@@ -47,17 +47,17 @@ function Register() {
         <InputEmail></InputEmail>
         <InputPasswordAndCheck></InputPasswordAndCheck>
         <InputUserName></InputUserName>
+        <ButtonDiv>
         <Button type="submit">시작하기!</Button>
+          <ToLoginParagraph>
+            계정이 이미 있으세요?{" "}
+            <ToLogin>
+              <Link to="/login">로그인</Link>
+            </ToLogin>
+            하러 가기
+          </ToLoginParagraph>
+        </ButtonDiv>
       </RegisterForm>
-      <ButtonDiv>
-        <ToLoginParagraph>
-          계정이 이미 있으세요?{" "}
-          <ToLogin>
-            <Link to="/login">로그인</Link>
-          </ToLogin>
-          하러 가기
-        </ToLoginParagraph>
-      </ButtonDiv>
     </>
   );
 }

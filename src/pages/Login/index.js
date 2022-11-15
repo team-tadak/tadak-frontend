@@ -54,17 +54,17 @@ function Login() {
       <LoginTitle>로그인하기</LoginTitle>
       <LoginForm onSubmit={handleSubmit}>
         <InputEmail></InputEmail>
-        <InputPassword></InputPassword>
-        <Button type="submit">로그인</Button>
+        <InputPassword></InputPassword>  
+        <ButtonDiv>
+          <Button type="submit">로그인</Button>
+          <ToRegisterParagraph>
+            <ToRegister>
+              <Link to="/register">회원가입</Link>
+            </ToRegister>
+            하러 가기
+          </ToRegisterParagraph>
+        </ButtonDiv>
       </LoginForm>
-      <ButtonDiv>
-        <ToRegisterParagraph>
-          <ToRegister>
-            <Link to="/register">회원가입</Link>
-          </ToRegister>
-          하러 가기
-        </ToRegisterParagraph>
-      </ButtonDiv>
     </>
   );
 }
