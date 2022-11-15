@@ -4,6 +4,7 @@ import {
   LeaderBoardPageContainer,
   LeaderBoardPageContentContainer,
   LeaderBoardTopRankingContainer,
+  PaginationContainer,
 } from "pages/Leaderboard/styles";
 import React, { useState, useEffect } from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
@@ -15,6 +16,8 @@ import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
 import DropdownComponent from "components/Dropdown";
 import { mutate } from "swr";
+import Pagination from "@mui/material/Pagination";
+
 function Leaderboard() {
   const [languageNo, setLanguageNo] = useState(1);
   const [languageText, setLanguageText] = useState(null);
@@ -23,6 +26,8 @@ function Leaderboard() {
   const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
+
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (languageText === "PYTHON") {
@@ -96,7 +101,14 @@ function Leaderboard() {
               }}
               setItem={setLanguageText}
             />
-            {ranks.slice(2).length !== 0 && <LeaderBoard ranks={ranks.slice(2)} />}
+            {ranks.slice(2).length !== 0 && (
+              <>
+                <LeaderBoard ranks={ranks.slice(2)}></LeaderBoard>
+                <PaginationContainer>
+                  <Pagination count={10}></Pagination>
+                </PaginationContainer>
+              </>
+            )}
           </LeaderBoardPageContentContainer>
           <UserContainer />
         </LeaderBoardPageContainer>
