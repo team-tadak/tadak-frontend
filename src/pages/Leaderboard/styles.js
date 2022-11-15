@@ -20,3 +20,9 @@ export const LeaderBoardTopRankingContainer = styled(motion.div)`
   width: 968px;
   column-gap: 20px;
 `;
+
+export const PaginationContainer = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
