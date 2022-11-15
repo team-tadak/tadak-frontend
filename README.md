@@ -1,3 +1,9 @@
+# 타닥 탁 타닥
+![메인 화면](https://user-images.githubusercontent.com/86560973/201881092-b4421725-3c52-491b-909f-7a3baabcb8f0.png)
+
+<img width="1440" alt="타자 연습1" src="https://user-images.githubusercontent.com/86560973/201881150-c5cb6d32-7b29-4d92-801a-570cb961e5ec.png">
+<img width="1440" alt="랭킹2" src="https://user-images.githubusercontent.com/86560973/201881174-c46cbc17-ebb6-45f8-be31-61f926b30512.png">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
