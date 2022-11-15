@@ -95,7 +95,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 2,
       example: (
         <p>
           def sum(a, b):
@@ -108,7 +108,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 3,
       example: (
         <p>
           def sum(a, b):
@@ -121,7 +121,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 4,
       example: (
         <p>
           def sum(a, b):
@@ -134,7 +134,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 5,
       example: (
         <p>
           def sum(a, b):
@@ -147,7 +147,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 6,
       example: (
         <p>
           def sum(a, b):
@@ -175,7 +175,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 2,
       example: (
         <p>
           def sum(a, b):
@@ -188,7 +188,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 3,
       example: (
         <p>
           def sum(a, b):
@@ -201,7 +201,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 4,
       example: (
         <p>
           def sum(a, b):
@@ -214,7 +214,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 5,
       example: (
         <p>
           def sum(a, b):
@@ -227,7 +227,7 @@ export const SYNTAXES = {
     },
     {
       title: "함수 정의 및 사용",
-      level: 1,
+      level: 6,
       example: (
         <p>
           def sum(a, b):
