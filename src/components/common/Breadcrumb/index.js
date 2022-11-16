@@ -40,7 +40,7 @@ function Breadcrumbs(props) {
           >
             <Link to="/languageselect">
               <BreadcrumbColor status={locArrLen === 0 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
-                TTDTT
+                TADAK
               </BreadcrumbColor>
             </Link>
           </BreadcrumbShown>

@@ -27,7 +27,7 @@ function NavBar(props) {
   const { loggedOut, user } = useUser();
 
   const handleLogout = useCallback(() => {
-    deleteCookie("ttdtt_web_token", "*", "localhost:3000");
+    deleteCookie("tadak_web_token", "*", "localhost:3000");
     mutate("/users/me");
   }, []);
 
