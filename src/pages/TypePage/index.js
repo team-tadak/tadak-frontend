@@ -50,9 +50,7 @@ function TypePage({ language, languageCode }) {
           />
         </TypePageAsideContainer>
       </TypePageContainer>
-      <p>
-        {language} 언어 의 {id} 번 코드가 표시되어야 합니다.{" "}
-      </p>
+      {/* <p>{language} 언어 의 {id} 번 코드가 표시되어야 합니다.{" "}</p> */}
     </>
   );
 }
