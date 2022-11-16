@@ -66,16 +66,16 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
 
   const location = useLocation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     // e.preventDefault();
     async function sendRecord() {
       let language = location.pathname.substring(
         location.pathname.indexOf("/") + 1,
         location.pathname.indexOf("/", location.pathname.indexOf("/") + 1)
       );
-      console.log(language);
+      // console.log(language);
       const grammar = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-      console.log(grammar);
+      // console.log(grammar);
 
       if (language === "python") {
         language = 1;
@@ -85,7 +85,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
         language = 3;
       }
 
-      console.log(language);
+      // console.log(language);
 
       try {
         const body = {
@@ -105,12 +105,12 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
           });
       } catch (e) {
         //전송 실패
-        console.log(e);
+        // console.log(e);
         console.log("없는 계정입니다. ");
       }
     }
     sendRecord();
-  };
+  }, []);
 
   // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
   const enterPress = useCallback(
