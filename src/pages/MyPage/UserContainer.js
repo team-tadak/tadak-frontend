@@ -97,7 +97,7 @@ function isTypePage(url) {
 function UserContainer({ currentKPM }) {
   const location = useLocation();
   const { user, error } = useUser(1, 1);
-  console.log(user);
+
   return (
     <Container>
       <UserInfoContainer>
