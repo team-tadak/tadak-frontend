@@ -38,8 +38,8 @@ function ResultModal(props) {
           >
             <Modal>
               <Icon src={TimerIcon} />
-              <NormalText> 내 타자 기록은 </NormalText>
-              <SpeedText> {props.speed} 타</SpeedText>
+              <NormalText> {props.titleText ?? "내 타자 기록은"} </NormalText>
+              <SpeedText> {props.bigText}</SpeedText>
               <ConfirmButton onClick={props.onClick}>
                 <NormalText>확인</NormalText>
               </ConfirmButton>

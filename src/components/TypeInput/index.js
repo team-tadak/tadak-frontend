@@ -239,7 +239,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
     <>
       <ResultModal
         open={showResultModal}
-        speed={currentKPM}
+        bigText={`${currentKPM} 타`}
         onClick={() => {
           setShowResultModal(false);
         }}
@@ -249,7 +249,8 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       />
       <ResultModal
         open={showCountdownModal}
-        speed={countDownSeconds}
+        titleText="시작까지"
+        bigText={`${countDownSeconds} 초`}
         onClick={() => {}}
         onClose={() => {}}
       />
