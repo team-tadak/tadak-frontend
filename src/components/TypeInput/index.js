@@ -38,6 +38,16 @@ function parseNewline(paragraph) {
 // const TEST_STRING_INDEX = 16;
 
 function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragraphIndex }) {
+  // POST 요청 record 가 undefined 되는 에러 해결
+  // state 는 UI 업데이트 이므로 비동기적으로 진행되어서 POST 요청을 보내는 시점에는
+  // 잠시 null 이 되는 문제가 있음.
+  const currentKPMRef = useRef(currentKPM);
+
+  // 매 currentKPM 업데이트 마다 ref 도 업데이트 되도록 변경
+  useEffect(() => {
+    currentKPMRef.current = currentKPM;
+  }, [currentKPM]);
+
   const TEST_STRING = MOCKUP_STRING[paragraphIndex];
   const [showResultModal, setShowResultModal] = useState(false);
   const [showCountdownModal, setShowCountdownModal] = useState(true);
@@ -71,51 +81,54 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
 
   const location = useLocation();
 
-  const handleSubmit = useCallback((e) => {
-    // e.preventDefault();
-    async function sendRecord() {
-      let language = location.pathname.substring(
-        location.pathname.indexOf("/") + 1,
-        location.pathname.indexOf("/", location.pathname.indexOf("/") + 1)
-      );
-      // console.log(language);
-      const grammar = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-      // console.log(grammar);
+  const handleSubmit = useCallback(
+    (e) => {
+      // e.preventDefault();
+      async function sendRecord() {
+        let language = location.pathname.substring(
+          location.pathname.indexOf("/") + 1,
+          location.pathname.indexOf("/", location.pathname.indexOf("/") + 1)
+        );
+        // console.log(language);
+        const grammar = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+        // console.log(grammar);
 
-      if (language === "python") {
-        language = 1;
-      } else if (language === "html") {
-        language = 2;
-      } else if (language === "c") {
-        language = 3;
+        if (language === "python") {
+          language = 1;
+        } else if (language === "html") {
+          language = 2;
+        } else if (language === "c") {
+          language = 3;
+        }
+
+        // console.log(language);
+
+        try {
+          const body = {
+            language_no: language,
+            grammar_no: grammar,
+            record: currentKPMRef.current,
+          };
+
+          serverAxios
+            .post("/users/me/histories", body, {
+              withCredentials: true,
+            })
+            .then(function (response) {
+              // POST 요청 성공 시
+              // this.props.history.push("/");
+              console.log("전송 성공");
+            });
+        } catch (e) {
+          //전송 실패
+          // console.log(e);
+          console.log("없는 계정입니다. ");
+        }
       }
-
-      // console.log(language);
-
-      try {
-        const body = {
-          language_no: language,
-          grammar_no: grammar,
-          record: Math.round(((currentInputString.length - mistakes) / timePassed) * 60),
-        };
-
-        serverAxios
-          .post("/users/me/histories", body, {
-            withCredentials: true,
-          })
-          .then(function (response) {
-            // POST 요청 성공 시
-            // this.props.history.push("/");
-            console.log("전송 성공");
-          });
-      } catch (e) {
-        //전송 실패
-        // console.log(e);
-        console.log("없는 계정입니다. ");
-      }
-    }
-    sendRecord();
-  }, []);
+      sendRecord();
+    },
+    [location.pathname]
+  );
 
   // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
   const enterPress = useCallback(
@@ -204,7 +217,9 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       //     ((currentInputString.length - mistakes) / (60 - seconds)) * 60
       //   )}, 오탈자: ${mistakes} 개`
       // );
-      handleSubmit();
+      if (currentKPM) {
+        handleSubmit();
+      }
       console.log("끝!");
       // API 전송 로직을 짜세요.
       // language_no 는 python === 1, html === 2, c === 3
@@ -219,7 +234,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       setMinutes(0);
       setSeconds(0);
     }
-  }, [currentInputString, mistakes, seconds]); // handlesubmit  deps array 에 추가하면 무한번날라감
+  }, [TEST_STRING.length, currentInputString, currentKPM, handleSubmit, mistakes, seconds]); // handlesubmit  deps array 에 추가하면 무한번날라감
 
   // Countdown == 0 or CountDownModal이 바로시작을 누를경우,
   // isReady를 false 로 set
