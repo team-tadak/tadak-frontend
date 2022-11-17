@@ -11,9 +11,15 @@ import { Link } from "react-router-dom";
 import useUser from "hooks/useUser";
 
 function Login() {
-  const loggedOut = useUser.loggedOut;
+  
+  const loggedOut = useUser();
 
   const navigate = useNavigate();
+
+  if(!loggedOut) {
+    navigate("/");
+  }
+
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     async function login() {
