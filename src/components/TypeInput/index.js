@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
 import PortalModal from "components/PortalModal";
 import Button from "components/common/Button";
-import { ModalBody, ModalHeader, ModalIcon, ModalTitle } from "components/PortalModal/style";
+import { ModalBody, ModalButton, ModalHeader, ModalIcon, ModalTitle } from "components/PortalModal/style";
 import { theme } from "styles/theme";
 import TimerIcon from "assets/svgs/Tumer_light.svg";
 
@@ -259,7 +259,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
         <ModalIcon src={TimerIcon} />
         <ModalBody> 내 타자기록은... </ModalBody>
         <ModalHeader>{currentKPM}타</ModalHeader>
-        <Button onClick={() => { setShowResultModal(false) }}>확인</Button>
+        <ModalButton onClick={() => { setShowResultModal(false) }}>확인</ModalButton>
       </PortalModal>
 
       <PortalModal
@@ -268,7 +268,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       >
         <ModalHeader color={theme.color.blue.light}>준비하세요!</ModalHeader>
         <ModalTitle>{countDownSeconds}</ModalTitle>
-        <Button onClick={() => { setIsReady(false) }}>바로시작!</Button>
+        <ModalButton onClick={() => { setIsReady(false) }}>바로시작!</ModalButton>
       </PortalModal>
       <StyledTypeInput>
         <Paragraph>
