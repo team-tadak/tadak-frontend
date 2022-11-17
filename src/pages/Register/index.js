@@ -99,7 +99,7 @@ function Register() {
             // POST 요청 성공 시
             // this.props.history.push("/");
             setModalText("회원가입 성공!");
-            setShowModal(true);
+            // setShowModal(true);
             setIsRegisterSuccess(true);
             console.log("회원가입 성공");
             setShowOnSuccessModal(true);
