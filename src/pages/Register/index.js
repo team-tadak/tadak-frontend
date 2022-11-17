@@ -8,6 +8,7 @@ import React from "react";
 import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
+import useUser from "hooks/useUser";
 import {
   ButtonDiv,
   RegisterForm,
@@ -103,6 +104,13 @@ function Register() {
     }
     register();
   }, []);
+
+  // 로그인 시 redirect 로직
+  const { loggedOut } = useUser();
+
+  if (!loggedOut) {
+    navigate("/");
+  }
 
   return (
     <>

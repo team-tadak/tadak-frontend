@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import useUser from "hooks/useUser";
 
 function Login() {
-  const loggedOut = useUser.loggedOut;
+  // const loggedOut = useUser.loggedOut;
 
   const navigate = useNavigate();
   const handleSubmit = useCallback((e) => {
@@ -48,18 +48,26 @@ function Login() {
         // 로그인 실패 시
         // console.log(e);
         console.log("없는 계정입니다. ");
-        
       }
     }
     login();
   }, []);
+
+  // 로그인 돼 있으면 로그인 페이지 접근 차단
+
+  // 로그인 시 redirect 로직
+  const { loggedOut } = useUser();
+
+  if (!loggedOut) {
+    navigate("/");
+  }
 
   return (
     <>
       <LoginTitle>로그인하기</LoginTitle>
       <LoginForm onSubmit={handleSubmit}>
         <InputEmail></InputEmail>
-        <InputPassword></InputPassword>  
+        <InputPassword></InputPassword>
         <ButtonDiv>
           <Button type="submit">로그인</Button>
           <ToRegisterParagraph>
