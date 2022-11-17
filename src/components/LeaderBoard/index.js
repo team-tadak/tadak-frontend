@@ -6,6 +6,7 @@ import { defaultFadeInScaleVariants, staggerQuarter } from "styles/motions";
 import { TOP_DISPLAY_USER } from "constants/ranks";
 import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
+import { css } from "@emotion/react";
 
 function LeaderBoard({ ranks }) {
   //test
@@ -33,6 +34,9 @@ function LeaderBoard({ ranks }) {
           KPM="타수"
           language="언어"
           syntax="문법"
+          css={css`
+            pointer-events: none; // table header 는 링크 작동 하지 않도록
+          `}
         />
         {ranks &&
           ranks.map((rank, index) => (

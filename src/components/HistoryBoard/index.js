@@ -1,10 +1,11 @@
-import React from "react";
 import { staggerQuarter, defaultFadeInScaleVariants } from "styles/motions";
 import { MOCKUP_HISTORIES } from "mockups/histories";
 import { SpinnerContainer, StyledHistoryBoard } from "components/HistoryBoard/styles";
 import HistoryBoardItem from "components/HistoryBoard/HisoryBoardItem";
 import useHistories from "hooks/useHistories";
 import Spinner from "components/common/Spinner";
+import { useCallback } from "react";
+import { css } from "@emotion/react";
 
 function HistoryBoard() {
   const { histories, error } = useHistories(1, 5);
@@ -38,6 +39,9 @@ function HistoryBoard() {
           KPM="타수"
           language="언어"
           syntax="문법"
+          css={css`
+            pointer-events: none; // table header 는 링크 작동 하지 않도록
+          `}
         />
         {histories &&
           histories.map((history, index) => (
