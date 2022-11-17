@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCallback } from "react";
 import { serverAxios } from "utils/commonAxios";
 import { mutate } from "swr";
@@ -8,8 +8,11 @@ import InputPassword from "components/common/Inputs/InputPassword";
 import Button from "components/common/Button";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import PortalModal from "components/PortalModal";
+import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
 
 function Login() {
+  const [showOnFailModal, setShowOnFailModal] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -39,11 +42,14 @@ function Login() {
             console.log("로그인 성공");
             mutate("/users/me"); // 로그인 함과 동시에 상단바에 NavBar 업데이트 하도록
             navigate("/");
+          }).catch(() => {
+            // 로그인 실패시
+            setShowOnFailModal(true);
           });
       } catch (e) {
         // 로그인 실패 시
         // console.log(e);
-        console.log("없는 계정입니다. ");
+        // console.log("없는 계정입니다. ");
       }
     }
     login();
@@ -65,6 +71,11 @@ function Login() {
           하러 가기
         </ToRegisterParagraph>
       </ButtonDiv>
+      <PortalModal open={showOnFailModal} onClose={() => { setShowOnFailModal(false) }}>
+        <ModalHeader>로그인 실패</ModalHeader>
+        <ModalBody>이메일 및 비밀번호를 확인하세요</ModalBody>
+        <ModalButton onClick={() => { setShowOnFailModal(false) }}>확인</ModalButton>
+      </PortalModal>
     </>
   );
 }
