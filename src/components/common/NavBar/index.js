@@ -17,7 +17,7 @@ import useUser from "hooks/useUser";
 import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import { deleteCookie } from "utils/cookie";
-import { mutate } from "swr";
+import { mutate, useSWRConfig } from "swr";
 
 function NavBar(props) {
   // 현재 페이지의 스크롤 상태 확인 (맨 위면 배경 투명하게, 그 외엔 배경 색 부여)
@@ -26,10 +26,12 @@ function NavBar(props) {
   // 유저의 로그인 상태 확인.
   const { loggedOut, user } = useUser();
 
+  const { cache } = useSWRConfig();
   const handleLogout = useCallback(() => {
     deleteCookie("tadak_web_token", "*", "localhost:3000");
     mutate("/users/me");
-  }, []);
+    cache.clear();
+  }, [cache]);
 
   return (
     <StyledNavBar transparent={scrollY === 0} {...props}>
