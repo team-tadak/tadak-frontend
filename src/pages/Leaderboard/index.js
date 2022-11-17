@@ -23,7 +23,7 @@ function Leaderboard() {
   const [languageText, setLanguageText] = useState(null);
   const [grammarNo, setgrammarNo] = useState(1);
   const [grammarText, setGrammarText] = useState(null);
-  const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
+  const { ranks, ranks_meta, error } = useRanks(1, 10, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
 
@@ -105,7 +105,10 @@ function Leaderboard() {
               <>
                 <LeaderBoard ranks={ranks.slice(2)}></LeaderBoard>
                 <PaginationContainer>
-                  <Pagination count={10}></Pagination>
+                  <Pagination 
+                    count={ranks_meta.totalPages}>
+
+                  </Pagination>
                 </PaginationContainer>
               </>
             )}

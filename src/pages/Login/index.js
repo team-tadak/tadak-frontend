@@ -12,10 +12,11 @@ import useUser from "hooks/useUser";
 
 function Login() {
   
-  const loggedOut = useUser();
+  const {loggedOut} = useUser();
 
   const navigate = useNavigate();
 
+  // 로그인 된 상태에서 로그인 페이지 접속 시 메인 화면으로 redirect
   if(!loggedOut) {
     navigate("/");
   }
