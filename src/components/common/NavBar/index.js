@@ -15,9 +15,9 @@ import useScrollPosition from "hooks/useScrollPosition";
 import useUser from "hooks/useUser";
 
 import { Link } from "react-router-dom";
-import { useCallback } from "react";
-import { deleteCookie } from "utils/cookie";
-import { mutate, useSWRConfig } from "swr";
+
+import { useSWRConfig } from "swr";
+import { handleLogout } from "utils/logout";
 
 function NavBar(props) {
   // 현재 페이지의 스크롤 상태 확인 (맨 위면 배경 투명하게, 그 외엔 배경 색 부여)
@@ -27,11 +27,6 @@ function NavBar(props) {
   const { loggedOut, user } = useUser();
 
   const { cache } = useSWRConfig();
-  const handleLogout = useCallback(() => {
-    deleteCookie("tadak_web_token", "*", "localhost:3000");
-    mutate("/users/me");
-    cache.clear();
-  }, [cache]);
 
   return (
     <StyledNavBar transparent={scrollY === 0} {...props}>
@@ -60,7 +55,12 @@ function NavBar(props) {
               </NavBarMenuText>
               <NavBarLogoutContainer>
                 <NavBarLogoutText>
-                  <Link to={"/"} onClick={handleLogout}>
+                  <Link
+                    to={"/"}
+                    onClick={() => {
+                      handleLogout(cache);
+                    }}
+                  >
                     로그아웃
                   </Link>
                 </NavBarLogoutText>
