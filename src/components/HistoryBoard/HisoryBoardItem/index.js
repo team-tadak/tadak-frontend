@@ -33,8 +33,8 @@ function HistoryBoardItem({ type = "item", date, KPM, language, syntax, ...props
           width: 180px;
         `}
         IconComponent={ExternalIcon}
-        language = {LANGUAGES[language - 1]}
-        syntax = {syntax}
+        language={LANGUAGES[language - 1]}
+        syntax={syntax}
       >
         {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
       </Badge>
@@ -43,6 +43,8 @@ function HistoryBoardItem({ type = "item", date, KPM, language, syntax, ...props
           width: 180px;
         `}
         IconComponent={PlayIcon}
+        language={LANGUAGES[language - 1]}
+        syntax={syntax}
       >
         {type === "header" ? "바로 시작하기!" : "내 기록 깨러 가기!"}
       </Badge>
