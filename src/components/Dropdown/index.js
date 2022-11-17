@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
-export const DropdownContainer = styled.div`
+export const DropdownContainer = styled(motion.div)`
   position: relative;
   width: 133px;
   height: 56px;
@@ -71,11 +72,11 @@ export const OptionItem = styled.li`
 //
 // <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent>
 
-function DropdownComponent({ list, onSelect = (selected) => {}, onChange, setItem }) {
+function DropdownComponent({ list, onSelect = (selected) => {}, onChange, setItem, ...props }) {
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("선택");
   return (
-    <DropdownContainer>
+    <DropdownContainer {...props}>
       <SelectedLabel
         value={selected}
         onClick={() => {

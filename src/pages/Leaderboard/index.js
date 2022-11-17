@@ -92,6 +92,7 @@ function Leaderboard() {
               모든 사용자
             </Typography>
             <DropdownComponent
+              variants={defaultFadeInVariants}
               list={LanguageList}
               onSelect={setSelected}
               onChange={() => {
