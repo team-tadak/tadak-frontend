@@ -39,7 +39,7 @@ const UserPicture = styled.div`
   height: 64px;
 
   background-image: url(${process.env.PUBLIC_URL + "/img/emoji.png"});
-  border: 1px dashed #ffffff;
+  background-size: cover;
   border-radius: 32px;
 `;
 
@@ -103,8 +103,8 @@ function UserContainer({ currentKPM }) {
       <UserInfoContainer>
         <UserPicture />
         <UserInfo>
-          <UserFont>{user?.username}</UserFont>
-          <EmailFont>{user?.email}</EmailFont>
+          <UserFont>{user?.username ?? "Guest"}</UserFont>
+          <EmailFont>{user?.email ?? "기록을 사용하려면 로그인하세요!"}</EmailFont>
         </UserInfo>
       </UserInfoContainer>
       <ResultContainer
