@@ -115,14 +115,22 @@ function UserContainer({ currentKPM }) {
             ? currentKPM
               ? `${currentKPM} 타`
               : "000 타"
-            : `${user?.highest_record ? `${user?.highest_record} 타` : "로그인 필요"} `
+            : `${
+                user
+                  ? user?.highest_record
+                    ? `${user?.highest_record} 타`
+                    : "기록이 없습니다"
+                  : "로그인 필요"
+              } `
         }
       />
       <ResultContainer
         title={isTypePage(location.pathname) ? "정확도" : "내 랭킹"}
         icon="2"
         record={
-          isTypePage(location.pathname) ? "기능 준비 중" : `${user?.ranking ?? "로그인 필요"}`
+          isTypePage(location.pathname)
+            ? "기능 준비 중"
+            : `${user ? user?.ranking ?? "기록이 없습니다" : "로그인 필요"}`
         }
       />
       <ButtonContainer>
