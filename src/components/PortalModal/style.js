@@ -1,16 +1,16 @@
 import styled from "@emotion/styled/macro";
 import { theme } from "styles/theme";
 import { hexToRgba } from "utils/color";
+import { motion } from "framer-motion";
 
-const baseDiv = styled.div`
+export const StyledModal = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 14px;
   gap: 16px;
   border-radius: 10px;
-`;
-export const Modal = styled(baseDiv)`
   padding: 40px 20px;
   position: fixed;
   top: 50%;
@@ -22,27 +22,28 @@ export const Modal = styled(baseDiv)`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export const Icon = styled.img`
-  width: 40px;
-  height: 40px;
-`;
+export const ModalIcon = styled.img`
+  width:40px;
+  height:40px;
+`
 
-export const ConfirmButton = styled(baseDiv)`
-  padding: 10px;
-  width: 100%;
-  background: ${theme.color.primary500};
-`;
+export const ModalText = styled.div`
+  color: ${props => props.color || theme.color.white};
+`
 
-export const NormalText = styled.h1`
-  font-size: 16px;
-  // line-height: 19px;
-  color: ${theme.color.white};
-`;
+export const ModalTitle = styled(ModalText)`
+  font-size: 40px;
+  font-weight: 700;
+`
 
-export const SpeedText = styled(NormalText)`
-  font-style: bold;
+export const ModalHeader = styled(ModalText)`
   font-size: 36px;
-`;
+  font-weight: 700;
+`
+
+export const ModalBody = styled(ModalText)`
+  font-size: 16px;
+`
 
 export const DimmedArea = styled.div`
   position: fixed;
