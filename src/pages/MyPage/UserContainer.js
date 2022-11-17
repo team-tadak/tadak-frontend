@@ -5,6 +5,9 @@ import ResultContainer from "./ResultContainer";
 import { useLocation } from "react-router-dom";
 import useUser from "hooks/useUser";
 
+import { useSWRConfig } from "swr";
+import { handleLogout } from "utils/logout";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -98,6 +101,8 @@ function UserContainer({ currentKPM }) {
   const location = useLocation();
   const { user, error } = useUser(1, 1);
 
+  const { cache } = useSWRConfig();
+
   return (
     <Container>
       <UserInfoContainer>
@@ -138,7 +143,15 @@ function UserContainer({ currentKPM }) {
         {/* end 속성은 /python 까지만 비교. 그렇지 않으면 /python/2 도 같은 링크로 취급해서 타자 치는 곳에서 active 되버림.  */}
         <Button end to="/python" icon="2" content={"문법선택"} />
         <Button to="/leaderboard" icon="3" content={"랭킹보드"} />
-        <Button kind="logout" to="/" icon="4" content={"로그아웃"} />
+        <Button
+          kind="logout"
+          to="/"
+          icon="4"
+          content={"로그아웃"}
+          onClick={() => {
+            handleLogout(cache);
+          }}
+        />
       </ButtonContainer>
     </Container>
   );
