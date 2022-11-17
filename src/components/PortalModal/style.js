@@ -45,6 +45,26 @@ export const ModalBody = styled(ModalText)`
   font-size: 16px;
 `
 
+export const ModalButton = styled.div`
+  padding: 10px;
+  width: 100%;
+  background-color: #bfcdf0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #26262d;
+  text-align: center;
+  font-weight: bold;
+  &.active {
+    background-color: ${theme.color.primary500};
+  }
+
+  &:hover {
+    background-color: ${theme.color.primary200};
+  }
+  transition: 0.3s;
+`
+
 export const DimmedArea = styled.div`
   position: fixed;
   top: 0;
