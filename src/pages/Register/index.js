@@ -55,42 +55,42 @@ function Register() {
           password: passwordValue,
         };
 
-        // 입력 각종 예외 처리
-        // 이메일 적절 여부 확인
-        if (emailValue.length === 0) {
-          openPlainModal("이메일을 입력해 주세요!");
-          return;
-        }
-        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)) {
-          openPlainModal("올바른 형식으로 이메일을 입력해주세요!");
-          return;
-        }
+        // // 입력 각종 예외 처리
+        // // 이메일 적절 여부 확인
+        // if (emailValue.length === 0) {
+        //   openPlainModal("이메일을 입력해 주세요!");
+        //   return;
+        // }
+        // if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)) {
+        //   openPlainModal("올바른 형식으로 이메일을 입력해주세요!");
+        //   return;
+        // }
 
-        // 암호 입력 여부 확인
-        if (passwordValue.length === 0) {
-          openPlainModal("암호를 입력해주세요!");
-          return;
-        }
-        if (passwordValue.length < 8 || passwordValue.length > 20) {
-          openPlainModal("암호는 8자리 이상 20자리 이하로 구성해주세요!");
-          return;
-        }
+        // // 암호 입력 여부 확인
+        // if (passwordValue.length === 0) {
+        //   openPlainModal("암호를 입력해주세요!");
+        //   return;
+        // }
+        // if (passwordValue.length < 8 || passwordValue.length > 20) {
+        //   openPlainModal("암호는 8자리 이상 20자리 이하로 구성해주세요!");
+        //   return;
+        // }
 
-        // 암호 일치 여부 확인
-        if (passwordValue !== passwordConfirmValue) {
-          openPlainModal("비밀번호가 불일치 합니다! 다시한번 확인해주세요!");
-          return;
-        }
+        // // 암호 일치 여부 확인
+        // if (passwordValue !== passwordConfirmValue) {
+        //   openPlainModal("비밀번호가 불일치 합니다! 다시한번 확인해주세요!");
+        //   return;
+        // }
 
-        // 닉네임 입력 여부 확인
-        if (usernameValue.length === 0) {
-          openPlainModal("닉네임을 입력해 주세요!");
-          return;
-        }
-        if (usernameValue.length > 10) {
-          openPlainModal("닉네임(한글 또는 영문 최대 10자)을 다시 입력하세요.");
-          return;
-        }
+        // // 닉네임 입력 여부 확인
+        // if (usernameValue.length === 0) {
+        //   openPlainModal("닉네임을 입력해 주세요!");
+        //   return;
+        // }
+        // if (usernameValue.length > 10) {
+        //   openPlainModal("닉네임(한글 또는 영문 최대 10자)을 다시 입력하세요.");
+        //   return;
+        // }
 
         // 모든 입력 테스트를 통과하면
         serverAxios
@@ -158,15 +158,7 @@ function Register() {
           </ToLoginParagraph>
         </ButtonDiv>
       </RegisterForm>
-      <ButtonDiv>
-        <ToLoginParagraph>
-          계정이 이미 있으세요?{" "}
-          <ToLogin>
-            <Link to="/login">로그인</Link>
-          </ToLogin>
-          하러 가기
-        </ToLoginParagraph>
-      </ButtonDiv>
+
       <PortalModal
         open={showOnSuccessModal}
         onClose={() => {

@@ -83,14 +83,7 @@ function Login() {
           </ToRegisterParagraph>
         </ButtonDiv>
       </LoginForm>
-      <ButtonDiv>
-        <ToRegisterParagraph>
-          <ToRegister>
-            <Link to="/register">회원가입</Link>
-          </ToRegister>
-          하러 가기
-        </ToRegisterParagraph>
-      </ButtonDiv>
+
       <PortalModal
         open={showOnFailModal}
         onClose={() => {
