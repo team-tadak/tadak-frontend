@@ -90,8 +90,7 @@ export const SyntaxStartButton = styled.button`
 // summary="파이썬에서 재사용을 위한 함수를 배웁니다! 함수는 프로그래밍 언어에서 핵심적입니다!"
 // />
 
-function SyntaxSelectComponent({ language, example, title, level, summary }) {
-
+function SyntaxSelectComponent({ language, example, title, level, summary, ...props }) {
   const linkURL = "/" + language + "/" + level;
 
   var stars = [];
@@ -103,9 +102,9 @@ function SyntaxSelectComponent({ language, example, title, level, summary }) {
     }
   }
   return (
-    <SyntaxSelectContainer>
+    <SyntaxSelectContainer {...props}>
       <SyntaxExampleBox>
-        <p>{example}</p>
+        <div>{example}</div>
       </SyntaxExampleBox>
       <SyntaxTitleBox>
         <SyntaxTitle>{title}</SyntaxTitle>
@@ -114,8 +113,7 @@ function SyntaxSelectComponent({ language, example, title, level, summary }) {
       <SyntaxSummary>{summary}</SyntaxSummary>
       <Link to={linkURL}>
         <SyntaxStartButton>시작하기!</SyntaxStartButton>
-      </Link>  
-
+      </Link>
     </SyntaxSelectContainer>
   );
 }
