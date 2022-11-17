@@ -16,14 +16,12 @@ export const MOCKUP_STRING = [
   '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Table Sample</title>\n  </head>\n  <body>\n    <table border="1">\n      <tbody>\n        <tr>\n          <td>first cell</td>\n          <td>second cell</td>\n        </tr>\n        <tr>\n          <td>third cell</td>\n          <td>fourth cell</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>',
 
   // c
-  "#include <stdio.h>\n\nint main() {\n\n    printf(“Hello world”);\n    return 0;\n}",
+  "#include <stdio.h>\n\nint main() {\n  printf(“Hello world”);\n  return 0;\n}",
   '#include <stdio.h>\n\nint main() {\n  int myAge = 43;\n  printf("%p", &myAge);\n  return 0;\n}',
   '#include <stdio.h>\n\nint main() {\n  int i = 0;\n  for (i = 0; i <= 10; i = i + 2) {\n    printf("%d", i);\n  }\n}',
-  '#include <stdio.h>\n\nint main() {\n  int integer = 15;\n\n  if(integer > 0) {\n    printf("positive");\n  }\n  else if(integer < 0) {\n    printf("negative");\n  }\n  else {\n    printf("0");\n  }\n}',
+  '#include <stdio.h>\n\nint main() {\n  int integer = 15;\n\n  if(integer > 0) {\n    printf("positive");\n  }\n  else if(integer < 0) {\n    printf("negative");\n  }\n  else {\n    printf("zero");\n  }\n}',
   '#include <stdio.h>\n\nint sum(int k) {\n  if (k > 0) {\n    return k + sum(k - 1);\n  }   else {\n    return 0;\n  }\n}\n\nint main() {\n  int result = sum(10);\n  printf("%d", result);\n  return 0;\n}',
-  '#include <stdio.h>\n\nint main() {\n  int day = 4;\n  switch (day) {\n    case 1:\n      printf("Monday");\n      break;\n    case 2:\n      printf("Tuesday");\n      break;\n    case 3:\n      printf("Wednesday");\n      break;\n    case 4:\n      printf("Thursday");\n      break;\n    case 5:\n      printf("Friday");\n      break;\n    case 6:\n      printf("Saturday");\n      break;\n    case 7:\n      printf("Sunday");\n      break;\n  }\n}',
-
-  // 'include <stdio.h>\n#include <stdlib.h>\ntypedef struct NODE{\n    int data;\n    struct NODE* next;\n}node;\n\nint main(void) {\n    node* head = (node*)malloc(sizeof(node));\n    head->next=NULL;\n    node* node1 = (node*)malloc(sizeof(node));\n    node1->next = head->next;\n    node1->data = 10;\n    head->next = node1;\n\n    node* node2 = (node*)malloc(sizeof(node));\n    node2->next = node1->next;\n    node2->data = 20;\n    node1->next = node2;\n\n    node* curr = head->next;\n    while(curr != NULL){\n        printf("%d", curr->data);\n        curr = curr->next;    }\n\n    free(head);\n    free(node1);\n    free(node2);\n    return 0;\n}'
+  '#include <stdio.h>\nint main() {\n  int day = 4;\n  switch (day) {\n    case 1:\n      printf("Monday");\n      break;\n    case 2:\n      printf("Tuesday");\n      break;\n    case 3:\n      printf("Wednesday");\n      break;\n    case 4:\n      printf("Thursday");\n      break;\n    case 5:\n      printf("Friday");\n      break;\n    case 6:\n      printf("Saturday");\n      break;\n    case 7:\n      printf("Sunday");\n      break;\n  }\n}',
 
   "Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d",
   "Authors often\nmisinterpret",
