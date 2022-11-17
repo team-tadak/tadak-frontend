@@ -4,7 +4,7 @@ export const UserProfileContainer = styled.div`
   display: flex;
   column-gap: 12px;
   width: 360px;
-  font-size: ${({ isHeader }) => (isHeader ? "14px" : "16px")};
+  font-size: ${({ isheader }) => (isheader ? "14px" : "16px")};
 `;
 
 export const UserProfileImageContainer = styled.div`

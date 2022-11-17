@@ -15,11 +15,13 @@ import PlayIcon from "components/common/icons/PlayIcon";
 
 function HistoryBoardItem({ type = "item", date, KPM, language, syntax, ...props }) {
   return (
-    <StyledHistoryBoardItem isHeader={type === "header"} {...props}>
-      <DateText isHeader={type === "header"}>
+    <StyledHistoryBoardItem isheader={type === "header" ? 1 : 0} {...props}>
+      <DateText isheader={type === "header" ? 1 : 0}>
         {type === "header" ? "날짜" : date.toLocaleString("ko-KR")}
       </DateText>
-      <KPMText isHeader={type === "header"}>{type === "header" ? "타수" : `${KPM} 타`}</KPMText>
+      <KPMText isheader={type === "header" ? 1 : 0}>
+        {type === "header" ? "타수" : `${KPM} 타`}
+      </KPMText>
       <Badge
         css={css`
           width: 180px;

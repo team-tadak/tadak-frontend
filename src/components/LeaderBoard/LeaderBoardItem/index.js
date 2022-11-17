@@ -24,14 +24,16 @@ function LeaderBoardItem({
   ...props
 }) {
   return (
-    <StyledLeaderBoardItem isHeader={type === "header"} {...props}>
-      <RankNumberText isHeader={type === "header"}>
+    <StyledLeaderBoardItem isheader={type === "header" ? 1 : 0} {...props}>
+      <RankNumberText isheader={type === "header" ? 1 : 0}>
         {type === "header" ? "순위" : rank}
       </RankNumberText>
 
       <UserProfile type={type} username={username} email={email} />
 
-      <KPMText isHeader={type === "header"}>{type === "header" ? "타수" : `${KPM} 타`}</KPMText>
+      <KPMText isheader={type === "header" ? 1 : 0}>
+        {type === "header" ? "타수" : `${KPM} 타`}
+      </KPMText>
       <Badge
         css={css`
           width: 180px;
@@ -45,8 +47,8 @@ function LeaderBoardItem({
           width: 180px;
         `}
         IconComponent={ExternalIcon}
-        language = {LANGUAGES[language - 1]}
-        syntax = {syntax}
+        language={LANGUAGES[language - 1]}
+        syntax={syntax}
       >
         {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
       </Badge>

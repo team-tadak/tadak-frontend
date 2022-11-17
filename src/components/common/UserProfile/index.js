@@ -10,7 +10,7 @@ import {
 
 function UserProfile({ type, username, email, ...props }) {
   return (
-    <UserProfileContainer isHeader={type === "header"} {...props}>
+    <UserProfileContainer isheader={type === "header" ? 1 : 0} {...props}>
       {type === "header" ? (
         "사용자"
       ) : (
