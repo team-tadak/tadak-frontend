@@ -8,8 +8,11 @@ import InputPassword from "components/common/Inputs/InputPassword";
 import Button from "components/common/Button";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import useUser from "hooks/useUser";
 
 function Login() {
+  const loggedOut = useUser.loggedOut;
+
   const navigate = useNavigate();
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -45,6 +48,7 @@ function Login() {
         // 로그인 실패 시
         // console.log(e);
         console.log("없는 계정입니다. ");
+        
       }
     }
     login();
@@ -55,17 +59,17 @@ function Login() {
       <LoginTitle>로그인하기</LoginTitle>
       <LoginForm onSubmit={handleSubmit}>
         <InputEmail></InputEmail>
-        <InputPassword></InputPassword>
-        <Button type="submit">로그인</Button>
+        <InputPassword></InputPassword>  
+        <ButtonDiv>
+          <Button type="submit">로그인</Button>
+          <ToRegisterParagraph>
+            <ToRegister>
+              <Link to="/register">회원가입</Link>
+            </ToRegister>
+            하러 가기
+          </ToRegisterParagraph>
+        </ButtonDiv>
       </LoginForm>
-      <ButtonDiv>
-        <ToRegisterParagraph>
-          <ToRegister>
-            <Link to="/register">회원가입</Link>
-          </ToRegister>
-          하러 가기
-        </ToRegisterParagraph>
-      </ButtonDiv>
     </>
   );
 }

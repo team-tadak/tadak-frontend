@@ -15,7 +15,7 @@ export const MOCKUP_STRING = [
   '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Table Sample</title>\n  </head>\n  <body>\n    <table border="1">\n      <tbody>\n        <tr>\n          <td>first cell</td>\n          <td>second cell</td>\n        </tr>\n        <tr>\n          <td>third cell</td>\n          <td>fourth cell</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>',
 
   // c
-  '#include <stdio.h>\n\n int main(){\n\n    printf("Hello world" );\n    return 0;\n}',
+  '#include <stdio.h>\n\nint main(){\n\n    printf("Hello world" );\n    return 0;\n}',
   '#include <stdio.h>\n\nint main() {\n  int myAge = 43;\n  printf("%d", &myAge);\n  return 0;\n}',
   '#include <stdio.h>\n\nint main() {\n  int i = 0;\n  for (i = 0; i <= 10; i = i + 2) {\n    printf("%d", i);\n  }\n}',
   '#include <stdio.h>\n\nint main() {\n  int integer = 15;\n\n  if(integer > 0) {\n    printf("positive");\n  }\n  else if(integer < 0) {\n    printf("negative");\n  }\n  else {\n    printf("0");\n  }\n}',
