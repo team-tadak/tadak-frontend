@@ -4,9 +4,10 @@ import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndChec
 import InputUserName from "components/common/Inputs/InputUserName";
 import SlimButton from "components/common/SlimButton";
 import PortalModal from "components/PortalModal";
-import React from "react";
 import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
+import React from "react";
 import { serverAxios } from "utils/commonAxios";
 import useUser from "hooks/useUser";
 import {
@@ -33,6 +34,8 @@ function Register() {
     navigate("/login");
   }, [navigate]);
 
+  const [showOnFailModal, setShowOnFailModal] = useState(false);
+  const [showOnSuccessModal, setShowOnSuccessModal] = useState(false);
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     async function register() {
@@ -90,17 +93,23 @@ function Register() {
         }
 
         // 모든 입력 테스트를 통과하면
-        serverAxios.post("/users", body).then(function (response) {
-          // POST 요청 성공 시
-          // this.props.history.push("/");
-          setModalText("회원가입 성공!");
-          setShowModal(true);
-          setIsRegisterSuccess(true);
-        });
-      } catch (e) {
-        // POST 요청 실패 시
-        console.log(e);
-      }
+        serverAxios
+          .post("/users", body)
+          .then(function (response) {
+            // POST 요청 성공 시
+            // this.props.history.push("/");
+            setModalText("회원가입 성공!");
+            setShowModal(true);
+            setIsRegisterSuccess(true);
+            console.log("회원가입 성공");
+            setShowOnSuccessModal(true);
+          })
+          .catch(() => {
+            // POST 요청 실패 시
+            console.log(e);
+            setShowOnFailModal(true);
+          });
+      } catch (e) {}
     }
     register();
   }, []);
@@ -149,6 +158,48 @@ function Register() {
           </ToLoginParagraph>
         </ButtonDiv>
       </RegisterForm>
+      <ButtonDiv>
+        <ToLoginParagraph>
+          계정이 이미 있으세요?{" "}
+          <ToLogin>
+            <Link to="/login">로그인</Link>
+          </ToLogin>
+          하러 가기
+        </ToLoginParagraph>
+      </ButtonDiv>
+      <PortalModal
+        open={showOnSuccessModal}
+        onClose={() => {
+          setShowOnSuccessModal(false);
+        }}
+      >
+        <ModalHeader>회원가입 성공!</ModalHeader>
+        <Link to={"/login"} style={{ width: "100%" }}>
+          <ModalButton
+            onClick={() => {
+              setShowOnSuccessModal(false);
+            }}
+          >
+            확인
+          </ModalButton>
+        </Link>
+      </PortalModal>
+      <PortalModal
+        open={showOnFailModal}
+        onClose={() => {
+          setShowOnFailModal(false);
+        }}
+      >
+        <ModalHeader>회원가입 실패</ModalHeader>
+        <ModalBody>이메일 및 비밀번호를 확인하세요</ModalBody>
+        <ModalButton
+          onClick={() => {
+            setShowOnFailModal(false);
+          }}
+        >
+          확인
+        </ModalButton>
+      </PortalModal>
     </>
   );
 }
