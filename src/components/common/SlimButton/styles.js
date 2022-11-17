@@ -1,4 +1,5 @@
 import styled from "@emotion/styled/macro";
+import { resetButtonStyle } from "styles/utils/button";
 
 const baseDiv = styled.button`
   display: flex;
@@ -10,6 +11,8 @@ const baseDiv = styled.button`
 `;
 
 export const StyledSlimButton = styled(baseDiv)`
+  ${resetButtonStyle}
+  color: ${({ theme }) => theme.color.white};
   padding: 10px;
   width: 100%;
   background: ${({ theme }) => theme.color.primary500};
