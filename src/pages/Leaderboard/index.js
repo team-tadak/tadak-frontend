@@ -37,6 +37,7 @@ function Leaderboard() {
   
 
   const handlePageChange = (event, value) => {
+    console.log(ranks_meta);
     console.log(ranks_meta.pageNumber);
     console.log(ranks_meta.pageSize);
     console.log(ranks_meta.totalCount);
@@ -119,7 +120,7 @@ function Leaderboard() {
             />
             {ranks.slice(2).length !== 0 && (
               <> 
-                <LeaderBoard ranks={(pageNumber == 1) ? ranks.slice(2) : ranks}></LeaderBoard>
+                <LeaderBoard ranks={(pageNumber == 1) ? ranks.slice(2) : ranks} pageNumber={pageNumber} pageSize={pageSize}></LeaderBoard>
                 <PaginationContainer>
                   <Pagination 
                     count={ranks_meta.totalPage}
