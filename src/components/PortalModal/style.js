@@ -28,7 +28,7 @@ export const ModalIcon = styled.img`
 `
 
 export const ModalText = styled.div`
-  color: ${props => props.color || theme.color.white};
+  color: ${props => props.color ?? theme.color.white};
 `
 
 export const ModalTitle = styled(ModalText)`
