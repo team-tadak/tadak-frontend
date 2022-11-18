@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
 import PortalModal from "components/PortalModal";
 import Button from "components/common/Button";
-import { ModalBody, ModalButton, ModalHeader, ModalIcon, ModalTitle } from "components/PortalModal/style";
+import { ModalBody, ModalButton, ModalHeader, ModalIcon, ModalTitle } from "components/common/styles";
 import TimerIcon from "assets/svgs/Tumer_light.svg";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {

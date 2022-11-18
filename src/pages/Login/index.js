@@ -9,7 +9,7 @@ import Button from "components/common/Button";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PortalModal from "components/PortalModal";
-import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
+import { ModalHeader, ModalBody, ModalButton } from "components/common/styles";
 
 function Login() {
   const [showOnFailModal, setShowOnFailModal] = useState(false);

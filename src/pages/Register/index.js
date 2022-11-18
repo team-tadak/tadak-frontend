@@ -3,7 +3,7 @@ import InputEmail from "components/common/Inputs/InputEmail";
 import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndCheck";
 import InputUserName from "components/common/Inputs/InputUserName";
 import PortalModal from "components/PortalModal";
-import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
+import { ModalHeader, ModalBody, ModalButton } from "components/common/styles";
 import React, { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
