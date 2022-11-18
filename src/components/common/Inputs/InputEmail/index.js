@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { ErrorMessageBox, InputBox, InputContainer, LabelBox } from  "components/common/Inputs/styles.js";
 
-function InputEmail() {
+function InputEmail(props) {
 
     let errorMessage = "";
 
@@ -14,9 +14,11 @@ function InputEmail() {
         let isValid = pattern.test(e.target.value);
         if(!isValid) {
             errorMessage = "이메일 주소를 다시 입력하세요.";
+            props.setIsValid(false)
         }
         else {
             errorMessage ="";
+            props.setIsValid(true)
         }
         errorMessageBox.innerHTML = errorMessage;
     }

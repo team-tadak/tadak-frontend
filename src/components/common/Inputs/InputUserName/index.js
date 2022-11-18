@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ErrorMessageBox, InputBox, InputContainer, LabelBox } from  "components/common/Inputs/styles";
 
-function InputUserName({onChange,onError}) {
+function InputUserName({ onChange, onError = () => { }, setIsValid }) {
 
     let errorMessage = "";
 
@@ -15,10 +15,12 @@ function InputUserName({onChange,onError}) {
 
         if(isValid && e.target.value.length <= 10) {
             errorMessage = "";
+            setIsValid(true)
         }
         else {
             errorMessage = "닉네임(한글 또는 영문 최대 10자)을 다시 입력하세요.";
             errorMessageBox.innerHTML = errorMessage;
+            setIsValid(false)
             onError();
         }
 
@@ -31,8 +33,8 @@ function InputUserName({onChange,onError}) {
             <InputBox type="text" name="username" placeholder="닉네임을 입력하세요." onBlur={handleBlur} onChange={onChange}></InputBox>
             <ErrorMessageBox id="userNameErrorMessageBox"></ErrorMessageBox>
         </InputContainer>
-       
-   );
+
+    );
 }
 
 export default InputUserName;

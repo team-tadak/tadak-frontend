@@ -5,7 +5,7 @@ InputBox,
   LabelBox,
 } from "components/common/Inputs/styles";
 
-function InputPassword() {
+function InputPassword(props) {
 
     let errorMessage = "";
 
@@ -16,8 +16,10 @@ function InputPassword() {
         let errorMessageBox = document.getElementById("passWordErrorMessageBox");
         if (e.target.value.length > 20 || e.target.value.length < 8) {
           errorMessage = "비밀번호(8자리 이상 20자리 이하)를 다시 입력하세요.";
+          props.setIsValid(false)
         } else {
           errorMessage = "";
+          props.setIsValid(true)
         }
         errorMessageBox.innerHTML = errorMessage;
       };

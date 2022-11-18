@@ -6,7 +6,7 @@ import {
   LabelBox,
 } from "components/common/Inputs/styles";
 
-function InputPasswordAndCheck() {
+function InputPasswordAndCheck(props) {
   let errorMessage = "";
 
   const [text, setText] = useState("");
@@ -15,8 +15,10 @@ function InputPasswordAndCheck() {
     let errorMessageBox = document.getElementById("passWordErrorMessageBox");
     if (e.target.value.length > 20 || e.target.value.length < 8) {
       errorMessage = "비밀번호(8자리 이상 20자리 이하)를 다시 입력하세요.";
+      props.setIsValid(false)
     } else {
       errorMessage = "";
+      props.setIsValid(true)
     }
     errorMessageBox.innerHTML = errorMessage;
   };
@@ -29,8 +31,10 @@ function InputPasswordAndCheck() {
       errorMessage = "";
     } else if (password.value && e.target.value === password.value) {
       errorMessage = "비밀번호가 일치합니다.";
+      props.setIsValid(true)
     } else {
       errorMessage = "비밀번호가 일치하지 않습니다.";
+      props.setIsValid(false)
     }
 
     errorMessageBox.innerHTML = errorMessage;
