@@ -7,7 +7,6 @@ import { serverAxios } from "utils/commonAxios";
 import PortalModal from "components/PortalModal";
 import Button from "components/common/Button";
 import { ModalBody, ModalButton, ModalHeader, ModalIcon, ModalTitle } from "components/PortalModal/style";
-import { theme } from "styles/theme";
 import TimerIcon from "assets/svgs/Tumer_light.svg";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
@@ -266,7 +265,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
         open={showCountdownModal}
         onClose={() => { }}
       >
-        <ModalHeader color={theme.color.blue.light}>준비하세요!</ModalHeader>
+        <ModalHeader color={({ theme }) => theme.color.blue.light}>준비하세요!</ModalHeader>
         <ModalTitle>{countDownSeconds}</ModalTitle>
         <ModalButton onClick={() => { setIsReady(false) }}>바로시작!</ModalButton>
       </PortalModal>

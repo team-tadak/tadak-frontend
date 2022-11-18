@@ -1,5 +1,4 @@
 import styled from "@emotion/styled/macro";
-import { theme } from "styles/theme";
 import { hexToRgba } from "utils/color";
 import { motion } from "framer-motion";
 
@@ -18,7 +17,7 @@ export const StyledModal = styled(motion.div)`
   transform: translate(-50%, -50%);
   z-index: 100;
   width: 400px;
-  background: ${theme.color.modalBG};
+  background: ${({ theme }) => theme.color.modalBG};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
@@ -28,7 +27,7 @@ export const ModalIcon = styled.img`
 `
 
 export const ModalText = styled.div`
-  color: ${props => props.color ?? theme.color.white};
+  color: ${({ theme, color }) => color ?? theme.color.white};
 `
 
 export const ModalTitle = styled(ModalText)`
@@ -56,11 +55,11 @@ export const ModalButton = styled.div`
   text-align: center;
   font-weight: bold;
   &.active {
-    background-color: ${theme.color.primary500};
+    background-color: ${({ theme }) => theme.color.primary500};
   }
 
   &:hover {
-    background-color: ${theme.color.primary200};
+    background-color: ${({ theme }) => theme.color.primary200};
   }
   transition: 0.3s;
 `

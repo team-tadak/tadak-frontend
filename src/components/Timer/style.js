@@ -1,5 +1,4 @@
 import styled from "@emotion/styled/macro";
-import { theme } from "styles/theme";
 export const TimerDiv = styled.div`
 display: flex;
 flex-direction: row;
@@ -11,11 +10,11 @@ border-radius: 20px;
 background: #161B21
 `
 
-const baseText=styled.div`
+const baseText = styled.div`
 font-style: normal;
 font-weight: 400;
 font-size: 48px;
-color: ${theme.color.white};
+color: ${({ theme }) => theme.color.white};
 `
 
 export const DigitText = styled(baseText)`
