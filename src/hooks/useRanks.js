@@ -4,7 +4,9 @@ import { fetcher } from "utils/fetcher";
 // 전체 유저들의 랭킹을 가져옴. (본인 로그인 여부와 무관)
 function useRanks(pageNumber, pageSize, languageNo = 1, grammarNo = 1) {
   const { data, mutate, error } = useSWR(
-    `/ranks?pageNumber=${pageNumber}&pageSize=${pageSize}&languageNo=${languageNo}`,
+    languageNo
+      ? `/ranks?pageNumber=${pageNumber}&pageSize=${pageSize}&languageNo=${languageNo}`
+      : `/ranks?pageNumber=${pageNumber}&pageSize=${pageSize}`,
     fetcher,
     {
       revalidateOnFocus: false,

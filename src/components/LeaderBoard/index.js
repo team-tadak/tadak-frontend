@@ -45,7 +45,7 @@ function LeaderBoard({ ranks }) {
               variants={defaultFadeInScaleVariants}
               username={rank.user.username}
               email={rank.user.email}
-              KPM={rank.record}
+              KPM={rank.highest_record}
               language={rank.language_no}
               syntax={rank.grammar_no}
               key={index}

@@ -19,11 +19,11 @@ import { mutate } from "swr";
 import Pagination from "@mui/material/Pagination";
 
 function Leaderboard() {
-  const [languageNo, setLanguageNo] = useState(1);
+  const [languageNo, setLanguageNo] = useState(null);
   const [languageText, setLanguageText] = useState(null);
-  const [grammarNo, setgrammarNo] = useState(1);
+  const [grammarNo, setgrammarNo] = useState(null);
   const [grammarText, setGrammarText] = useState(null);
-  const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
+  const { ranks, error } = useRanks(1, 70, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
 
@@ -70,7 +70,7 @@ function Leaderboard() {
                   variants={defaultFadeInVariants}
                   username={ranks[0].user.username}
                   email={ranks[0].user.email}
-                  KPM={ranks[0].record}
+                  KPM={ranks[0].highest_record}
                   language={ranks[0].language_no}
                   syntax={ranks[0].grammar_no}
                   ranking="first"
@@ -80,7 +80,7 @@ function Leaderboard() {
                     variants={defaultFadeInVariants}
                     username={ranks[1].user.username}
                     email={ranks[1].user.email}
-                    KPM={ranks[1].record}
+                    KPM={ranks[1].highest_record}
                     language={ranks[1].language_no}
                     syntax={ranks[1].grammar_no}
                     ranking="second"
@@ -105,9 +105,9 @@ function Leaderboard() {
             {ranks.slice(2).length !== 0 && (
               <>
                 <LeaderBoard ranks={ranks.slice(2)}></LeaderBoard>
-                <PaginationContainer>
+                {/* <PaginationContainer>
                   <Pagination count={10}></Pagination>
-                </PaginationContainer>
+                </PaginationContainer> */}
               </>
             )}
           </LeaderBoardPageContentContainer>

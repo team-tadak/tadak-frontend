@@ -38,10 +38,10 @@ function LeaderBoardTopItem({
         <KPMText>{KPM} 타</KPMText>
       </LeaderBoardTopItemBasicInfoContainer>
       <LeaderBoardTopItemLanguageSyntaxContainer>
-        <Badge IconComponent={TagIcon}>
+        <Badge IconComponent={TagIcon} language={LANGUAGES[language - 1]} syntax={syntax}>
           {type === "header" ? "언어" : LANGUAGES[language - 1]}
         </Badge>
-        <Badge IconComponent={ExternalIcon}>
+        <Badge IconComponent={ExternalIcon} language={LANGUAGES[language - 1]} syntax={syntax}>
           {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
         </Badge>
       </LeaderBoardTopItemLanguageSyntaxContainer>
