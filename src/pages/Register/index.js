@@ -2,15 +2,31 @@ import Button from "components/common/Button";
 import InputEmail from "components/common/Inputs/InputEmail";
 import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndCheck";
 import InputUserName from "components/common/Inputs/InputUserName";
-import React from "react";
+import React, { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
 import { ButtonDiv, RegisterForm, RegisterInformation, RegisterTitle, ToLogin, ToLoginParagraph } from "./style";
 
 function Register() {
+  const [isValidUsername, setIsValidUserName] = useState(false)
+  const [isValidEmail, setIsValidEmail] = useState(false)
+  const [isValidPassword, setIsValidPassword] = useState(false)
+
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
+    if (!isValidEmail) {
+      console.log("invliadEmail")
+      return;
+    }
+    if (!isValidUsername) {
+      console.log("invalidUsername")
+      return;
+    }
+    if (!isValidPassword) {
+      console.log("invalidPassword")
+      return;
+    }
     async function register() {
       // form 핸들
       const form = e.currentTarget;
@@ -34,7 +50,7 @@ function Register() {
       }
     }
     register();
-  }, []);
+  }, [isValidEmail, isValidPassword, isValidUsername]);
 
   return (
     <>
@@ -44,9 +60,9 @@ function Register() {
         나의 기록도 저장할 수 있답니다!
       </RegisterInformation>
       <RegisterForm onSubmit={handleSubmit}>
-        <InputEmail></InputEmail>
-        <InputPasswordAndCheck></InputPasswordAndCheck>
-        <InputUserName></InputUserName>
+        <InputEmail setIsValid={setIsValidEmail}></InputEmail>
+        <InputPasswordAndCheck setIsValid={setIsValidPassword}></InputPasswordAndCheck>
+        <InputUserName setIsValid={setIsValidUserName}></InputUserName>
         <Button type="submit">시작하기!</Button>
       </RegisterForm>
       <ButtonDiv>
