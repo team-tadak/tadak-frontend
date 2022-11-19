@@ -7,7 +7,7 @@ import { TOP_DISPLAY_USER } from "constants/ranks";
 import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
 
-function LeaderBoard({ ranks, pageNumber, pageSize }) {
+function LeaderBoard({ ranks }) {
   //test
   // const { ranks, error } = useRanks(1, 10);
   // if (!ranks) {

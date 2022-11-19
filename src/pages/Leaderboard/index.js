@@ -120,7 +120,7 @@ function Leaderboard() {
             />
             {ranks.length !== 0 && (
               <> 
-                <LeaderBoard ranks={(pageNumber === 1) ? ranks.slice(2) : ranks} pageNumber={pageNumber} pageSize={LEADERBOARD_PAGE_SIZE}></LeaderBoard>
+                <LeaderBoard ranks={(pageNumber === 1) ? ranks.slice(2) : ranks}></LeaderBoard>
                 <PaginationContainer>
                   <Pagination 
                     count={ranks_meta.totalPages}
