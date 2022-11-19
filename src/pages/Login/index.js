@@ -10,10 +10,19 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import PortalModal from "components/PortalModal";
 import { ModalHeader, ModalBody, ModalButton } from "components/common/styles";
+import useUser from "hooks/useUser";
 
 function Login() {
   const [showOnFailModal, setShowOnFailModal] = useState(false);
   const navigate = useNavigate();
+
+  const {loggedOut} = useUser();
+
+  // 로그인 된 상태에서 로그인 페이지 접속 시 메인 화면으로 redirect
+  if(!loggedOut) {
+    navigate("/");
+  }
+
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     async function login() {
@@ -60,8 +69,16 @@ function Login() {
       <LoginTitle>로그인하기</LoginTitle>
       <LoginForm onSubmit={handleSubmit}>
         <InputEmail></InputEmail>
-        <InputPassword></InputPassword>
-        <Button type="submit">로그인</Button>
+        <InputPassword></InputPassword>  
+        <ButtonDiv>
+          <Button type="submit">로그인</Button>
+          <ToRegisterParagraph>
+            <ToRegister>
+              <Link to="/register">회원가입</Link>
+            </ToRegister>
+            하러 가기
+          </ToRegisterParagraph>
+        </ButtonDiv>
       </LoginForm>
       <ButtonDiv>
         <ToRegisterParagraph>

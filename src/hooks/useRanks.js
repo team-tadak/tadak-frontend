@@ -15,6 +15,7 @@ function useRanks(pageNumber, pageSize, languageNo = 1, grammarNo = 1) {
 
   return {
     ranks: data?.ranks,
+    ranks_meta: data?.ranks_meta,
     error,
     mutate, // 데이터 변경 시 이 API 를 이용하는 모든 컴포넌트에 UI 업데이트 방송.
   };

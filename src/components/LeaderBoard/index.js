@@ -7,7 +7,7 @@ import { TOP_DISPLAY_USER } from "constants/ranks";
 import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
 
-function LeaderBoard({ ranks }) {
+function LeaderBoard({ ranks, pageNumber, pageSize }) {
   //test
   // const { ranks, error } = useRanks(1, 10);
   // if (!ranks) {
@@ -37,11 +37,11 @@ function LeaderBoard({ ranks }) {
         {ranks &&
           ranks.map((rank, index) => (
             <LeaderBoardItem
-              rank={index + 1 + TOP_DISPLAY_USER}
+              rank={rank.ranking}
               variants={defaultFadeInScaleVariants}
               username={rank.user.username}
               email={rank.user.email}
-              KPM={rank.record}
+              KPM={rank.highest_record}
               language={rank.language_no}
               syntax={rank.grammar_no}
               key={index}
