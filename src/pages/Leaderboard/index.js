@@ -17,17 +17,29 @@ import Spinner from "components/common/Spinner";
 import DropdownComponent from "components/Dropdown";
 import { mutate } from "swr";
 import Pagination from "@mui/material/Pagination";
+import { LEADERBOARD_PAGE_SIZE } from "constants/pagination";
 
 function Leaderboard() {
+
+  const [pageNumber, setPageNumber] = useState(1);
   const [languageNo, setLanguageNo] = useState(1);
   const [languageText, setLanguageText] = useState(null);
   const [grammarNo, setgrammarNo] = useState(1);
   const [grammarText, setGrammarText] = useState(null);
-  const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
+  const { ranks, ranks_meta, error } = useRanks(pageNumber, LEADERBOARD_PAGE_SIZE, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
 
-  const [page, setPage] = useState(1);
+  //const [offSet, setOffSet] = useState(2);
+
+ 
+  const topRanks = useRanks(1, 2, languageNo, grammarNo).ranks;
+  
+
+  const handlePageChange = (event, value) => {
+    setPageNumber(value);
+
+  }
 
   useEffect(() => {
     if (languageText === "PYTHON") {
@@ -50,7 +62,7 @@ function Leaderboard() {
   console.log(ranks);
   return (
     <>
-      {ranks[0] && (
+      {topRanks[0] && (
         <LeaderBoardPageContainer>
           <LeaderBoardPageContentContainer
             variants={staggerQuarter}
@@ -68,21 +80,21 @@ function Leaderboard() {
               <LeaderBoardTopRankingContainer variants={staggerHalf}>
                 <LeaderBoardTopItem
                   variants={defaultFadeInVariants}
-                  username={ranks[0].user.username}
-                  email={ranks[0].user.email}
-                  KPM={ranks[0].record}
-                  language={ranks[0].language_no}
-                  syntax={ranks[0].grammar_no}
+                  username={topRanks[0].user.username}
+                  email={topRanks[0].user.email}
+                  KPM={topRanks[0].highest_record}
+                  language={topRanks[0].language_no}
+                  syntax={topRanks[0].grammar_no}
                   ranking="first"
                 />
-                {ranks[1] && (
+                {topRanks[1] && (
                   <LeaderBoardTopItem
                     variants={defaultFadeInVariants}
-                    username={ranks[1].user.username}
-                    email={ranks[1].user.email}
-                    KPM={ranks[1].record}
-                    language={ranks[1].language_no}
-                    syntax={ranks[1].grammar_no}
+                    username={topRanks[1].user.username}
+                    email={topRanks[1].user.email}
+                    KPM={topRanks[1].highest_record}
+                    language={topRanks[1].language_no}
+                    syntax={topRanks[1].grammar_no}
                     ranking="second"
                   />
                 )}
@@ -101,11 +113,15 @@ function Leaderboard() {
               }}
               setItem={setLanguageText}
             />
-            {ranks.slice(2).length !== 0 && (
-              <>
-                <LeaderBoard ranks={ranks.slice(2)}></LeaderBoard>
+            {ranks.length !== 0 && (
+              <> 
+                <LeaderBoard ranks={(pageNumber === 1) ? ranks.slice(2) : ranks}></LeaderBoard>
                 <PaginationContainer>
-                  <Pagination count={10}></Pagination>
+                  <Pagination 
+                    count={ranks_meta.totalPages}
+                    page={pageNumber}
+                    onChange={handlePageChange}>
+                  </Pagination>
                 </PaginationContainer>
               </>
             )}
