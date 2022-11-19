@@ -37,11 +37,6 @@ function Leaderboard() {
   
 
   const handlePageChange = (event, value) => {
-    console.log(ranks_meta);
-    console.log(ranks_meta.pageNumber);
-    console.log(ranks_meta.pageSize);
-    console.log(ranks_meta.totalCount);
-    console.log(ranks_meta.totalPages);
     setPageNumber(value);
 
   }
