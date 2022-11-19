@@ -1,5 +1,6 @@
 const STAGGER_CHILDREN_ONE = 0.5;
 const FADE_IN_DURATION = 0.8;
+const RAPID_FADE_IN_DURATION = 0.15;
 
 export const defaultEasing = [FADE_IN_DURATION, 0.2, 0.3, 0.5];
 
@@ -112,6 +113,45 @@ export const defaultFadeInSlideToLeftVariants = {
     opacity: 0,
     x: -30,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
+    willChange: "opacity, transform",
+  },
+};
+
+export const rapidFadeInVariants = {
+  initial: {
+    opacity: 0,
+    transition: { duration: RAPID_FADE_IN_DURATION, ease: defaultEasing },
+    willChange: "opacity",
+  },
+  animate: {
+    opacity: 1,
+    transition: { duration: RAPID_FADE_IN_DURATION, ease: defaultEasing },
+    willChange: "opacity",
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: RAPID_FADE_IN_DURATION, ease: defaultEasing },
+    willChange: "opacity",
+  },
+};
+
+export const rapidFadeInUpVariants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+    transition: { duration: RAPID_FADE_IN_DURATION },
+    willChange: "opacity, transform",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: RAPID_FADE_IN_DURATION },
+    willChange: "opacity, transform",
+  },
+  exit: {
+    opacity: 0,
+    y: 30,
+    transition: { duration: RAPID_FADE_IN_DURATION },
     willChange: "opacity, transform",
   },
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { DigitText, SymbolText, TimerDiv } from "./style";
+import { DigitText, SymbolText, TimerDiv } from "components/Timer/styles";
 
 // EXAMPLE
 //   const [stopState, setStopState] = useState(false);

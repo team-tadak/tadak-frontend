@@ -2,13 +2,17 @@ import Button from "components/common/Button";
 import InputEmail from "components/common/Inputs/InputEmail";
 import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndCheck";
 import InputUserName from "components/common/Inputs/InputUserName";
-import React from "react";
+import PortalModal from "components/PortalModal";
+import { ModalHeader, ModalBody, ModalButton } from "components/common/styles";
+import React, { useState } from "react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { serverAxios } from "utils/commonAxios";
 import { ButtonDiv, RegisterForm, RegisterInformation, RegisterTitle, ToLogin, ToLoginParagraph } from "./style";
 
 function Register() {
+  const [showOnFailModal, setShowOnFailModal] = useState(false);
+  const [showOnSuccessModal, setShowOnSuccessModal] = useState(false);
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     async function register() {
@@ -27,10 +31,13 @@ function Register() {
           // POST 요청 성공 시
           // this.props.history.push("/");
           console.log("회원가입 성공");
+          setShowOnSuccessModal(true);
+        }).catch(() => {
+          // POST 요청 실패 시
+          console.log(e);
+          setShowOnFailModal(true);
         });
       } catch (e) {
-        // POST 요청 실패 시
-        console.log(e);
       }
     }
     register();
@@ -58,6 +65,17 @@ function Register() {
           하러 가기
         </ToLoginParagraph>
       </ButtonDiv>
+      <PortalModal open={showOnSuccessModal} onClose={() => { setShowOnSuccessModal(false) }}>
+        <ModalHeader>회원가입 성공!</ModalHeader>
+        <Link to={"/login"} style={{ width: '100%' }}>
+          <ModalButton onClick={() => { setShowOnSuccessModal(false) }}>확인</ModalButton>
+        </Link>
+      </PortalModal>
+      <PortalModal open={showOnFailModal} onClose={() => { setShowOnFailModal(false) }}>
+        <ModalHeader>회원가입 실패</ModalHeader>
+        <ModalBody>이메일 및 비밀번호를 확인하세요</ModalBody>
+        <ModalButton onClick={() => { setShowOnFailModal(false) }}>확인</ModalButton>
+      </PortalModal>
     </>
   );
 }
