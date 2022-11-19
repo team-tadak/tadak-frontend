@@ -29,9 +29,6 @@ function Leaderboard() {
   const { ranks, ranks_meta, error } = useRanks(pageNumber, LEADERBOARD_PAGE_SIZE, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
-
-  const [offSet, setOffSet] = useState(2);
-
  
   const topRanks = useRanks(1, 2, languageNo, grammarNo).ranks;
   
