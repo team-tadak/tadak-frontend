@@ -1,7 +1,7 @@
 import {
   StyledModal,
   DimmedArea,
-} from "./styles";
+} from "components/PortalModal/styles";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import usePreventScroll from "hooks/usePreventScroll";
