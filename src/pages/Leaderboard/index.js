@@ -8,7 +8,6 @@ import {
 } from "pages/Leaderboard/styles";
 import React, { useState, useEffect } from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
-import { filterProps, motion } from "framer-motion";
 import { MOCKUP_RANKS } from "mockups/ranks";
 import Typography from "components/common/Typography";
 import UserContainer from "pages/MyPage/UserContainer";
@@ -17,23 +16,20 @@ import Spinner from "components/common/Spinner";
 import DropdownComponent from "components/Dropdown";
 import { mutate } from "swr";
 import Pagination from "@mui/material/Pagination";
+import { LEADERBOARD_PAGE_SIZE } from "constants/pagination";
 
 function Leaderboard() {
 
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
   const [languageNo, setLanguageNo] = useState(1);
   const [languageText, setLanguageText] = useState(null);
   const [grammarNo, setgrammarNo] = useState(1);
   const [grammarText, setGrammarText] = useState(null);
-  const { ranks, ranks_meta, error } = useRanks(pageNumber, pageSize, languageNo, grammarNo);
+  const { ranks, ranks_meta, error } = useRanks(pageNumber, LEADERBOARD_PAGE_SIZE, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
-
-  const [offSet, setOffSet] = useState(2);
-
  
-  const topRanks = useRanks(1, pageSize, languageNo, grammarNo).ranks;
+  const topRanks = useRanks(1, 2, languageNo, grammarNo).ranks;
   
 
   const handlePageChange = (event, value) => {
@@ -43,7 +39,7 @@ function Leaderboard() {
     console.log(ranks_meta.totalCount);
     console.log(ranks_meta.totalPage);
     setPageNumber(value);
-    setPageSize(10);
+    setPageSize(LEADERBOARD_PAGE_SIZE);
   }
 
   useEffect(() => {
@@ -120,7 +116,7 @@ function Leaderboard() {
             />
             {ranks.slice(2).length !== 0 && (
               <> 
-                <LeaderBoard ranks={(pageNumber == 1) ? ranks.slice(2) : ranks} pageNumber={pageNumber} pageSize={pageSize}></LeaderBoard>
+                <LeaderBoard ranks={(pageNumber === 1) ? ranks.slice(2) : ranks} pageNumber={pageNumber} pageSize={LEADERBOARD_PAGE_SIZE}></LeaderBoard>
                 <PaginationContainer>
                   <Pagination 
                     count={ranks_meta.totalPage}

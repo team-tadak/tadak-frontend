@@ -37,7 +37,7 @@ function LeaderBoard({ ranks, pageNumber, pageSize }) {
         {ranks &&
           ranks.map((rank, index) => (
             <LeaderBoardItem
-              rank={(pageNumber == 1) ? index + 1 + TOP_DISPLAY_USER : index + 1 + pageSize}
+              rank={(pageNumber === 1) ? index + 1 + TOP_DISPLAY_USER : index + 1 + pageSize}
               variants={defaultFadeInScaleVariants}
               username={rank.user.username}
               email={rank.user.email}
