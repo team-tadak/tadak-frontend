@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { theme } from "styles/theme";
 import { BadgeIconContainer } from "components/common/Badge/styles";
 
 export const CardContainer = styled.div`
@@ -19,7 +18,7 @@ export const IconContainer = styled(BadgeIconContainer)`
     justify-content: center;
     align-items:center;
 
-    background-color:${theme.color.white};
+    background-color:${({ theme }) => theme.color.white};
     border-radius:10px;
     width:64px;
     height:64px;
@@ -53,5 +52,5 @@ export const Summary = styled.div`
   font-weight: 400;
   font-size: 12px;
 
-  color: ${theme.color.white};
+  color: ${({ theme }) => theme.color.white};
 `;

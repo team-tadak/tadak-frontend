@@ -37,11 +37,11 @@ function LeaderBoard({ ranks, pageNumber, pageSize }) {
         {ranks &&
           ranks.map((rank, index) => (
             <LeaderBoardItem
-              rank={(pageNumber === 1) ? index + 1 + TOP_DISPLAY_USER : index + 1 + pageSize}
+              rank={rank.ranking}
               variants={defaultFadeInScaleVariants}
               username={rank.user.username}
               email={rank.user.email}
-              KPM={rank.record}
+              KPM={rank.highest_record}
               language={rank.language_no}
               syntax={rank.grammar_no}
               key={index}

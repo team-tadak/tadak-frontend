@@ -8,6 +8,7 @@ import {
 } from "pages/Leaderboard/styles";
 import React, { useState, useEffect } from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
+import { motion } from "framer-motion";
 import { MOCKUP_RANKS } from "mockups/ranks";
 import Typography from "components/common/Typography";
 import UserContainer from "pages/MyPage/UserContainer";
@@ -28,6 +29,9 @@ function Leaderboard() {
   const { ranks, ranks_meta, error } = useRanks(pageNumber, LEADERBOARD_PAGE_SIZE, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
   const [language, setSelected] = useState(undefined);
+
+  const [offSet, setOffSet] = useState(2);
+
  
   const topRanks = useRanks(1, 2, languageNo, grammarNo).ranks;
   
@@ -37,9 +41,9 @@ function Leaderboard() {
     console.log(ranks_meta.pageNumber);
     console.log(ranks_meta.pageSize);
     console.log(ranks_meta.totalCount);
-    console.log(ranks_meta.totalPage);
+    console.log(ranks_meta.totalPages);
     setPageNumber(value);
-    setPageSize(LEADERBOARD_PAGE_SIZE);
+
   }
 
   useEffect(() => {
@@ -63,7 +67,7 @@ function Leaderboard() {
   console.log(ranks);
   return (
     <>
-      {ranks[0] && (
+      {topRanks[0] && (
         <LeaderBoardPageContainer>
           <LeaderBoardPageContentContainer
             variants={staggerQuarter}
@@ -83,17 +87,17 @@ function Leaderboard() {
                   variants={defaultFadeInVariants}
                   username={topRanks[0].user.username}
                   email={topRanks[0].user.email}
-                  KPM={topRanks[0].record}
+                  KPM={topRanks[0].highest_record}
                   language={topRanks[0].language_no}
                   syntax={topRanks[0].grammar_no}
                   ranking="first"
                 />
-                {ranks[1] && (
+                {topRanks[1] && (
                   <LeaderBoardTopItem
                     variants={defaultFadeInVariants}
                     username={topRanks[1].user.username}
                     email={topRanks[1].user.email}
-                    KPM={topRanks[1].record}
+                    KPM={topRanks[1].highest_record}
                     language={topRanks[1].language_no}
                     syntax={topRanks[1].grammar_no}
                     ranking="second"
@@ -114,12 +118,12 @@ function Leaderboard() {
               }}
               setItem={setLanguageText}
             />
-            {ranks.slice(2).length !== 0 && (
+            {ranks.length !== 0 && (
               <> 
                 <LeaderBoard ranks={(pageNumber === 1) ? ranks.slice(2) : ranks} pageNumber={pageNumber} pageSize={LEADERBOARD_PAGE_SIZE}></LeaderBoard>
                 <PaginationContainer>
                   <Pagination 
-                    count={ranks_meta.totalPage}
+                    count={ranks_meta.totalPages}
                     page={pageNumber}
                     onChange={handlePageChange}>
                   </Pagination>

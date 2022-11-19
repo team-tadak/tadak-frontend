@@ -1,6 +1,5 @@
 import styled from "@emotion/styled/macro";
 import { motion } from "framer-motion";
-import { theme } from "styles/theme";
 
 export const MainPageContainer = styled.main`
   display: flex;
