@@ -85,13 +85,13 @@ const ButtonContainer = styled.div`
 // URL 을 parsing 해서 현재 typepage 인지 아닌지 판단
 // 원시적인 방법이라 추후 다른 방법 대체 필요
 function isTypePage(url) {
-  if (url.startsWith("/python/") && url.length >= 9) {
+  if ((url.startsWith("/python/") || url.startsWith("/Python/")) && url.length >= 9) {
     return true;
   }
-  if (url.startsWith("/html/") && url.length >= 7) {
+  if ((url.startsWith("/html/") || url.startsWith("/Html/")) && url.length >= 7) {
     return true;
   }
-  if (url.startsWith("/c/") && url.length >= 4) {
+  if ((url.startsWith("/c/") || url.startsWith("/C/")) && url.length >= 4) {
     return true;
   }
   return false;
