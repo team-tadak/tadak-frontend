@@ -21,12 +21,18 @@ import Pagination from "@mui/material/Pagination";
 function Leaderboard() {
   const [languageNo, setLanguageNo] = useState(1);
   const [languageText, setLanguageText] = useState(null);
-  const [grammarNo, setgrammarNo] = useState(1);
+  const [grammarNo, setGrammarNo] = useState(1);
   const [grammarText, setGrammarText] = useState(null);
   const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
+  const grammarList = [
+    ["파이썬 1", "파이썬 2", "파이썬 3", "파이썬 4", "파이썬 5", "파이썬 6"],
+    ["Html 1", "Html 2", "Html 3", "Html 4", "Html 5", "Html 6"],
+    ["C 1", "C 2", "C 3", "C 4", "C 5", "C 6"],
+  ];
   const [language, setSelected] = useState(undefined);
 
+  /* language가 무엇인지에 따라 grammarText를 어떻게 할지... 그냥 일차원적으로 grammarText이거아님이거 ||로 이렇게 적어야 하나?*/
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -38,6 +44,22 @@ function Leaderboard() {
       setLanguageNo(3);
     }
   }, [languageText]);
+
+  useEffect(() => {
+    if (grammarText === "파이썬 1" || grammarText === "Html 1" || grammarText === "C 1") {
+      setGrammarNo(1);
+    } else if (grammarText === "파이썬 2" || grammarText === "Html 2" || grammarText === "C 2") {
+      setGrammarNo(2);
+    } else if (grammarText === "파이썬 3" || grammarText === "Html 3" || grammarText === "C 3") {
+      setGrammarNo(3);
+    } else if (grammarText === "파이썬 4" || grammarText === "Html 4" || grammarText === "C 4") {
+      setGrammarNo(4);
+    } else if (grammarText === "파이썬 5" || grammarText === "Html 5" || grammarText === "C 5") {
+      setGrammarNo(5);
+    } else if (grammarText === "파이썬 6" || grammarText === "Html 6" || grammarText === "C 6") {
+      setGrammarNo(6);
+    }
+  }, [grammarText]);
 
   console.log(error);
   if (!ranks) {
@@ -100,6 +122,14 @@ function Leaderboard() {
                 console.log("good");
               }}
               setItem={setLanguageText}
+            />
+            <DropdownComponent
+              list={grammarList[languageNo - 1]}
+              onSelect={setSelected}
+              onChange={() => {
+                console.log("good");
+              }}
+              setItem={setGrammarText}
             />
             {ranks.slice(2).length !== 0 && (
               <>
