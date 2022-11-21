@@ -11,8 +11,6 @@ import { Link } from "react-router-dom";
 import PortalModal from "components/PortalModal";
 import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
 import useUser from "hooks/useUser";
-import * as bcrypt from "bcryptjs";
-import { BCRYPT_SALT } from "constants/hash";
 
 function Login() {
   const [showOnFailModal, setShowOnFailModal] = useState(false);
@@ -23,11 +21,10 @@ function Login() {
       // form 핸들
       const form = e.currentTarget;
       const formElements = form.elements;
-      const hashedPassword = bcrypt.hash(formElements?.password.value, BCRYPT_SALT);
       try {
         const body = {
           email: formElements?.email.value,
-          password: hashedPassword,
+          password: formElements?.password.value,
         };
 
         serverAxios

@@ -49,13 +49,12 @@ function Register() {
       const usernameValue = formElements?.username.value;
       const passwordValue = formElements?.password.value;
       const passwordConfirmValue = formElements?.passwordCheck.value;
-      const hashedPassword = bcrypt.hash(passwordValue, BCRYPT_SALT);
 
       try {
         const body = {
           username: usernameValue,
           email: emailValue,
-          password: hashedPassword,
+          password: passwordValue,
         };
 
         // // 입력 각종 예외 처리
