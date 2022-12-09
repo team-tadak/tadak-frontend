@@ -5,6 +5,7 @@ import {
   LeaderBoardPageContentContainer,
   LeaderBoardTopRankingContainer,
   PaginationContainer,
+  LeaderBoardDropdwonContainer,
 } from "pages/Leaderboard/styles";
 import React, { useState, useEffect } from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
@@ -19,9 +20,9 @@ import { mutate } from "swr";
 import Pagination from "@mui/material/Pagination";
 
 function Leaderboard() {
-  const [languageNo, setLanguageNo] = useState(1);
+  const [languageNo, setLanguageNo] = useState(0);
   const [languageText, setLanguageText] = useState(null);
-  const [grammarNo, setGrammarNo] = useState(1);
+  const [grammarNo, setGrammarNo] = useState(0);
   const [grammarText, setGrammarText] = useState(null);
   const { ranks, error } = useRanks(1, 10, languageNo, grammarNo);
   const LanguageList = ["PYTHON", "HTML", "C"];
@@ -113,24 +114,29 @@ function Leaderboard() {
             <Typography type="subHeading" variants={defaultFadeInVariants}>
               모든 사용자
             </Typography>
-            <DropdownComponent
-              list={LanguageList}
-              onSelect={setSelected}
-              onChange={() => {
-                //mutate("/ranks?languageNo=2&pageNumber=1&pageSize=5");
-                // setLanguageNo(3);
-                console.log("good");
-              }}
-              setItem={setLanguageText}
-            />
-            <DropdownComponent
-              list={grammarList[languageNo - 1]}
-              onSelect={setSelected}
-              onChange={() => {
-                console.log("good");
-              }}
-              setItem={setGrammarText}
-            />
+            <LeaderBoardDropdwonContainer>
+              <DropdownComponent
+                list={LanguageList}
+                kind="언어 선택"
+                onSelect={setSelected}
+                onChange={() => {
+                  //mutate("/ranks?languageNo=2&pageNumber=1&pageSize=5");
+                  // setLanguageNo(3);
+                  console.log("good");
+                }}
+                setItem={setLanguageText}
+              />
+              <DropdownComponent
+                list={languageNo === 0 ? [] : grammarList[languageNo - 1]}
+                kind="문법 선택"
+                onSelect={setSelected}
+                onChange={() => {
+                  console.log(grammarNo);
+                }}
+                setItem={setGrammarText}
+              />
+            </LeaderBoardDropdwonContainer>
+
             {ranks.slice(2).length !== 0 && (
               <>
                 <LeaderBoard ranks={ranks.slice(2)}></LeaderBoard>

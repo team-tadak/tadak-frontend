@@ -26,3 +26,8 @@ export const PaginationContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
 `;
+
+export const LeaderBoardDropdwonContainer = styled(motion.div)`
+  display: flex;
+  gap: 2em;
+`;

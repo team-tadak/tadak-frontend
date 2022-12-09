@@ -71,9 +71,15 @@ export const OptionItem = styled.li`
 //
 // <DropdownComponent list={["남성", "여성", "선택 안 함"]}></DropdownComponent>
 
-function DropdownComponent({ list, onSelect = (selected) => {}, onChange, setItem }) {
+function DropdownComponent({
+  list = [],
+  onSelect = (selected) => {},
+  kind = "선택",
+  onChange,
+  setItem,
+}) {
   const [active, setActive] = useState(false);
-  const [selected, setSelected] = useState("선택");
+  const [selected, setSelected] = useState(kind);
   return (
     <DropdownContainer>
       <SelectedLabel
