@@ -1,0 +1,13 @@
+.next
+next-env.d.ts
+yarn.lock
+public
+next.config.js
+README.md
+Dockerfile
+.nvmrc
+.vscode
+.idea
+.yarn
+.pnp.*
+test.tsx

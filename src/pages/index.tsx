@@ -50,7 +50,7 @@ function Main(): ReturnType<React.FC> {
           </TitleContainer>
           <MainPageInputContainer>
             <InputUserName
-              onChange={(e) => {
+              onChange={(e: any) => {
                 setNickName(e.target.value);
               }}
               onError={() => {
