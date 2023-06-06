@@ -20,7 +20,7 @@ import InputUserName from "components/common/Inputs/InputUserName";
 import DropdownComponent from "components/Dropdown";
 import Link from "next/link";
 
-function Main() {
+function Main(): ReturnType<React.FC> {
   const [gender, setSelected] = useState(undefined);
   const [nickName, setNickName] = useState(undefined);
   const genderList = ["남성", "여성", "선택 안 함"];
@@ -31,6 +31,7 @@ function Main() {
     }
     console.log("nickName: " + nickName + ", gender: " + gender);
   }
+
   return (
     <>
       <MainPageContainer>
@@ -61,7 +62,12 @@ function Main() {
                 {" "}
                 <wbr />{" "}
               </LabelBox>
-              <DropdownComponent list={genderList} onSelect={setSelected}></DropdownComponent>
+              <DropdownComponent
+                list={genderList}
+                onSelect={setSelected}
+                onChange={undefined}
+                setItem={undefined}
+              ></DropdownComponent>
             </InputWrapper>
             <InputWrapper>
               <LabelBox>
