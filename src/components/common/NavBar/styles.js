@@ -12,14 +12,18 @@ export const StyledNavBar = styled.header`
 
   transition: background-color 0.3s;
   z-index: 100;
+  display: flex;
   align-items: center;
-`;
+  justify-content: space-between;
+  `;
 
 export const NavBarContainer = styled.nav`
+  width: 100%;
   margin: auto auto;
   display: flex;
   justify-content: space-between;
   max-width: 1280px;
+  align-items: center;
 `;
 
 export const NavBarLogoContainer = styled.div`
