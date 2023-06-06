@@ -28,3 +28,6 @@ yarn-error.log*
 
 # next
 .next
+
+# IDE
+.idea
