@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import styled from '@emotion/styled';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const DropdownContainer = styled(motion.div)`
   position: relative;
@@ -25,13 +25,13 @@ export const SelectedLabel = styled.button`
   padding: 15px;
   color: #fff;
   font-size: 16px;
-  background: url("/images/expand_down.png") calc(100% - 15px) center no-repeat;
+  background: url('/images/expand_down.png') calc(100% - 15px) center no-repeat;
   margin: 9px 0;
   cursor: pointer;
 `;
 
 const activeExist = ({ active = true }) => {
-  return `display: ${active ? "block" : "none"}`;
+  return `display: ${active ? 'block' : 'none'}`;
 };
 
 export const OptionList = styled.ul`
@@ -74,7 +74,7 @@ export const OptionItem = styled.li`
 
 function DropdownComponent({ list, onSelect = (selected) => {}, onChange, setItem, ...props }) {
   const [active, setActive] = useState(false);
-  const [selected, setSelected] = useState("선택");
+  const [selected, setSelected] = useState('선택');
   return (
     <DropdownContainer {...props}>
       <SelectedLabel

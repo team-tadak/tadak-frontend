@@ -1,12 +1,12 @@
-import LeaderBoardItem from "components/LeaderBoard/LeaderBoardItem";
-import { StyledLeaderBoard } from "components/LeaderBoard/styles";
-import React from "react";
-import { MOCKUP_RANKS } from "mockups/ranks";
-import { defaultFadeInScaleVariants, staggerQuarter } from "styles/motions";
-import { TOP_DISPLAY_USER } from "constants/ranks";
-import useRanks from "hooks/useRanks";
-import Spinner from "components/common/Spinner";
-import { css } from "@emotion/react";
+import LeaderBoardItem from 'components/LeaderBoard/LeaderBoardItem';
+import { StyledLeaderBoard } from 'components/LeaderBoard/styles';
+import React from 'react';
+import { MOCKUP_RANKS } from 'mockups/ranks';
+import { defaultFadeInScaleVariants, staggerQuarter } from 'styles/motions';
+import { TOP_DISPLAY_USER } from 'constants/ranks';
+import useRanks from 'hooks/useRanks';
+import Spinner from 'components/common/Spinner';
+import { css } from '@emotion/react';
 
 function LeaderBoard({ ranks }) {
   //test

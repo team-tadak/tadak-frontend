@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
-import Code from "./img/Code.png";
-import Trophy from "./img/Trophy.png";
-import UserContainer from "./UserContainer";
+import React from 'react';
+import styled from '@emotion/styled';
+import Code from './img/Code.png';
+import Trophy from './img/Trophy.png';
+import UserContainer from './UserContainer';
 
 const RecordShape = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ const IconTextContainer = styled.div`
 `;
 
 const TitleFont = styled.div`
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -32,7 +32,7 @@ const TitleFont = styled.div`
 `;
 
 const RecordFont = styled.div`
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
@@ -43,8 +43,8 @@ function ResultContainer({ title, icon, record }) {
   return (
     <RecordShape>
       <IconTextContainer>
-        {icon === "1" && <img src={Code} width="50" height="50" />}
-        {icon === "2" && <img src={Trophy} width="50" height="50" />}
+        {icon === '1' && <img src={Code} width="50" height="50" />}
+        {icon === '2' && <img src={Trophy} width="50" height="50" />}
         <TitleFont>{title}</TitleFont>
       </IconTextContainer>
       <RecordFont>{record}</RecordFont>

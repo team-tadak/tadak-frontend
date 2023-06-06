@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import Button from "components/common/Button";
+import Button from 'components/common/Button';
 import {
   MainPageContainer,
   MainPageContentSection,
@@ -9,27 +9,27 @@ import {
   SubTitle,
   Title,
   TitleContainer,
-} from "pages/styles";
-import { InputContainer as InputWrapper, LabelBox } from "components/common/Inputs/styles";
+} from 'pages/styles';
+import { InputContainer as InputWrapper, LabelBox } from 'components/common/Inputs/styles';
 
-import React from "react";
-import { useState } from "react";
-import { defaultFadeInUpVariants, staggerOne } from "styles/motions";
-import { css } from "@emotion/react";
-import InputUserName from "components/common/Inputs/InputUserName";
-import DropdownComponent from "components/Dropdown";
-import Link from "next/link";
+import React from 'react';
+import { useState } from 'react';
+import { defaultFadeInUpVariants, staggerOne } from 'styles/motions';
+import { css } from '@emotion/react';
+import InputUserName from 'components/common/Inputs/InputUserName';
+import DropdownComponent from 'components/Dropdown';
+import Link from 'next/link';
 
 function Main(): ReturnType<React.FC> {
   const [gender, setSelected] = useState(undefined);
   const [nickName, setNickName] = useState(undefined);
-  const genderList = ["남성", "여성", "선택 안 함"];
+  const genderList = ['남성', '여성', '선택 안 함'];
   function handleSubmit() {
     if (nickName === undefined || gender === undefined) {
-      console.log("check nickName & gender");
+      console.log('check nickName & gender');
       return;
     }
-    console.log("nickName: " + nickName + ", gender: " + gender);
+    console.log('nickName: ' + nickName + ', gender: ' + gender);
   }
 
   return (
@@ -59,8 +59,8 @@ function Main(): ReturnType<React.FC> {
             ></InputUserName>
             <InputWrapper>
               <LabelBox>
-                {" "}
-                <wbr />{" "}
+                {' '}
+                <wbr />{' '}
               </LabelBox>
               <DropdownComponent
                 list={genderList}
@@ -71,8 +71,8 @@ function Main(): ReturnType<React.FC> {
             </InputWrapper>
             <InputWrapper>
               <LabelBox>
-                {" "}
-                <wbr />{" "}
+                {' '}
+                <wbr />{' '}
               </LabelBox>
               <Link href="/languageselect">
                 <Button

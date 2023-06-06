@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
-import { theme } from "styles/theme";
-import { hexToRgba } from "utils/color";
-import { motion } from "framer-motion";
+import styled from '@emotion/styled';
+import { theme } from 'styles/theme';
+import { hexToRgba } from 'utils/color';
+import { motion } from 'framer-motion';
 
 export const StyledModal = styled(motion.div)`
   display: flex;
@@ -23,27 +23,27 @@ export const StyledModal = styled(motion.div)`
 `;
 
 export const ModalIcon = styled.img`
-  width:40px;
-  height:40px;
-`
+  width: 40px;
+  height: 40px;
+`;
 
 export const ModalText = styled.div`
-  color: ${props => props.color || theme.color.white};
-`
+  color: ${(props) => props.color || theme.color.white};
+`;
 
 export const ModalTitle = styled(ModalText)`
   font-size: 40px;
   font-weight: 700;
-`
+`;
 
 export const ModalHeader = styled(ModalText)`
   font-size: 36px;
   font-weight: 700;
-`
+`;
 
 export const ModalBody = styled(ModalText)`
   font-size: 16px;
-`
+`;
 
 export const ModalButton = styled.div`
   padding: 10px;
@@ -63,7 +63,7 @@ export const ModalButton = styled.div`
     background-color: ${theme.color.primary200};
   }
   transition: 0.3s;
-`
+`;
 
 export const DimmedArea = styled.div`
   position: fixed;

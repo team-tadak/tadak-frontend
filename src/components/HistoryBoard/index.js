@@ -1,11 +1,11 @@
-import { staggerQuarter, defaultFadeInScaleVariants } from "styles/motions";
-import { MOCKUP_HISTORIES } from "mockups/histories";
-import { SpinnerContainer, StyledHistoryBoard } from "components/HistoryBoard/styles";
-import HistoryBoardItem from "components/HistoryBoard/HisoryBoardItem";
-import useHistories from "hooks/useHistories";
-import Spinner from "components/common/Spinner";
-import { useCallback } from "react";
-import { css } from "@emotion/react";
+import { staggerQuarter, defaultFadeInScaleVariants } from 'styles/motions';
+import { MOCKUP_HISTORIES } from 'mockups/histories';
+import { SpinnerContainer, StyledHistoryBoard } from 'components/HistoryBoard/styles';
+import HistoryBoardItem from 'components/HistoryBoard/HisoryBoardItem';
+import useHistories from 'hooks/useHistories';
+import Spinner from 'components/common/Spinner';
+import { useCallback } from 'react';
+import { css } from '@emotion/react';
 
 function HistoryBoard() {
   const { histories, error } = useHistories(1, 5);

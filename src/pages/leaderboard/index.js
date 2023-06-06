@@ -1,22 +1,22 @@
-import LeaderBoard from "components/LeaderBoard";
-import LeaderBoardTopItem from "components/LeaderBoard/LeaderBoardTopItem";
+import LeaderBoard from 'components/LeaderBoard';
+import LeaderBoardTopItem from 'components/LeaderBoard/LeaderBoardTopItem';
 import {
   LeaderBoardPageContainer,
   LeaderBoardPageContentContainer,
   LeaderBoardTopRankingContainer,
   PaginationContainer,
-} from "pages/leaderboard/styles";
-import React, { useState, useEffect } from "react";
-import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
-import { motion } from "framer-motion";
-import { MOCKUP_RANKS } from "mockups/ranks";
-import Typography from "components/common/Typography";
-import UserContainer from "pages/mypage/UserContainer";
-import useRanks from "hooks/useRanks";
-import Spinner from "components/common/Spinner";
-import DropdownComponent from "components/Dropdown";
-import { mutate } from "swr";
-import Pagination from "@mui/material/Pagination";
+} from 'pages/leaderboard/styles';
+import React, { useState, useEffect } from 'react';
+import { defaultFadeInVariants, staggerHalf, staggerQuarter } from 'styles/motions';
+import { motion } from 'framer-motion';
+import { MOCKUP_RANKS } from 'mockups/ranks';
+import Typography from 'components/common/Typography';
+import UserContainer from 'pages/mypage/UserContainer';
+import useRanks from 'hooks/useRanks';
+import Spinner from 'components/common/Spinner';
+import DropdownComponent from 'components/Dropdown';
+import { mutate } from 'swr';
+import Pagination from '@mui/material/Pagination';
 
 function Leaderboard() {
   const [languageNo, setLanguageNo] = useState(null);
@@ -24,17 +24,17 @@ function Leaderboard() {
   const [grammarNo, setgrammarNo] = useState(null);
   const [grammarText, setGrammarText] = useState(null);
   const { ranks, error } = useRanks(1, 70, languageNo, grammarNo);
-  const LanguageList = ["PYTHON", "HTML", "C"];
+  const LanguageList = ['PYTHON', 'HTML', 'C'];
   const [language, setSelected] = useState(undefined);
 
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (languageText === "PYTHON") {
+    if (languageText === 'PYTHON') {
       setLanguageNo(1);
-    } else if (languageText === "HTML") {
+    } else if (languageText === 'HTML') {
       setLanguageNo(2);
-    } else if (languageText === "C") {
+    } else if (languageText === 'C') {
       setLanguageNo(3);
     }
   }, [languageText]);
@@ -98,7 +98,7 @@ function Leaderboard() {
               onChange={() => {
                 //mutate("/ranks?languageNo=2&pageNumber=1&pageSize=5");
                 // setLanguageNo(3);
-                console.log("good");
+                console.log('good');
               }}
               setItem={setLanguageText}
             />

@@ -19,17 +19,17 @@ export const defaultFadeInVariants = {
   initial: {
     opacity: 0,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity",
+    willChange: 'opacity',
   },
   animate: {
     opacity: 1,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity",
+    willChange: 'opacity',
   },
   exit: {
     opacity: 0,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity",
+    willChange: 'opacity',
   },
 };
 
@@ -38,19 +38,19 @@ export const defaultFadeInUpVariants = {
     opacity: 0,
     y: 30,
     transition: { duration: FADE_IN_DURATION },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: { duration: FADE_IN_DURATION },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   exit: {
     opacity: 0,
     y: 30,
     transition: { duration: FADE_IN_DURATION },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
 };
 
@@ -59,19 +59,19 @@ export const defaultFadeInScaleVariants = {
     opacity: 0,
     scale: 0.85,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   animate: {
     opacity: 1,
     scale: 1,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   exit: {
     opacity: 0,
     scale: 0.85,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
 };
 
@@ -80,19 +80,19 @@ export const defaultFadeInSlideToRightVariants = {
     opacity: 0,
     x: -30,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   animate: {
     opacity: 1,
     x: 0,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   exit: {
     opacity: 0,
     x: 30,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
 };
 
@@ -101,19 +101,19 @@ export const defaultFadeInSlideToLeftVariants = {
     opacity: 0,
     x: 30,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   animate: {
     opacity: 1,
     x: 0,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   exit: {
     opacity: 0,
     x: -30,
     transition: { duration: FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
 };
 
@@ -121,17 +121,17 @@ export const rapidFadeInVariants = {
   initial: {
     opacity: 0,
     transition: { duration: RAPID_FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity",
+    willChange: 'opacity',
   },
   animate: {
     opacity: 1,
     transition: { duration: RAPID_FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity",
+    willChange: 'opacity',
   },
   exit: {
     opacity: 0,
     transition: { duration: RAPID_FADE_IN_DURATION, ease: defaultEasing },
-    willChange: "opacity",
+    willChange: 'opacity',
   },
 };
 
@@ -140,18 +140,18 @@ export const rapidFadeInUpVariants = {
     opacity: 0,
     y: 30,
     transition: { duration: RAPID_FADE_IN_DURATION },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: { duration: RAPID_FADE_IN_DURATION },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
   exit: {
     opacity: 0,
     y: 30,
     transition: { duration: RAPID_FADE_IN_DURATION },
-    willChange: "opacity, transform",
+    willChange: 'opacity, transform',
   },
 };

@@ -1,20 +1,16 @@
-import { BadgeIconContainer, BadgeText, StyledBadge } from "components/common/Badge/styles";
-import React from "react";
-import Link from "next/link";
-import TagIcon from "../icons/TagIcon";
+import { BadgeIconContainer, BadgeText, StyledBadge } from 'components/common/Badge/styles';
+import React from 'react';
+import Link from 'next/link';
+import TagIcon from '../icons/TagIcon';
 
 function Badge({ IconComponent, children, language, syntax, ...props }) {
-
   let linkURL;
 
   if (IconComponent === TagIcon) {
-    linkURL = "/" + children;
+    linkURL = '/' + children;
+  } else {
+    linkURL = '/' + language + '/' + syntax;
   }
-
-  else {
-    linkURL = "/" + language + "/" + syntax;
-  }
-
 
   return (
     <StyledBadge {...props}>

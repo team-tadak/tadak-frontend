@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
   StyledBreadcrumb,
   BreadcrumbColor,
   BreadcrumbShown,
   Arrow,
-} from "components/common/Breadcrumb/styles";
-import Link from "next/link";
-import { SYNTAXES } from "constants/syntaxes";
-import { useRouter } from "next/router";
+} from 'components/common/Breadcrumb/styles';
+import Link from 'next/link';
+import { SYNTAXES } from 'constants/syntaxes';
+import { useRouter } from 'next/router';
 
 function Breadcrumbs(props) {
   const router = useRouter();
-  const pathname = router.pathname
+  const pathname = router.pathname;
   // url array, /python/1이면 ["python", "1"] 로 저장
-  const locationArray = pathname.split("/").filter((entry) => entry !== "");
+  const locationArray = pathname.split('/').filter((entry) => entry !== '');
   const locArrLen = locationArray.length;
   // codeId가 있는 url이라면 codeId 반환, 없다면 undefined
   const codeId = locationArray[locArrLen - 1];
@@ -27,18 +27,18 @@ function Breadcrumbs(props) {
     return pathname.startsWith(path);
   }
   // style 관련 state 나타내는 varibles
-  const SHOWN = "shown";
-  const NOT_SHOWN = "notShown";
-  const BREADCRUMB_ACTIVE = "breadcrumb-active";
-  const BREADCRUMB_NOT_ACTIVE = "breadcrumb-not-active";
-  const BREADCRUMB_ARROW = "breadcrumb-Arrow";
+  const SHOWN = 'shown';
+  const NOT_SHOWN = 'notShown';
+  const BREADCRUMB_ACTIVE = 'breadcrumb-active';
+  const BREADCRUMB_NOT_ACTIVE = 'breadcrumb-not-active';
+  const BREADCRUMB_ARROW = 'breadcrumb-Arrow';
 
   return (
     <>
-      {!(pathname === "/") && (
+      {!(pathname === '/') && (
         <StyledBreadcrumb>
           <BreadcrumbShown
-            status={locArrLen >= 0 ? (UrlStartsWith("/") ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
+            status={locArrLen >= 0 ? (UrlStartsWith('/') ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
           >
             <Link href="/languageselect">
               <BreadcrumbColor status={locArrLen === 0 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
@@ -48,7 +48,7 @@ function Breadcrumbs(props) {
           </BreadcrumbShown>
           <BreadcrumbShown
             status={
-              locArrLen >= 1 ? (!UrlStartsWith("/languageselect") ? SHOWN : NOT_SHOWN) : NOT_SHOWN
+              locArrLen >= 1 ? (!UrlStartsWith('/languageselect') ? SHOWN : NOT_SHOWN) : NOT_SHOWN
             }
           >
             <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
@@ -71,8 +71,8 @@ function Breadcrumbs(props) {
             <Link href="#">
               <BreadcrumbColor status={BREADCRUMB_ACTIVE}>
                 {isNaN(parseInt(codeId))
-                  ? "error"
-                  : SYNTAXES[firstUpLanguage][parseInt(codeId) - 1]["title"]}
+                  ? 'error'
+                  : SYNTAXES[firstUpLanguage][parseInt(codeId) - 1]['title']}
               </BreadcrumbColor>
             </Link>
           </BreadcrumbShown>

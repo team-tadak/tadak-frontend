@@ -1,45 +1,44 @@
-import { Letter, StyledTypeInput } from "components/TypeInput/styles";
-import React, { useState, useCallback, useEffect, useMemo, useRef } from "react";
-import { Paragraph } from "components/TypeInput/styles";
-import { MOCKUP_STRING } from "constants/paragraphs";
+import { Letter, StyledTypeInput } from 'components/TypeInput/styles';
+import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react';
+import { Paragraph } from 'components/TypeInput/styles';
+import { MOCKUP_STRING } from 'constants/paragraphs';
 
-import { serverAxios } from "utils/commonAxios";
-import PortalModal from "components/PortalModal";
-import Button from "components/common/Button";
+import { serverAxios } from 'utils/commonAxios';
+import PortalModal from 'components/PortalModal';
+import Button from 'components/common/Button';
 import {
   ModalBody,
   ModalButton,
   ModalHeader,
   ModalIcon,
   ModalTitle,
-} from "components/PortalModal/style";
-import { theme } from "styles/theme";
-import TimerIcon from "assets/svgs/Tumer_light.svg";
-import { useRouter } from "next/router";
+} from 'components/PortalModal/style';
+import { theme } from 'styles/theme';
+import TimerIcon from 'assets/svgs/Tumer_light.svg';
+import { useRouter } from 'next/router';
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
   if (currentInputString.length === currentLetterIndex) {
-    return "current"; // 현재 입력부
+    return 'current'; // 현재 입력부
   }
   if (currentInputString.length - 1 < currentLetterIndex) {
-    return "untyped"; // 아직 입력하지 않은 글자
+    return 'untyped'; // 아직 입력하지 않은 글자
   }
   if (currentInputString[currentLetterIndex] === letter) {
-    return "correct"; // 입력을 했고, 맞는 글자
+    return 'correct'; // 입력을 했고, 맞는 글자
   }
-  return "wrong"; // 입력은 했으나, 틀린 글자
+  return 'wrong'; // 입력은 했으나, 틀린 글자
 }
 
 // paragraph 받아서 \n (newline) 의 index 위치를 반환해줌
 function parseNewline(paragraph) {
-
   let newLineIndices = [];
   for (var i = 0; i < paragraph.length; i++) {
-    if (paragraph[i] === "\n") {
+    if (paragraph[i] === '\n') {
       newLineIndices.push(i);
     }
   }
-  console.log("new line indices", newLineIndices);
+  console.log('new line indices', newLineIndices);
   return newLineIndices;
 }
 
@@ -66,13 +65,13 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
   const [seconds, setSeconds] = useState(0);
 
   // 현재 입력받은 글자를 state 로 관리
-  const [currentInputString, setCurrentInputString] = useState("");
+  const [currentInputString, setCurrentInputString] = useState('');
 
   // 현재 오탈자 수를 state 로 관리
   const [mistakes, setMistakes] = useState(0);
 
   // 미모지 표정 관리용
-  const [face, setFace] = useState("happy");
+  const [face, setFace] = useState('happy');
 
   // 줄이 바뀌는 index 따로 관리
   const breakpoints = useMemo(() => parseNewline(TEST_STRING), []);
@@ -88,25 +87,25 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
   const totalSecondsSpent = useRef(0);
 
   const router = useRouter();
-  const location = router.pathname
+  const location = router.pathname;
 
   const handleSubmit = useCallback(
     (e) => {
       // e.preventDefault();
       async function sendRecord() {
         let language = location.pathname.substring(
-          location.pathname.indexOf("/") + 1,
-          location.pathname.indexOf("/", location.pathname.indexOf("/") + 1)
+          location.pathname.indexOf('/') + 1,
+          location.pathname.indexOf('/', location.pathname.indexOf('/') + 1)
         );
         // console.log(language);
-        const grammar = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+        const grammar = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
         // console.log(grammar);
 
-        if (language === "python") {
+        if (language === 'python') {
           language = 1;
-        } else if (language === "html") {
+        } else if (language === 'html') {
           language = 2;
-        } else if (language === "c") {
+        } else if (language === 'c') {
           language = 3;
         }
 
@@ -120,18 +119,18 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
           };
 
           serverAxios
-            .post("/users/me/histories", body, {
+            .post('/users/me/histories', body, {
               withCredentials: true,
             })
             .then(function (response) {
               // POST 요청 성공 시
               // this.props.history.push("/");
-              console.log("전송 성공");
+              console.log('전송 성공');
             });
         } catch (e) {
           //전송 실패
           // console.log(e);
-          console.log("없는 계정입니다. ");
+          console.log('없는 계정입니다. ');
         }
       }
       sendRecord();
@@ -142,10 +141,10 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
   // 줄 끝에서는 엔터를 쳐야지만 줄이 넘어가도록
   const enterPress = useCallback(
     (e) => {
-      if (e.key === "Enter") {
+      if (e.key === 'Enter') {
         EOLFlag.current = false;
-        setCurrentInputString(currentInputString + " ");
-        document.removeEventListener("keydown", enterPress);
+        setCurrentInputString(currentInputString + ' ');
+        document.removeEventListener('keydown', enterPress);
       }
     },
     [currentInputString]
@@ -160,7 +159,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       // if Backspace < 이거 windows 대응 이슈 있을수도??
       if (e.keyCode === 8) {
         // 틀린 글자를 지우는 경우 mistakes 감소시키기
-        setFace("sad");
+        setFace('sad');
         if (tempInputString.length === 0) {
           // 한 글자도 안 남은 경우 (mistakes 가 음수 되는 것 대응)
           setMistakes(0);
@@ -182,10 +181,10 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
             tempInputString = tempInputString + e.key;
             // 마지막으로 들어온 글자와 비교기준 글자가 다를 경우, mistakes 증가시키기
             if (tempInputString.slice(-1) !== TEST_STRING.charAt(tempInputString.length - 1)) {
-              setFace("sad");
+              setFace('sad');
               setMistakes(mistakes + 1);
             } else {
-              setFace("happy");
+              setFace('happy');
             }
           }
           // console.log(e.key, "||", e.keyCode);
@@ -201,18 +200,18 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
   // TODO: 이거를 input 에만 bind 시켜야 할 거같은데?
   useEffect(() => {
     if (!EOLFlag.current && !EOFFlag.current && !showCountdownModal) {
-      document.addEventListener("keydown", keyPress);
+      document.addEventListener('keydown', keyPress);
     }
-    return () => document.removeEventListener("keydown", keyPress);
+    return () => document.removeEventListener('keydown', keyPress);
   }, [keyPress, showCountdownModal]);
 
   useEffect(() => {
     // 만약 line 끝에 도달했다면
     if (breakpoints.includes(currentInputString.length)) {
-      console.log("EOL");
+      console.log('EOL');
       EOLFlag.current = true;
       if (!EOFFlag.current) {
-        document.addEventListener("keydown", enterPress);
+        document.addEventListener('keydown', enterPress);
       }
     }
   }, [breakpoints, currentInputString, enterPress]);
@@ -229,7 +228,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       if (currentKPM) {
         handleSubmit();
       }
-      console.log("끝!");
+      console.log('끝!');
       // API 전송 로직을 짜세요.
       // language_no 는 python === 1, html === 2, c === 3
       // grammar_no 는 맨 마지막 / 뒤 숫자
@@ -238,7 +237,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       setShowResultModal(true);
       // 여기까지
       EOFFlag.current = true;
-      console.log("EOF Flag", EOFFlag.current);
+      console.log('EOF Flag', EOFFlag.current);
       totalSecondsSpent.current = seconds;
       setMinutes(0);
       setSeconds(0);
@@ -292,7 +291,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
         </ModalButton>
       </PortalModal>
 
-      <PortalModal open={showCountdownModal} onClose={() => { }}>
+      <PortalModal open={showCountdownModal} onClose={() => {}}>
         <ModalHeader color={theme.color.blue.light}>준비하세요!</ModalHeader>
         <ModalTitle>{countDownSeconds}</ModalTitle>
         <ModalButton
@@ -305,12 +304,12 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
       </PortalModal>
       <StyledTypeInput>
         <Paragraph>
-          {TEST_STRING.split("").map((letter, index) =>
-            letter === "\n" ? (
+          {TEST_STRING.split('').map((letter, index) =>
+            letter === '\n' ? (
               <br key={index} />
             ) : (
               <Letter status={generateLetterStatus(currentInputString, letter, index)} key={index}>
-                {letter === " " ? <>&nbsp;</> : letter === "-" ? <>&#x2011;</> : letter}
+                {letter === ' ' ? <>&nbsp;</> : letter === '-' ? <>&#x2011;</> : letter}
               </Letter>
             )
           )}

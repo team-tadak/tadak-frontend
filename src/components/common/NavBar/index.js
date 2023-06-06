@@ -1,5 +1,5 @@
-import LogoutIcon from "components/common/icons/LogoutIcon";
-import Logo from "components/common/Logo";
+import LogoutIcon from 'components/common/icons/LogoutIcon';
+import Logo from 'components/common/Logo';
 import {
   NavBarContainer,
   NavBarLogoContainer,
@@ -10,14 +10,14 @@ import {
   NavBarMenuContainer,
   NavBarMenuText,
   StyledNavBar,
-} from "components/common/NavBar/styles";
-import useScrollPosition from "hooks/useScrollPosition";
-import useUser from "hooks/useUser";
+} from 'components/common/NavBar/styles';
+import useScrollPosition from 'hooks/useScrollPosition';
+import useUser from 'hooks/useUser';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import { useSWRConfig } from "swr";
-import { handleLogout } from "utils/logout";
+import { useSWRConfig } from 'swr';
+import { handleLogout } from 'utils/logout';
 
 function NavBar(props) {
   // 현재 페이지의 스크롤 상태 확인 (맨 위면 배경 투명하게, 그 외엔 배경 색 부여)
@@ -31,7 +31,7 @@ function NavBar(props) {
   return (
     <StyledNavBar transparent={scrollY === 0} {...props}>
       <NavBarContainer>
-        <Link href={"/"}>
+        <Link href={'/'}>
           <NavBarLogoContainer>
             <Logo variant="large" />
             <NavBarLogoText>TADAK</NavBarLogoText>
@@ -41,23 +41,22 @@ function NavBar(props) {
           {loggedOut ? (
             <>
               <NavBarMenuText>
-                <Link href={"/login"}>로그인</Link>
+                <Link href={'/login'}>로그인</Link>
               </NavBarMenuText>
               <NavBarMenuText>
-                <Link href={"/register"}>회원가입</Link>
+                <Link href={'/register'}>회원가입</Link>
               </NavBarMenuText>
             </>
-
           ) : (
             <>
               <NavBarMenuText>{user?.username}님 환영합니다!</NavBarMenuText>
               <NavBarMenuText>
-                <Link href={"/mypage"}>마이페이지</Link>
+                <Link href={'/mypage'}>마이페이지</Link>
               </NavBarMenuText>
               <NavBarLogoutContainer>
                 <NavBarLogoutText>
                   <Link
-                    href={"/"}
+                    href={'/'}
                     onClick={() => {
                       handleLogout(cache);
                     }}
@@ -72,8 +71,8 @@ function NavBar(props) {
             </>
           )}
         </NavBarMenuContainer>
-      </NavBarContainer >
-    </StyledNavBar >
+      </NavBarContainer>
+    </StyledNavBar>
   );
 }
 

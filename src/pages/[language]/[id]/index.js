@@ -1,25 +1,22 @@
 /** @jsxImportSource @emotion/react */
-import Timer from "components/Timer";
-import TypeInput from "components/TypeInput";
-import UserContainer from "pages/mypage/UserContainer";
-import PlayController from "pages/typepage/PlayController";
-import { TypePageAsideContainer, TypePageContainer } from "pages/typepage/styles";
+import Timer from 'components/Timer';
+import TypeInput from 'components/TypeInput';
+import UserContainer from 'pages/mypage/UserContainer';
+import PlayController from 'pages/typepage/PlayController';
+import { TypePageAsideContainer, TypePageContainer } from 'pages/typepage/styles';
 
-import { useState } from "react";
-import Breadcrumbs from "components/common/Breadcrumb";
-import { css } from "@emotion/react";
-import { useRouter } from "next/router";
+import { useState } from 'react';
+import Breadcrumbs from 'components/common/Breadcrumb';
+import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
 
 const LANGUAGE_CODE = {
-  "python": 1,
-  "c": 2,
-  "html": 3,
-}
+  python: 1,
+  c: 2,
+  html: 3,
+};
 
 function TypePage() {
-
-
-
   const [isPlaying, setIsPlaying] = useState(false);
   const [timePassed, setTimePassed] = useState(0);
   const [currentKPM, setCurrentKPM] = useState(null);
@@ -27,7 +24,7 @@ function TypePage() {
   // const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams.get("no"));
   const { query } = useRouter();
-  const id = Number(query.id)
+  const id = Number(query.id);
   const language = query.language;
   const languageCode = LANGUAGE_CODE[language];
   console.log(languageCode);

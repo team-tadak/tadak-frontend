@@ -1,6 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { DigitText, SymbolText, TimerDiv } from "./style";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { DigitText, SymbolText, TimerDiv } from './style';
 
 // EXAMPLE
 //   const [stopState, setStopState] = useState(false);
@@ -27,9 +27,9 @@ function Timer({ interval = 10, isStopped = false, onStop = (t) => {}, setTimePa
 
   // text
   const time = cummulTime + measuredTime;
-  const minutes = String(Math.floor(time / 1000 / 60) % 60).padStart(2, "0");
-  const seconds = String(Math.floor(time / 1000) % 60).padStart(2, "0");
-  const miliSeconds = String(Math.floor((time % 1000) / 10)).padStart(2, "0");
+  const minutes = String(Math.floor(time / 1000 / 60) % 60).padStart(2, '0');
+  const seconds = String(Math.floor(time / 1000) % 60).padStart(2, '0');
+  const miliSeconds = String(Math.floor((time % 1000) / 10)).padStart(2, '0');
 
   useEffect(() => {
     // on stop

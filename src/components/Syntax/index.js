@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import Link from "next/link";
+import styled from '@emotion/styled';
+import Link from 'next/link';
 
 export const SyntaxSelectContainer = styled.div`
   width: 280px;
@@ -19,7 +19,7 @@ export const SyntaxExampleBox = styled.div`
   font-weight: bold;
   padding-left: 15px;
   padding-top: 20px;
-  font-family: "Courier New", Courier, monospace; // 임의로 폰트 설정 (그에 따라 padding, line-height 설정)
+  font-family: 'Courier New', Courier, monospace; // 임의로 폰트 설정 (그에 따라 padding, line-height 설정)
   line-height: 0.7cm;
 `;
 
@@ -43,13 +43,13 @@ export const SyntaxLevel = styled.div`
   width: 100%;
   height: 16px;
   bottom: 0;
-  alt: "syntax level star";
+  alt: 'syntax level star';
   margin-right: 2px;
   flex-wrap: wrap;
 `;
 
 export const SyntaxStar = styled.img`
-  alt: "syntax level star";
+  alt: 'syntax level star';
   margin-right: 2px;
 `;
 
@@ -91,7 +91,7 @@ export const SyntaxStartButton = styled.button`
 // />
 
 function SyntaxSelectComponent({ language, example, title, level, summary, ...props }) {
-  const linkURL = "/" + language + "/" + level;
+  const linkURL = '/' + language + '/' + level;
 
   var stars = [];
   for (var i = 0; i < 5; i++) {

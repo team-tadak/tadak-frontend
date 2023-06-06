@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { resetButtonStyle } from "styles/utils/button";
+import styled from '@emotion/styled';
+import { resetButtonStyle } from 'styles/utils/button';
 
 const baseDiv = styled.button`
   display: flex;

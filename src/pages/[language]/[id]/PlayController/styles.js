@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { motion } from "framer-motion";
-import { resetButtonStyle } from "styles/utils/button";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { resetButtonStyle } from 'styles/utils/button';
 
 export const StyledPlayController = styled(motion.div)`
   display: flex;
@@ -18,7 +18,7 @@ export const PlayContollerButton = styled(motion.button)`
   font-size: 16px;
   font-weight: 400;
   color: ${({ theme, buttontype }) =>
-    buttontype === "warning" ? theme.color.warning300 : theme.color.white};
+    buttontype === 'warning' ? theme.color.warning300 : theme.color.white};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.gray};

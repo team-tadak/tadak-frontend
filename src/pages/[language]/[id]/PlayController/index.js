@@ -1,4 +1,4 @@
-import { PlayContollerButton, StyledPlayController } from "pages/typepage/PlayController/styles";
+import { PlayContollerButton, StyledPlayController } from 'pages/typepage/PlayController/styles';
 
 function PlayController({ isPlaying, onPause, onResume, onStop, ...props }) {
   // const [isPlaying, setIsPlaying] = useState(false);
@@ -19,7 +19,7 @@ function PlayController({ isPlaying, onPause, onResume, onStop, ...props }) {
   return (
     <StyledPlayController {...props}>
       <PlayContollerButton onClick={handleStatusToggle}>
-        {isPlaying ? "일시정지" : "재개"}
+        {isPlaying ? '일시정지' : '재개'}
       </PlayContollerButton>
       <PlayContollerButton buttontype="warning" onClick={onStop}>
         종료

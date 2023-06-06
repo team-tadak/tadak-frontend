@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { NAVBAR_HEIGHT } from "constants/navbar";
+import styled from '@emotion/styled';
+import { NAVBAR_HEIGHT } from 'constants/navbar';
 
 export const StyledNavBar = styled.header`
   position: fixed;
@@ -8,14 +8,14 @@ export const StyledNavBar = styled.header`
   width: 100%;
   height: ${NAVBAR_HEIGHT}px;
   background-color: ${({ theme, transparent }) =>
-    transparent ? "rgba(255, 255, 255, 0)" : theme.color.navbarBG};
+    transparent ? 'rgba(255, 255, 255, 0)' : theme.color.navbarBG};
 
   transition: background-color 0.3s;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  `;
+`;
 
 export const NavBarContainer = styled.nav`
   width: 100%;

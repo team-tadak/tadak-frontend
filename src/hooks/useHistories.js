@@ -1,5 +1,5 @@
-import useSWR from "swr";
-import { fetcher } from "utils/fetcher";
+import useSWR from 'swr';
+import { fetcher } from 'utils/fetcher';
 
 // 로그인돼있다면 유저의 게임기록을 반환
 function useHistories(pageNumber, pageSize) {

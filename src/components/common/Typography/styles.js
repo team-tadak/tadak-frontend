@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { motion } from "framer-motion";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 export const HeadingText = styled(motion.div)`
   font-size: 32px;

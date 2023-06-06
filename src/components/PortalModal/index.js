@@ -1,10 +1,10 @@
-import { StyledModal, DimmedArea } from "components/PortalModal/style";
-import { createPortal } from "react-dom";
-import { useState, useEffect } from "react";
-import usePreventScroll from "hooks/usePreventScroll";
-import { staggerOne } from "styles/motions";
-import { motion } from "framer-motion";
-import { rapidFadeInVariants } from "styles/motions/motions";
+import { StyledModal, DimmedArea } from 'components/PortalModal/style';
+import { createPortal } from 'react-dom';
+import { useState, useEffect } from 'react';
+import usePreventScroll from 'hooks/usePreventScroll';
+import { staggerOne } from 'styles/motions';
+import { motion } from 'framer-motion';
+import { rapidFadeInVariants } from 'styles/motions/motions';
 
 function ScrollPreventer() {
   usePreventScroll();
@@ -42,7 +42,7 @@ function PortalModal(props) {
   );
 
   if (mounted) {
-    return createPortal(modal, document.getElementById("portal"));
+    return createPortal(modal, document.getElementById('portal'));
   } else {
     return null;
   }

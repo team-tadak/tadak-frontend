@@ -1,22 +1,22 @@
 /** @jsxImportSource @emotion/react */
-import Badge from "components/common/Badge";
-import ExternalIcon from "components/common/icons/ExternalIcon";
-import TagIcon from "components/common/icons/TagIcon";
-import Logo from "components/common/Logo";
+import Badge from 'components/common/Badge';
+import ExternalIcon from 'components/common/icons/ExternalIcon';
+import TagIcon from 'components/common/icons/TagIcon';
+import Logo from 'components/common/Logo';
 import {
   LeaderBoardTopItemBasicInfoContainer,
   StyledLeaderBoardTopItem,
   KPMText,
   LeaderBoardTopItemLanguageSyntaxContainer,
-} from "components/LeaderBoard/LeaderBoardTopItem/styles";
-import React from "react";
-import { css } from "@emotion/react";
-import { LANGUAGES } from "constants/languages";
-import { SYNTAXES } from "constants/syntaxes";
-import UserProfile from "components/common/UserProfile";
+} from 'components/LeaderBoard/LeaderBoardTopItem/styles';
+import React from 'react';
+import { css } from '@emotion/react';
+import { LANGUAGES } from 'constants/languages';
+import { SYNTAXES } from 'constants/syntaxes';
+import UserProfile from 'components/common/UserProfile';
 
 function LeaderBoardTopItem({
-  type = "item",
+  type = 'item',
   rank,
   username,
   email,
@@ -39,10 +39,10 @@ function LeaderBoardTopItem({
       </LeaderBoardTopItemBasicInfoContainer>
       <LeaderBoardTopItemLanguageSyntaxContainer>
         <Badge IconComponent={TagIcon} language={LANGUAGES[language - 1]} syntax={syntax}>
-          {type === "header" ? "언어" : LANGUAGES[language - 1]}
+          {type === 'header' ? '언어' : LANGUAGES[language - 1]}
         </Badge>
         <Badge IconComponent={ExternalIcon} language={LANGUAGES[language - 1]} syntax={syntax}>
-          {type === "header" ? "문법" : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
+          {type === 'header' ? '문법' : SYNTAXES[LANGUAGES[language - 1]][syntax - 1].title}
         </Badge>
       </LeaderBoardTopItemLanguageSyntaxContainer>
     </StyledLeaderBoardTopItem>

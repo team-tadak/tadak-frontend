@@ -1,16 +1,16 @@
-import Button from "components/common/Button";
-import InputEmail from "components/common/Inputs/InputEmail";
-import InputPasswordAndCheck from "components/common/Inputs/InputPasswordAndCheck";
-import InputUserName from "components/common/Inputs/InputUserName";
-import SlimButton from "components/common/SlimButton";
-import PortalModal from "components/PortalModal";
-import { useCallback, useState } from "react";
-import Link from "next/link";
+import Button from 'components/common/Button';
+import InputEmail from 'components/common/Inputs/InputEmail';
+import InputPasswordAndCheck from 'components/common/Inputs/InputPasswordAndCheck';
+import InputUserName from 'components/common/Inputs/InputUserName';
+import SlimButton from 'components/common/SlimButton';
+import PortalModal from 'components/PortalModal';
+import { useCallback, useState } from 'react';
+import Link from 'next/link';
 
-import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
-import React from "react";
-import { serverAxios } from "utils/commonAxios";
-import useUser from "hooks/useUser";
+import { ModalHeader, ModalBody, ModalButton } from 'components/PortalModal/style';
+import React from 'react';
+import { serverAxios } from 'utils/commonAxios';
+import useUser from 'hooks/useUser';
 import {
   ButtonDiv,
   RegisterForm,
@@ -18,14 +18,14 @@ import {
   RegisterTitle,
   ToLogin,
   ToLoginParagraph,
-} from "./style";
-import * as bcrypt from "bcryptjs";
-import { BCRYPT_SALT } from "constants/hash";
-import { useRouter } from "next/router";
+} from './style';
+import * as bcrypt from 'bcryptjs';
+import { BCRYPT_SALT } from 'constants/hash';
+import { useRouter } from 'next/router';
 
 function Register() {
   const navigate = useNavigate();
-  const { push } = useRouter()
+  const { push } = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [modalText, setModalText] = useState(null);
   const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
@@ -36,7 +36,7 @@ function Register() {
   }, []);
 
   const onRegisterSuccess = useCallback(() => {
-    push("/login");
+    push('/login');
   }, [push]);
 
   const [showOnFailModal, setShowOnFailModal] = useState(false);
@@ -99,14 +99,14 @@ function Register() {
 
         // 모든 입력 테스트를 통과하면
         serverAxios
-          .post("/users", body)
+          .post('/users', body)
           .then(function (response) {
             // POST 요청 성공 시
             // this.props.history.push("/");
-            setModalText("회원가입 성공!");
+            setModalText('회원가입 성공!');
             // setShowModal(true);
             setIsRegisterSuccess(true);
-            console.log("회원가입 성공");
+            console.log('회원가입 성공');
             setShowOnSuccessModal(true);
           })
           .catch(() => {
@@ -114,7 +114,7 @@ function Register() {
             console.log(e);
             setShowOnFailModal(true);
           });
-      } catch (e) { }
+      } catch (e) {}
     }
     register();
   }, []);
@@ -123,7 +123,7 @@ function Register() {
   const { loggedOut } = useUser();
 
   if (!loggedOut) {
-    push("/");
+    push('/');
   }
 
   return (
@@ -155,7 +155,7 @@ function Register() {
         <ButtonDiv>
           <Button type="submit">시작하기!</Button>
           <ToLoginParagraph>
-            계정이 이미 있으세요?{" "}
+            계정이 이미 있으세요?{' '}
             <ToLogin>
               <Link href="/login">로그인</Link>
             </ToLogin>
@@ -171,7 +171,7 @@ function Register() {
         }}
       >
         <ModalHeader>회원가입 성공!</ModalHeader>
-        <Link href={"/login"} style={{ width: "100%" }}>
+        <Link href={'/login'} style={{ width: '100%' }}>
           <ModalButton
             onClick={() => {
               setShowOnSuccessModal(false);

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
-import RightIcon from "components/common/icons/RightIcon";
-import PythonIcon from "components/common/icons/languages/PythonIcon";
-import Link from "next/link";
+import React from 'react';
+import styled from '@emotion/styled';
+import RightIcon from 'components/common/icons/RightIcon';
+import PythonIcon from 'components/common/icons/languages/PythonIcon';
+import Link from 'next/link';
 
 const StyledImgButton = styled.div`
   display: flex;
@@ -77,7 +77,7 @@ const Title = styled.div`
   width: 55px;
   height: 19px;
 
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -95,7 +95,7 @@ const Explanation = styled.div`
   width: 90%;
   height: 28px;
 
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -133,11 +133,11 @@ const IconBorder = styled.div`
   left: 12px;
   top: 10px;
 
-  background: #FFFFFF;
-  border: 1px solid #D9D9D9;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
   box-shadow: 0px 4px 40px rgba(9, 9, 12, 0.1);
   border-radius: 10px;
-`
+`;
 
 const Arrow = styled.div`
   width: 24px;
@@ -155,7 +155,6 @@ const ArrowIcon = styled.div`
 
   position: absolute;
 
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +169,10 @@ function ImgButton(props) {
       <StyledImgButton>
         <InnerContainer>
           <IconBorder></IconBorder>
-          <LangIcon> <PythonIcon /> </LangIcon>
+          <LangIcon>
+            {' '}
+            <PythonIcon />{' '}
+          </LangIcon>
           <StrContainer>
             <TitleContainer>
               <Title>{props.title}</Title>
@@ -179,7 +181,10 @@ function ImgButton(props) {
           </StrContainer>
         </InnerContainer>
         <Arrow>
-          <ArrowIcon> <RightIcon /> </ArrowIcon>
+          <ArrowIcon>
+            {' '}
+            <RightIcon />{' '}
+          </ArrowIcon>
         </Arrow>
       </StyledImgButton>
     </Link>

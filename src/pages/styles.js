@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { motion } from "framer-motion";
-import { theme } from "styles/theme";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { theme } from 'styles/theme';
 
 export const MainPageContainer = styled.main`
   display: flex;
@@ -9,7 +9,7 @@ export const MainPageContainer = styled.main`
 `;
 
 export const MainPageContentSection = styled(motion.section)`
-  display:flex;
+  display: flex;
   flex-direction: column;
   flex-grow: 1;
 `;
@@ -37,18 +37,18 @@ export const SubTitle = styled(motion.p)`
 `;
 
 export const TitleContainer = styled.div`
-margin-bottom: 5rem;
-`
+  margin-bottom: 5rem;
+`;
 
 export const MainPageInputContainer = styled.div`
-display: flex;
-flex-flow: row;
-align-items: flex-start;
-justify-content: flex-start;
-`
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
 
 export const MainPageImage = styled(motion.div)`
-  background-image: url("images/main_image.png");
+  background-image: url('images/main_image.png');
 
   background-size: contain;
   background-repeat: no-repeat;

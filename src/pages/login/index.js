@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useCallback } from "react";
-import { serverAxios } from "utils/commonAxios";
-import { mutate } from "swr";
-import { ButtonDiv, LoginForm, LoginTitle, ToRegister, ToRegisterParagraph } from "./style";
-import InputEmail from "components/common/Inputs/InputEmail";
-import InputPassword from "components/common/Inputs/InputPassword";
-import Button from "components/common/Button";
+import React, { useEffect, useState } from 'react';
+import { useCallback } from 'react';
+import { serverAxios } from 'utils/commonAxios';
+import { mutate } from 'swr';
+import { ButtonDiv, LoginForm, LoginTitle, ToRegister, ToRegisterParagraph } from './style';
+import InputEmail from 'components/common/Inputs/InputEmail';
+import InputPassword from 'components/common/Inputs/InputPassword';
+import Button from 'components/common/Button';
 
-import Link from "next/link";
-import PortalModal from "components/PortalModal";
-import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
-import useUser from "hooks/useUser";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import PortalModal from 'components/PortalModal';
+import { ModalHeader, ModalBody, ModalButton } from 'components/PortalModal/style';
+import useUser from 'hooks/useUser';
+import { useRouter } from 'next/router';
 
 function Login() {
   const [showOnFailModal, setShowOnFailModal] = useState(false);
@@ -29,7 +29,7 @@ function Login() {
         };
 
         serverAxios
-          .post("/users/me", body, {
+          .post('/users/me', body, {
             withCredentials: true,
           })
           .then(function (response) {
@@ -41,9 +41,9 @@ function Login() {
             // 로그인 성공 시
             // this.props.history.push("/");
             console.log(response);
-            console.log("로그인 성공");
-            mutate("/users/me"); // 로그인 함과 동시에 상단바에 NavBar 업데이트 하도록
-            push("/");
+            console.log('로그인 성공');
+            mutate('/users/me'); // 로그인 함과 동시에 상단바에 NavBar 업데이트 하도록
+            push('/');
           })
           .catch(() => {
             // 로그인 실패시
@@ -64,9 +64,8 @@ function Login() {
   const { loggedOut } = useUser();
 
   useEffect(() => {
-
     if (!loggedOut) {
-      push("/");
+      push('/');
     }
   }, [loggedOut]);
 

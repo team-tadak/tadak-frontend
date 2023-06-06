@@ -5,7 +5,7 @@ export const MOCKUP_STRING = [
   `'languages = ['python', 'perl', 'c', 'java']\n\nfor lang in languages:\n    if lang in ['pytohn', 'perl']:\n        print("%6s need interpreter" % lang)\n    elif lang in ['c', 'java']:\n        print("%6s need compiler" % lang)\n    else:\n        print("should not reach here")'`,
   'def fibonacci(n):\n    if n <= 1:\n        return n\n    else:\n        return(fibonacci(n-1) + fibonacci(n-2))\nnterms = int(input("How many Fibonacci do you want?: "))\nif nterms <= 0:\n    print("Error : Please enter a positive number")\nelse:\n    print("Fibonacci: ", end="")\n    for i in range(nterms):\n        print(fibonacci(i), end="")',
   `import random\nf1 = open('score.txt', 'w')\nfor i in range(5):\n    for j in range(5):\n        f1.write(str(random.randint(1, 100)) + ' ')\n    f1.write('\n')\nf1 = open('score.txt', 'r')\nf2 = open('report.txt', 'w')\nwhile True:\n    score = f1.readline()\n    if score == '':\n        break\n    scorelist = score.split()\n    sum = 0\n    for i in range(5):\n        sum += int(scorelist[i])\nf1.close()\nf2.close()`,
-  "class Caculator:\n    def __init__(self, first, second):\n        self.first = first\n        self.second = second\n    def add(self):\n        result = self.first + self.second\n        return result\n    def sub(self):\n        result = self.first - self.second\n        return result\n    def div(self):\n        result = self.first / self.second\n        return result\n    def mult(self):\n        result = self.first * self.second\n        return result",
+  'class Caculator:\n    def __init__(self, first, second):\n        self.first = first\n        self.second = second\n    def add(self):\n        result = self.first + self.second\n        return result\n    def sub(self):\n        result = self.first - self.second\n        return result\n    def div(self):\n        result = self.first / self.second\n        return result\n    def mult(self):\n        result = self.first * self.second\n        return result',
   // html
   '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>My First Webpage</title>\n  </head>\n  <body>\n    <h1>Hello World!</h1>\n    <p>This is a test page.</p>\n    <img src="world.jpg" alt="world picture" />\n  </body>\n</html>',
   '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <title>Document</title>\n  </head>\n  <body>\n  </body>\n</html>',
@@ -24,9 +24,9 @@ export const MOCKUP_STRING = [
 
   // 'include <stdio.h>\n#include <stdlib.h>\ntypedef struct NODE{\n    int data;\n    struct NODE* next;\n}node;\n\nint main(void) {\n    node* head = (node*)malloc(sizeof(node));\n    head->next=NULL;\n    node* node1 = (node*)malloc(sizeof(node));\n    node1->next = head->next;\n    node1->data = 10;\n    head->next = node1;\n\n    node* node2 = (node*)malloc(sizeof(node));\n    node2->next = node1->next;\n    node2->data = 20;\n    node1->next = node2;\n\n    node* curr = head->next;\n    while(curr != NULL){\n        printf("%d", curr->data);\n        curr = curr->next;    }\n\n    free(head);\n    free(node1);\n    free(node2);\n    return 0;\n}'
 
-  "Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d",
-  "Authors often\nmisinterpret",
+  'Authors often misinterpret the lettuce as a folklore rabbi, when in actuality it feels more like an uncursed bacon. Pursued d',
+  'Authors often\nmisinterpret',
   // eslint-disable-next-line no-template-curly-in-string
-  "${resetCSS}\n* {\n-webkit-tap-highlight-color: transparent;\nbox-sizing: border-box;\ntransition: background-color 0.2s;\nwill-change: background-color\n}",
+  '${resetCSS}\n* {\n-webkit-tap-highlight-color: transparent;\nbox-sizing: border-box;\ntransition: background-color 0.2s;\nwill-change: background-color\n}',
   '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>',
 ];

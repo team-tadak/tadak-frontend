@@ -1,6 +1,6 @@
-import { css, keyframes } from "@emotion/react";
-import styled from "@emotion/styled";
-import { hexToRgba } from "utils/color";
+import { css, keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
+import { hexToRgba } from 'utils/color';
 
 const cursorBlink = keyframes`
  0% {
@@ -28,27 +28,27 @@ export const Paragraph = styled.p`
 `;
 
 export const Letter = styled.span`
-  font-family: "Courier New", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, "Roboto";
+  font-family: 'Courier New', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Roboto';
   font-weight: 700;
   font-size: 20px;
   color: ${(props) =>
-    props.status === "current"
+    props.status === 'current'
       ? props.theme.color.gray
-      : props.status === "untyped"
+      : props.status === 'untyped'
       ? props.theme.color.gray
-      : props.status === "correct"
+      : props.status === 'correct'
       ? props.theme.color.blue.light
       : props.theme.color.warning300};
-  /* background-color: ${(props) => (props.status === "current" ? "black" : "transparent")}; */
+  /* background-color: ${(props) => (props.status === 'current' ? 'black' : 'transparent')}; */
   background-color: ${(props) =>
-    props.status === "wrong" ? hexToRgba(props.theme.color.warning300, 0.1) : "transparent"};
+    props.status === 'wrong' ? hexToRgba(props.theme.color.warning300, 0.1) : 'transparent'};
   border-radius: 2px;
   animation: ${(props) =>
-    props.status === "current"
+    props.status === 'current'
       ? css`
           ${cursorBlink} 0.8s ease infinite
         `
-      : "none"};
+      : 'none'};
 `;
 
 export const StyledInput = styled.div``;

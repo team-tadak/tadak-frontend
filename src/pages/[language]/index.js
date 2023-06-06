@@ -1,12 +1,12 @@
-import Breadcrumbs from "components/common/Breadcrumb";
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import { SYNTAXES } from "constants/syntaxes";
-import SyntaxSelectComponent from "components/Syntax";
-import UserContainer from "pages/mypage/UserContainer";
-import { motion } from "framer-motion";
-import { defaultFadeInUpVariants, defaultFadeInVariants, staggerQuarter } from "styles/motions";
-import { useRouter } from "next/router";
+import Breadcrumbs from 'components/common/Breadcrumb';
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import { SYNTAXES } from 'constants/syntaxes';
+import SyntaxSelectComponent from 'components/Syntax';
+import UserContainer from 'pages/mypage/UserContainer';
+import { motion } from 'framer-motion';
+import { defaultFadeInUpVariants, defaultFadeInVariants, staggerQuarter } from 'styles/motions';
+import { useRouter } from 'next/router';
 
 const SyntaxSelectPageContainer = styled.div`
   padding-top: 32px;
@@ -46,8 +46,7 @@ function SyntaxSelect() {
   const language = query.language;
   console.log(language);
 
-  const [selectedLangauge, setSelectedLanguage] = useState(null)
-
+  const [selectedLangauge, setSelectedLanguage] = useState(null);
 
   useEffect(() => {
     if (!query.language) return console.log('returned');
@@ -78,10 +77,11 @@ function SyntaxSelect() {
           </motion.div>
           <SyntaxContainer>
             {syntaxList?.map((element, index) => {
-
               console.log(element);
               return (
-                <motion.div key={index} variants={defaultFadeInUpVariants}
+                <motion.div
+                  key={index}
+                  variants={defaultFadeInUpVariants}
                   initial="initial"
                   whileInView="animate"
                 >
@@ -95,7 +95,7 @@ function SyntaxSelect() {
                     ></SyntaxSelectComponent>
                   </SyntaxItem>
                 </motion.div>
-              )
+              );
             })}
           </SyntaxContainer>
         </SyntaxSelectContainer>

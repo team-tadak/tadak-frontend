@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import Timer from "components/Timer";
-import TypeInput from "components/TypeInput";
-import UserContainer from "pages/mypage/UserContainer";
-import PlayController from "pages/typepage/PlayController";
-import { TypePageAsideContainer, TypePageContainer } from "pages/typepage/styles";
+import Timer from 'components/Timer';
+import TypeInput from 'components/TypeInput';
+import UserContainer from 'pages/mypage/UserContainer';
+import PlayController from 'pages/typepage/PlayController';
+import { TypePageAsideContainer, TypePageContainer } from 'pages/typepage/styles';
 
-import { useState } from "react";
-import Breadcrumbs from "components/common/Breadcrumb";
-import { css } from "@emotion/react";
-import { useRouter } from "next/router";
+import { useState } from 'react';
+import Breadcrumbs from 'components/common/Breadcrumb';
+import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
 
 function TypePage({ language, languageCode }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,7 +18,7 @@ function TypePage({ language, languageCode }) {
   // const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams.get("no"));
   const { query } = useRouter();
-  const id = query.id
+  const id = query.id;
   const paragraphIndex = (languageCode - 1) * 6 + (id - 1);
   return (
     <>

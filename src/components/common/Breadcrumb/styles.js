@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { hexToRgba } from "utils/color";
+import styled from '@emotion/styled';
+import { hexToRgba } from 'utils/color';
 
 export const StyledBreadcrumb = styled.nav`
   display: flex;
@@ -17,13 +17,13 @@ export const StyledBreadcrumb = styled.nav`
 `;
 
 export const BreadcrumbShown = styled.div`
-  visibility: ${(props) => (props.status === "shown" ? "visible" : "hidden")};
+  visibility: ${(props) => (props.status === 'shown' ? 'visible' : 'hidden')};
   display: flex;
 `;
 
 export const BreadcrumbColor = styled.div`
   color: ${(props) =>
-    props.status === "breadcrumb-not-active"
+    props.status === 'breadcrumb-not-active'
       ? props.theme.color.white
       : props.theme.color.primary500};
   border-radius: 6px;

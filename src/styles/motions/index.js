@@ -6,4 +6,4 @@ export {
   staggerQuarter,
   staggerHalf,
   staggerOne,
-} from "./motions";
+} from './motions';

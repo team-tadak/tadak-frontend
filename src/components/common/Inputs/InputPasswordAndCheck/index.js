@@ -1,36 +1,36 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   ErrorMessageBox,
   InputBox,
   InputContainer,
   LabelBox,
-} from "components/common/Inputs/styles";
+} from 'components/common/Inputs/styles';
 
 function InputPasswordAndCheck() {
-  let errorMessage = "";
+  let errorMessage = '';
 
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const handleBlur = (e) => {
     setText(e.target.value);
-    let errorMessageBox = document.getElementById("passWordErrorMessageBox");
+    let errorMessageBox = document.getElementById('passWordErrorMessageBox');
     if (e.target.value.length > 20 || e.target.value.length < 8) {
-      errorMessage = "비밀번호(8자리 이상 20자리 이하)를 다시 입력하세요.";
+      errorMessage = '비밀번호(8자리 이상 20자리 이하)를 다시 입력하세요.';
     } else {
-      errorMessage = "";
+      errorMessage = '';
     }
     errorMessageBox.innerHTML = errorMessage;
   };
 
   const handleChange = (e) => {
     setText(e.target.value);
-    let password = document.getElementById("password");
-    let errorMessageBox = document.getElementById("passWordCheckErrorMessageBox");
-    if (e.target.value === "") {
-      errorMessage = "";
+    let password = document.getElementById('password');
+    let errorMessageBox = document.getElementById('passWordCheckErrorMessageBox');
+    if (e.target.value === '') {
+      errorMessage = '';
     } else if (password.value && e.target.value === password.value) {
-      errorMessage = "비밀번호가 일치합니다.";
+      errorMessage = '비밀번호가 일치합니다.';
     } else {
-      errorMessage = "비밀번호가 일치하지 않습니다.";
+      errorMessage = '비밀번호가 일치하지 않습니다.';
     }
 
     errorMessageBox.innerHTML = errorMessage;

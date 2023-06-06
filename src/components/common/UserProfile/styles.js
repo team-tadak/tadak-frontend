@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const UserProfileContainer = styled.div`
   display: flex;
   column-gap: 12px;
   width: 360px;
-  font-size: ${({ isheader }) => (isheader ? "14px" : "16px")};
+  font-size: ${({ isheader }) => (isheader ? '14px' : '16px')};
 `;
 
 export const UserProfileImageContainer = styled.div`

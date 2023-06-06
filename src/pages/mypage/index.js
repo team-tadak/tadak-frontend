@@ -1,9 +1,9 @@
-import { MyPageContainer, MyPageContentContainer } from "pages/mypage/styles";
-import UserContainer from "./UserContainer";
-import React from "react";
-import { staggerQuarter, defaultFadeInVariants } from "styles/motions";
-import Typography from "components/common/Typography";
-import HistoryBoard from "components/HistoryBoard";
+import { MyPageContainer, MyPageContentContainer } from 'pages/mypage/styles';
+import UserContainer from './UserContainer';
+import React from 'react';
+import { staggerQuarter, defaultFadeInVariants } from 'styles/motions';
+import Typography from 'components/common/Typography';
+import HistoryBoard from 'components/HistoryBoard';
 
 function MyPage() {
   return (

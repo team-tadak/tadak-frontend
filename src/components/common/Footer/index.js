@@ -5,10 +5,10 @@ import {
   FooterContainer,
   FooterCopyrightContainer,
   StyledFooter,
-} from "components/common/Footer/styles";
-import LocationIcon from "components/common/icons/LocationIcon";
-import MessageIcon from "components/common/icons/MessageIcon";
-import PhoneIcon from "components/common/icons/PhoneIcon";
+} from 'components/common/Footer/styles';
+import LocationIcon from 'components/common/icons/LocationIcon';
+import MessageIcon from 'components/common/icons/MessageIcon';
+import PhoneIcon from 'components/common/icons/PhoneIcon';
 
 function Footer() {
   return (
