@@ -5,11 +5,13 @@ import {
   BreadcrumbShown,
   Arrow,
 } from "components/common/Breadcrumb/styles";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
 import { SYNTAXES } from "constants/syntaxes";
+import { useRouter } from "next/router";
 
 function Breadcrumbs(props) {
-  const location = useLocation();
+  const router = useRouter();
+  const location = router.pathname
   // url array, /python/1이면 ["python", "1"] 로 저장
   const locationArray = location.pathname.split("/").filter((entry) => entry !== "");
   const locArrLen = locationArray.length;
@@ -38,7 +40,7 @@ function Breadcrumbs(props) {
           <BreadcrumbShown
             status={locArrLen >= 0 ? (UrlStartsWith("/") ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
           >
-            <Link to="/languageselect">
+            <Link href="/languageselect">
               <BreadcrumbColor status={locArrLen === 0 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
                 TADAK
               </BreadcrumbColor>
@@ -50,7 +52,7 @@ function Breadcrumbs(props) {
             }
           >
             <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
-            <Link to={`/${language}`}>
+            <Link href={`/${language}`}>
               <BreadcrumbColor status={locArrLen === 1 ? BREADCRUMB_ACTIVE : BREADCRUMB_NOT_ACTIVE}>
                 {firstUpLanguage}
               </BreadcrumbColor>

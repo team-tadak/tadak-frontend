@@ -2,7 +2,7 @@ import { Letter, StyledTypeInput } from "components/TypeInput/styles";
 import React, { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import { Paragraph } from "components/TypeInput/styles";
 import { MOCKUP_STRING } from "constants/paragraphs";
-import { useLocation } from "react-router-dom";
+
 import { serverAxios } from "utils/commonAxios";
 import PortalModal from "components/PortalModal";
 import Button from "components/common/Button";
@@ -15,6 +15,7 @@ import {
 } from "components/PortalModal/style";
 import { theme } from "styles/theme";
 import TimerIcon from "assets/svgs/Tumer_light.svg";
+import { useRouter } from "next/router";
 
 function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
   if (currentInputString.length === currentLetterIndex) {
@@ -85,7 +86,8 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
   // 마지막에 타이머 초 0 으로 바꾸기 전에 마지막 경과 초 값 저장
   const totalSecondsSpent = useRef(0);
 
-  const location = useLocation();
+  const router = useRouter();
+  const location = router.pathname
 
   const handleSubmit = useCallback(
     (e) => {
@@ -289,7 +291,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
         </ModalButton>
       </PortalModal>
 
-      <PortalModal open={showCountdownModal} onClose={() => {}}>
+      <PortalModal open={showCountdownModal} onClose={() => { }}>
         <ModalHeader color={theme.color.blue.light}>준비하세요!</ModalHeader>
         <ModalTitle>{countDownSeconds}</ModalTitle>
         <ModalButton

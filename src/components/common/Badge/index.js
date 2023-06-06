@@ -1,13 +1,13 @@
 import { BadgeIconContainer, BadgeText, StyledBadge } from "components/common/Badge/styles";
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import TagIcon from "../icons/TagIcon";
 
 function Badge({ IconComponent, children, language, syntax, ...props }) {
-  
+
   let linkURL;
-  
-  if(IconComponent === TagIcon) {
+
+  if (IconComponent === TagIcon) {
     linkURL = "/" + children;
   }
 
@@ -15,13 +15,13 @@ function Badge({ IconComponent, children, language, syntax, ...props }) {
     linkURL = "/" + language + "/" + syntax;
   }
 
-  
+
   return (
     <StyledBadge {...props}>
       <BadgeIconContainer>
         <IconComponent />
       </BadgeIconContainer>
-      <Link to={linkURL}>
+      <Link href={linkURL}>
         <BadgeText>{children}</BadgeText>
       </Link>
     </StyledBadge>

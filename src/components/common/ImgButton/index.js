@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import RightIcon from "components/common/icons/RightIcon";
 import PythonIcon from "components/common/icons/languages/PythonIcon";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const StyledImgButton = styled.div`
   display: flex;
@@ -166,7 +166,7 @@ const ArrowIcon = styled.div`
 
 function ImgButton(props) {
   return (
-    <Link to="/python">
+    <Link href="/python">
       <StyledImgButton>
         <InnerContainer>
           <IconBorder></IconBorder>

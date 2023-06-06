@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export const SyntaxSelectContainer = styled.div`
   width: 280px;
@@ -111,7 +111,7 @@ function SyntaxSelectComponent({ language, example, title, level, summary, ...pr
         <SyntaxLevel>{stars}</SyntaxLevel>
       </SyntaxTitleBox>
       <SyntaxSummary>{summary}</SyntaxSummary>
-      <Link to={linkURL}>
+      <Link href={linkURL}>
         <SyntaxStartButton>시작하기!</SyntaxStartButton>
       </Link>
     </SyntaxSelectContainer>

@@ -4,9 +4,10 @@ import Rectangle from "./img/Rectangle.png";
 import SignIn from "./img/SignIn.png";
 import Switch from "./img/Switch.png";
 import Trophy from "./img/Trophy.png";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
 
-const ButtonShape = styled(NavLink)`
+
+const ButtonShape = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -27,7 +28,7 @@ const ButtonShape = styled(NavLink)`
   &:hover {
     padding-left: 8px;
     color: ${({ theme, kind }) =>
-      kind === "logout" ? theme.color.warning300 : theme.color.primary200};
+    kind === "logout" ? theme.color.warning300 : theme.color.primary200};
   }
   transition: 0.3s;
 `;
@@ -49,14 +50,16 @@ const IconPositioner = styled.div`
 
 function Button({ icon, content, ...props }) {
   return (
-    <ButtonShape {...props}>
-      {icon === "1" && <img src={Rectangle} width="15" height="15" />}
-      {icon === "2" && <img src={Switch} width="20" height="20" />}
-      {icon === "3" && <img src={Trophy} width="20" height="20" />}
-      {icon === "4" && <img src={SignIn} width="20" height="20" />}
+    <Link {...props}>
+      <ButtonShape {...props}>
+        {icon === "1" && <img src={Rectangle} width="15" height="15" />}
+        {icon === "2" && <img src={Switch} width="20" height="20" />}
+        {icon === "3" && <img src={Trophy} width="20" height="20" />}
+        {icon === "4" && <img src={SignIn} width="20" height="20" />}
 
-      <ButtonFont>{content}</ButtonFont>
-    </ButtonShape>
+        <ButtonFont>{content}</ButtonFont>
+      </ButtonShape>
+    </Link>
   );
 }
 

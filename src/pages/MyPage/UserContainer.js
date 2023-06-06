@@ -2,11 +2,11 @@ import React from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
 import ResultContainer from "./ResultContainer";
-import { useLocation } from "react-router-dom";
 import useUser from "hooks/useUser";
 
 import { useSWRConfig } from "swr";
 import { handleLogout } from "utils/logout";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   display: flex;
@@ -98,7 +98,8 @@ function isTypePage(url) {
 }
 
 function UserContainer({ currentKPM }) {
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = router.pathname;
   const { user, error } = useUser(1, 1);
 
   const { cache } = useSWRConfig();
@@ -113,27 +114,26 @@ function UserContainer({ currentKPM }) {
         </UserInfo>
       </UserInfoContainer>
       <ResultContainer
-        title={isTypePage(location.pathname) ? "현재 타수" : "내 기록"}
+        title={isTypePage(pathname) ? "현재 타수" : "내 기록"}
         icon="1"
         record={
-          isTypePage(location.pathname)
+          isTypePage(pathname)
             ? currentKPM
               ? `${currentKPM} 타`
               : "000 타"
-            : `${
-                user
-                  ? user?.highest_record
-                    ? `${user?.highest_record} 타`
-                    : "기록이 없습니다"
-                  : "로그인 필요"
-              } `
+            : `${user
+              ? user?.highest_record
+                ? `${user?.highest_record} 타`
+                : "기록이 없습니다"
+              : "로그인 필요"
+            } `
         }
       />
       <ResultContainer
-        title={isTypePage(location.pathname) ? "정확도" : "내 랭킹"}
+        title={isTypePage(pathname) ? "정확도" : "내 랭킹"}
         icon="2"
         record={
-          isTypePage(location.pathname)
+          isTypePage(pathname)
             ? "기능 준비 중"
             : `${user ? user?.ranking ?? "기록이 없습니다" : "로그인 필요"}`
         }

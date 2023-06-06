@@ -2,7 +2,7 @@ import PythonIcon from "components/common/icons/languages/PythonIcon"
 import RightIcon from "components/common/icons/RightIcon"
 import { CardContainer, IconContainer, Title, Summary, TextContainer } from "./styles"
 import styled from "@emotion/styled"
-import { Link } from "react-router-dom"
+import Link from "next/link";
 
 const Container = styled.div`display:flex;flex-direction:row;gap:16px;`
 
@@ -14,7 +14,9 @@ function LanguageCard({
     style = {}
 }) {
     return (
-        <Link to={link}>
+
+
+        <Link href={link}>
             <CardContainer>
                 <Container>
                     <IconContainer>
@@ -28,6 +30,7 @@ function LanguageCard({
                 <RightIcon />
             </CardContainer>
         </Link>
+
     )
 }
 

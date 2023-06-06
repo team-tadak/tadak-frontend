@@ -18,7 +18,7 @@ import { defaultFadeInUpVariants, staggerOne } from "styles/motions";
 import { css } from "@emotion/react";
 import InputUserName from "components/common/Inputs/InputUserName";
 import DropdownComponent from "components/Dropdown";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 function Main() {
   const [gender, setSelected] = useState(undefined);
@@ -68,7 +68,7 @@ function Main() {
                 {" "}
                 <wbr />{" "}
               </LabelBox>
-              <Link to="/languageselect">
+              <Link href="/languageselect">
                 <Button
                   css={css`
                     margin: 9px 0;

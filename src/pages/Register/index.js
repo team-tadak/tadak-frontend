@@ -5,7 +5,8 @@ import InputUserName from "components/common/Inputs/InputUserName";
 import SlimButton from "components/common/SlimButton";
 import PortalModal from "components/PortalModal";
 import { useCallback, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+
 import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
 import React from "react";
 import { serverAxios } from "utils/commonAxios";
@@ -20,9 +21,11 @@ import {
 } from "./style";
 import * as bcrypt from "bcryptjs";
 import { BCRYPT_SALT } from "constants/hash";
+import { useRouter } from "next/router";
 
 function Register() {
   const navigate = useNavigate();
+  const { push } = useRouter()
   const [showModal, setShowModal] = useState(false);
   const [modalText, setModalText] = useState(null);
   const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
@@ -33,8 +36,8 @@ function Register() {
   }, []);
 
   const onRegisterSuccess = useCallback(() => {
-    navigate("/login");
-  }, [navigate]);
+    push("/login");
+  }, [push]);
 
   const [showOnFailModal, setShowOnFailModal] = useState(false);
   const [showOnSuccessModal, setShowOnSuccessModal] = useState(false);
@@ -111,7 +114,7 @@ function Register() {
             console.log(e);
             setShowOnFailModal(true);
           });
-      } catch (e) {}
+      } catch (e) { }
     }
     register();
   }, []);
@@ -120,7 +123,7 @@ function Register() {
   const { loggedOut } = useUser();
 
   if (!loggedOut) {
-    navigate("/");
+    push("/");
   }
 
   return (
@@ -154,7 +157,7 @@ function Register() {
           <ToLoginParagraph>
             계정이 이미 있으세요?{" "}
             <ToLogin>
-              <Link to="/login">로그인</Link>
+              <Link href="/login">로그인</Link>
             </ToLogin>
             하러 가기
           </ToLoginParagraph>
@@ -168,7 +171,7 @@ function Register() {
         }}
       >
         <ModalHeader>회원가입 성공!</ModalHeader>
-        <Link to={"/login"} style={{ width: "100%" }}>
+        <Link href={"/login"} style={{ width: "100%" }}>
           <ModalButton
             onClick={() => {
               setShowOnSuccessModal(false);

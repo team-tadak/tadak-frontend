@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { serverAxios } from "utils/commonAxios";
 import { mutate } from "swr";
@@ -6,15 +6,16 @@ import { ButtonDiv, LoginForm, LoginTitle, ToRegister, ToRegisterParagraph } fro
 import InputEmail from "components/common/Inputs/InputEmail";
 import InputPassword from "components/common/Inputs/InputPassword";
 import Button from "components/common/Button";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+import Link from "next/link";
 import PortalModal from "components/PortalModal";
 import { ModalHeader, ModalBody, ModalButton } from "components/PortalModal/style";
 import useUser from "hooks/useUser";
+import { useRouter } from "next/router";
 
 function Login() {
   const [showOnFailModal, setShowOnFailModal] = useState(false);
-  const navigate = useNavigate();
+  const { push } = useRouter();
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     async function login() {
@@ -42,7 +43,7 @@ function Login() {
             console.log(response);
             console.log("로그인 성공");
             mutate("/users/me"); // 로그인 함과 동시에 상단바에 NavBar 업데이트 하도록
-            navigate("/");
+            push("/");
           })
           .catch(() => {
             // 로그인 실패시
@@ -62,9 +63,12 @@ function Login() {
   // 로그인 시 redirect 로직
   const { loggedOut } = useUser();
 
-  if (!loggedOut) {
-    navigate("/");
-  }
+  useEffect(() => {
+
+    if (!loggedOut) {
+      push("/");
+    }
+  }, [loggedOut]);
 
   return (
     <>
@@ -76,7 +80,7 @@ function Login() {
           <Button type="submit">로그인</Button>
           <ToRegisterParagraph>
             <ToRegister>
-              <Link to="/register">회원가입</Link>
+              <Link href="/register">회원가입</Link>
             </ToRegister>
             하러 가기
           </ToRegisterParagraph>
