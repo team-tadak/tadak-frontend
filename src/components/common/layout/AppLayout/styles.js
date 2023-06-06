@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import { NAVBAR_HEIGHT } from "constants/navbar";
 
 export const AppLayout = styled.section`

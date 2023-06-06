@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
 export const StyledHistoryBoardItem = styled(motion.li)`

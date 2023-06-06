@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import { resetButtonStyle } from "styles/utils/button";
 
 const baseDiv = styled.button`

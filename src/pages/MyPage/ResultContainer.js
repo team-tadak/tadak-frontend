@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import Code from "./img/Code.png";
 import Trophy from "./img/Trophy.png";
 import UserContainer from "./UserContainer";

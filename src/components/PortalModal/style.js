@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import { theme } from "styles/theme";
 import { hexToRgba } from "utils/color";
 import { motion } from "framer-motion";

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import { hexToRgba } from "utils/color";
 
 export const StyledBreadcrumb = styled.nav`
