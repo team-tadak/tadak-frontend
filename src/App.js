@@ -18,7 +18,7 @@ import GlobalStyles from "styles/GlobalStyles";
 import NavBar from "components/common/NavBar";
 import AppLayout from "components/common/layout/AppLayout";
 import Footer from "components/common/Footer";
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import Breadcrumbs from "components/common/Breadcrumb";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";

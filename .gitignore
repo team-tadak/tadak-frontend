@@ -24,3 +24,7 @@ yarn-error.log*
 
 # env variables
 .env
+
+
+# next
+.next
