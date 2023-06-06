@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 //import styled from "@emotion/styled";
 
-import LanguageSelect from "pages/LanguageSelect";
-import Leaderboard from "pages/Leaderboard";
-import Login from "pages/Login";
-import Main from "pages/Main";
-import MyPage from "pages/MyPage";
-import Register from "pages/Register";
-import SyntaxSelect from "pages/SyntaxSelect";
-import TypePage from "pages/TypePage";
+import LanguageSelect from "pages/languageselect";
+import Leaderboard from "pages/leaderboard";
+import Login from "pages/login";
+import Main from "pages";
+import MyPage from "pages/mypage";
+import Register from "pages/register";
+import SyntaxSelect from "pages/syntaxselect";
+import TypePage from "pages/typepage";
 
 import { ThemeProvider } from "@emotion/react";
 //import FitContent

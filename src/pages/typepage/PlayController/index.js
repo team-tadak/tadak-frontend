@@ -1,4 +1,4 @@
-import { PlayContollerButton, StyledPlayController } from "pages/TypePage/PlayController/styles";
+import { PlayContollerButton, StyledPlayController } from "pages/typepage/PlayController/styles";
 
 function PlayController({ isPlaying, onPause, onResume, onStop, ...props }) {
   // const [isPlaying, setIsPlaying] = useState(false);

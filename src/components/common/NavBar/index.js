@@ -47,6 +47,7 @@ function NavBar(props) {
                 <Link href={"/register"}>회원가입</Link>
               </NavBarMenuText>
             </>
+
           ) : (
             <>
               <NavBarMenuText>{user?.username}님 환영합니다!</NavBarMenuText>
@@ -56,7 +57,7 @@ function NavBar(props) {
               <NavBarLogoutContainer>
                 <NavBarLogoutText>
                   <Link
-                    to={"/"}
+                    href={"/"}
                     onClick={() => {
                       handleLogout(cache);
                     }}
@@ -71,8 +72,8 @@ function NavBar(props) {
             </>
           )}
         </NavBarMenuContainer>
-      </NavBarContainer>
-    </StyledNavBar>
+      </NavBarContainer >
+    </StyledNavBar >
   );
 }
 

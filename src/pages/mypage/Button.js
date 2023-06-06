@@ -50,7 +50,7 @@ const IconPositioner = styled.div`
 
 function Button({ icon, content, ...props }) {
   return (
-    <Link {...props}>
+    <Link href="#" {...props}>
       <ButtonShape {...props}>
         {icon === "1" && <img src={Rectangle} width="15" height="15" />}
         {icon === "2" && <img src={Switch} width="20" height="20" />}

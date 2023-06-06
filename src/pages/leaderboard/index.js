@@ -5,13 +5,13 @@ import {
   LeaderBoardPageContentContainer,
   LeaderBoardTopRankingContainer,
   PaginationContainer,
-} from "pages/Leaderboard/styles";
+} from "pages/leaderboard/styles";
 import React, { useState, useEffect } from "react";
 import { defaultFadeInVariants, staggerHalf, staggerQuarter } from "styles/motions";
 import { motion } from "framer-motion";
 import { MOCKUP_RANKS } from "mockups/ranks";
 import Typography from "components/common/Typography";
-import UserContainer from "pages/MyPage/UserContainer";
+import UserContainer from "pages/mypage/UserContainer";
 import useRanks from "hooks/useRanks";
 import Spinner from "components/common/Spinner";
 import DropdownComponent from "components/Dropdown";

@@ -1,7 +1,7 @@
 import React from "react";
 import { faU, faUser } from "@fortawesome/free-solid-svg-icons";
 import Breadcrumbs from "components/common/Breadcrumb";
-import UserContainer from "pages/MyPage/UserContainer";
+import UserContainer from "pages/mypage/UserContainer";
 
 import {
   BluredLanguageCardList,

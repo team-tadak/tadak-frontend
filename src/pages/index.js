@@ -9,7 +9,7 @@ import {
   SubTitle,
   Title,
   TitleContainer,
-} from "pages/Main/styles";
+} from "pages/styles";
 import { InputContainer as InputWrapper, LabelBox } from "components/common/Inputs/styles";
 
 import React from "react";

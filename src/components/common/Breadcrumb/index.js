@@ -11,9 +11,9 @@ import { useRouter } from "next/router";
 
 function Breadcrumbs(props) {
   const router = useRouter();
-  const location = router.pathname
+  const pathname = router.pathname
   // url array, /python/1이면 ["python", "1"] 로 저장
-  const locationArray = location.pathname.split("/").filter((entry) => entry !== "");
+  const locationArray = pathname.split("/").filter((entry) => entry !== "");
   const locArrLen = locationArray.length;
   // codeId가 있는 url이라면 codeId 반환, 없다면 undefined
   const codeId = locationArray[locArrLen - 1];
@@ -24,7 +24,7 @@ function Breadcrumbs(props) {
   });
   // url이 특정 path로 시작하는지 확인하여 보여주고 안 보여주고 나눔(있는 이유는 languageselect 때도 breadcrumb이 나타나서)
   function UrlStartsWith(path) {
-    return location.pathname.startsWith(path);
+    return pathname.startsWith(path);
   }
   // style 관련 state 나타내는 varibles
   const SHOWN = "shown";
@@ -35,7 +35,7 @@ function Breadcrumbs(props) {
 
   return (
     <>
-      {!(location.pathname === "/") && (
+      {!(pathname === "/") && (
         <StyledBreadcrumb>
           <BreadcrumbShown
             status={locArrLen >= 0 ? (UrlStartsWith("/") ? SHOWN : NOT_SHOWN) : NOT_SHOWN}
@@ -68,7 +68,7 @@ function Breadcrumbs(props) {
             }
           >
             <Arrow className={BREADCRUMB_ARROW}>&gt;</Arrow>
-            <Link>
+            <Link href="#">
               <BreadcrumbColor status={BREADCRUMB_ACTIVE}>
                 {isNaN(parseInt(codeId))
                   ? "error"

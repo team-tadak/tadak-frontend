@@ -32,6 +32,7 @@ function generateLetterStatus(currentInputString, letter, currentLetterIndex) {
 
 // paragraph 받아서 \n (newline) 의 index 위치를 반환해줌
 function parseNewline(paragraph) {
+
   let newLineIndices = [];
   for (var i = 0; i < paragraph.length; i++) {
     if (paragraph[i] === "\n") {
@@ -54,7 +55,7 @@ function TypeInput({ timePassed, setCurrentKPM, currentKPM, setIsPlaying, paragr
   useEffect(() => {
     currentKPMRef.current = currentKPM;
   }, [currentKPM]);
-
+  console.log('paragraphIndex', paragraphIndex);
   const TEST_STRING = MOCKUP_STRING[paragraphIndex];
   const [showResultModal, setShowResultModal] = useState(false);
   const [showCountdownModal, setShowCountdownModal] = useState(true);

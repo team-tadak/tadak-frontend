@@ -1,4 +1,4 @@
-import { MyPageContainer, MyPageContentContainer } from "pages/MyPage/styles";
+import { MyPageContainer, MyPageContentContainer } from "pages/mypage/styles";
 import UserContainer from "./UserContainer";
 import React from "react";
 import { staggerQuarter, defaultFadeInVariants } from "styles/motions";

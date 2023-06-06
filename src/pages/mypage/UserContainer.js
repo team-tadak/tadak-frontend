@@ -139,13 +139,13 @@ function UserContainer({ currentKPM }) {
         }
       />
       <ButtonContainer>
-        <Button to="/languageselect" icon="1" content={"언어선택"} />
+        <Button href="/languageselect" icon="1" content={"언어선택"} />
         {/* end 속성은 /python 까지만 비교. 그렇지 않으면 /python/2 도 같은 링크로 취급해서 타자 치는 곳에서 active 되버림.  */}
-        <Button end to="/python" icon="2" content={"문법선택"} />
-        <Button to="/leaderboard" icon="3" content={"랭킹보드"} />
+        <Button end href="/python" icon="2" content={"문법선택"} />
+        <Button href="/leaderboard" icon="3" content={"랭킹보드"} />
         <Button
           kind="logout"
-          to="/"
+          href="/"
           icon="4"
           content={"로그아웃"}
           onClick={() => {

@@ -3,7 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { SYNTAXES } from "constants/syntaxes";
 import SyntaxSelectComponent from "components/Syntax";
-import UserContainer from "pages/MyPage/UserContainer";
+import UserContainer from "pages/mypage/UserContainer";
 import { motion } from "framer-motion";
 import { defaultFadeInUpVariants, defaultFadeInVariants, staggerQuarter } from "styles/motions";
 

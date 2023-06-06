@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import Timer from "components/Timer";
 import TypeInput from "components/TypeInput";
-import UserContainer from "pages/MyPage/UserContainer";
-import PlayController from "pages/TypePage/PlayController";
-import { TypePageAsideContainer, TypePageContainer } from "pages/TypePage/styles";
+import UserContainer from "pages/mypage/UserContainer";
+import PlayController from "pages/typepage/PlayController";
+import { TypePageAsideContainer, TypePageContainer } from "pages/typepage/styles";
 
 import { useState } from "react";
 import Breadcrumbs from "components/common/Breadcrumb";
