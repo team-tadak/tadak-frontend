@@ -96,9 +96,9 @@ function SyntaxSelectComponent({ language, example, title, level, summary, ...pr
   var stars = [];
   for (var i = 0; i < 5; i++) {
     if (i < level) {
-      stars.push(<SyntaxStar src={process.env.PUBLIC_URL + `/images/full_star.png`} />);
+      stars.push(<SyntaxStar src={`/images/full_star.png`} />);
     } else {
-      stars.push(<SyntaxStar src={process.env.PUBLIC_URL + `/images/empty_star.png`} />);
+      stars.push(<SyntaxStar src={`/images/empty_star.png`} />);
     }
   }
   return (

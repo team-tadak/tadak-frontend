@@ -1,8 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Code from './img/Code.png';
-import Trophy from './img/Trophy.png';
-import UserContainer from './UserContainer';
 
 const RecordShape = styled.div`
   display: flex;
@@ -43,8 +40,8 @@ function ResultContainer({ title, icon, record }) {
   return (
     <RecordShape>
       <IconTextContainer>
-        {icon === '1' && <img src={Code} width="50" height="50" />}
-        {icon === '2' && <img src={Trophy} width="50" height="50" />}
+        {icon === '1' && <img src='./img/Code.png' width="50" height="50" />}
+        {icon === '2' && <img src='./img/Trophy.png' width="50" height="50" />}
         <TitleFont>{title}</TitleFont>
       </IconTextContainer>
       <RecordFont>{record}</RecordFont>

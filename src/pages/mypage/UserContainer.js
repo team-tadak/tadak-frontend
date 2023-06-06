@@ -41,7 +41,7 @@ const UserPicture = styled.div`
   width: 64px;
   height: 64px;
 
-  background-image: url(${process.env.PUBLIC_URL + '/img/emoji.png'});
+  background-image: url('/img/emoji.png');
   background-size: cover;
   border-radius: 32px;
 `;
@@ -121,13 +121,12 @@ function UserContainer({ currentKPM }) {
             ? currentKPM
               ? `${currentKPM} 타`
               : '000 타'
-            : `${
-                user
-                  ? user?.highest_record
-                    ? `${user?.highest_record} 타`
-                    : '기록이 없습니다'
-                  : '로그인 필요'
-              } `
+            : `${user
+              ? user?.highest_record
+                ? `${user?.highest_record} 타`
+                : '기록이 없습니다'
+              : '로그인 필요'
+            } `
         }
       />
       <ResultContainer

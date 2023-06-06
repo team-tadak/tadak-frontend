@@ -1,5 +1,4 @@
 import React from 'react';
-import ClangPng from 'assets/pngs/C_Logo.png';
 import styled from '@emotion/styled';
 
 const Icon = styled.img`
@@ -7,5 +6,5 @@ const Icon = styled.img`
 `;
 
 export default function ClangIcon() {
-  return <Icon src={ClangPng} />;
+  return <Icon src='/assets/pngs/C_Logo.png' />;
 }
