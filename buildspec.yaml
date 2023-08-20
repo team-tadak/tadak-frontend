@@ -10,6 +10,7 @@ phases:
       - npm run build
       - cp Procfile build/ # Copy Procfile to the build output directory
       - cp package.json build/ # Copy package.json to the build output directory
+      - cp .ebextensions/* build/ # Copy .ebextensions to the build output directory
   build:
     commands:
       - echo Build started on `date`
