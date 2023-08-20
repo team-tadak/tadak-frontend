@@ -13,7 +13,7 @@ function useUser() {
   // false: 로그인 된 상태
   // const loggedOut = error && error.status === 401;
 
-  const loggedOut = error?.response.status === 401;
+  const loggedOut = error?.response?.status === 401;
 
   return {
     loggedOut,
