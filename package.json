@@ -27,7 +27,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "deploy:aws": "serve -s . -l 8080",
+    "deploy:aws": "npm install serve && npx serve -s . -l 8080",
     "start": "react-scripts start",
     "start:prod": "npx serve -s build",
     "build": "react-scripts build",
